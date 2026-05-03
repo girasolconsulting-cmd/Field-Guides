@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indigenous Bee Knowledge Survey — Zambia</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#f5f0e8;--dark:#1a1a18;--amber:#c8821a;--amber-light:#e8a83a;--muted:#6b6558;--border:#d8d0c0;--card-bg:#faf7f2;--accent-green:#3d5a3e;--accent-blue:#2a4a6b;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--dark);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;font-size:15px;}
+
+  header{background:var(--dark);color:var(--cream);padding:2rem 2rem 1.8rem;border-bottom:3px solid var(--amber);}
+  header h1{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:400;margin-bottom:.3rem;}
+  header p{color:#a09880;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;}
+
+  nav{background:var(--dark);border-bottom:1px solid #333;padding:.5rem 1rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem;}
+  nav button{background:none;border:none;color:#a09880;font-family:'DM Sans',sans-serif;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:.5rem .8rem;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;}
+  nav button:hover{color:var(--cream);}
+  nav button.active{color:var(--amber-light);border-bottom-color:var(--amber);}
+
+  .page{display:none;}.page.active{display:block;}
+  .layout{max-width:860px;margin:0 auto;padding:2.5rem 1.5rem;}
+
+  /* Interviewer notes */
+  .interviewer-note{background:#f0f4f8;border-left:3px solid var(--accent-blue);padding:.9rem 1.1rem;font-size:.82rem;color:#2a4a6b;margin:1rem 0;line-height:1.6;}
+  .interviewer-note strong{font-weight:500;}
+  .note-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;font-weight:500;display:block;margin-bottom:.3rem;color:var(--accent-blue);}
+
+  .warning{background:#fff8f0;border-left:3px solid var(--amber);padding:.9rem 1.1rem;font-size:.82rem;color:var(--muted);margin:1rem 0;}
+  .warning strong{color:var(--amber);}
+
+  .sensitive{background:#fff0f4;border-left:3px solid #8b2e2e;padding:.9rem 1.1rem;font-size:.82rem;color:#5a1a1a;margin:1rem 0;}
+  .sensitive strong{color:#8b2e2e;}
+
+  /* Section headers */
+  h2.section{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:400;margin:2.5rem 0 .8rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+  h2.section:first-of-type{margin-top:0;}
+  h3.subsection{font-size:.85rem;font-weight:500;letter-spacing:.04em;margin:1.8rem 0 .6rem;color:var(--dark);text-transform:uppercase;font-size:.72rem;letter-spacing:.12em;}
+
+  /* Questions */
+  .q-block{margin-bottom:1.4rem;}
+  .q-num{display:inline-block;background:var(--dark);color:var(--amber-light);font-size:.65rem;padding:.12rem .5rem;letter-spacing:.08em;font-weight:500;margin-bottom:.4rem;vertical-align:middle;}
+  .q-text{font-size:.95rem;color:var(--dark);margin-bottom:.5rem;line-height:1.5;}
+  .q-text em{font-style:italic;color:var(--muted);font-size:.88rem;}
+
+  /* Local term field */
+  .local-term{display:flex;align-items:baseline;gap:.8rem;background:var(--card-bg);border:1px solid var(--border);padding:.5rem .8rem;margin-top:.4rem;font-size:.78rem;}
+  .local-term .lt-label{color:var(--amber);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;white-space:nowrap;}
+  .local-term .lt-line{flex:1;border-bottom:1px solid var(--border);min-height:1.2rem;}
+
+  /* Answer space */
+  .answer-space{border-bottom:1px solid var(--border);min-height:2rem;margin:.3rem 0;}
+  .answer-space-lg{border-bottom:1px solid var(--border);min-height:4rem;margin:.3rem 0;}
+  .answer-label{font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-top:.2rem;}
+
+  /* Free list table */
+  .free-list{width:100%;border-collapse:collapse;margin:.8rem 0;font-size:.82rem;}
+  .free-list th{background:var(--dark);color:var(--cream);padding:.45rem .7rem;text-align:left;font-weight:400;font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;}
+  .free-list td{border-bottom:1px solid var(--border);padding:.5rem .7rem;vertical-align:top;}
+  .free-list td:first-child{width:2rem;color:var(--muted);text-align:center;}
+  .free-list td:nth-child(2){width:35%;}
+  .free-list td:nth-child(3){width:30%;}
+  .free-list td:last-child{width:33%;}
+  .free-list .line{border-bottom:1px solid #ddd;display:block;min-height:1.1rem;}
+
+  /* Consent box */
+  .consent-box{background:var(--dark);color:var(--cream);padding:1.8rem;margin-bottom:2rem;}
+  .consent-box h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:400;margin-bottom:1rem;color:var(--amber-light);}
+  .consent-box p{font-size:.88rem;line-height:1.8;color:#c8bfa8;margin-bottom:.8rem;}
+  .consent-box .placeholder{color:var(--amber);font-style:italic;}
+  .consent-sig{margin-top:1.4rem;display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+  .consent-sig .sig-field{border-top:1px solid #444;padding-top:.4rem;font-size:.72rem;color:#888;letter-spacing:.06em;}
+
+  /* Recording consent */
+  .record-block{background:var(--card-bg);border:1px solid var(--border);padding:1rem 1.2rem;margin:1rem 0;}
+  .record-block p{font-size:.88rem;margin-bottom:.6rem;}
+  .record-options{display:flex;gap:2rem;font-size:.85rem;}
+  .record-option{display:flex;align-items:center;gap:.4rem;}
+  .record-option .box{width:14px;height:14px;border:1px solid var(--dark);display:inline-block;flex-shrink:0;}
+
+  /* Meta fields */
+  .meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.5rem;}
+  .meta-field label{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:.2rem;}
+  .meta-field .field-line{border-bottom:1px solid var(--border);min-height:1.4rem;}
+
+  footer{background:var(--dark);color:#555;text-align:center;font-size:.72rem;padding:1.2rem;margin-top:1rem;letter-spacing:.04em;}
+
+  @media print{
+    nav{display:none;}
+    .page{display:block !important;}
+    .interviewer-note{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+    footer{display:none;}
+    .page + .page{page-break-before:always;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Indigenous Bee Knowledge Survey</h1>
+  <p>Zambia &mdash; Honey Hunters &amp; Traditional Beekeepers &mdash; Ethnoentomological Interview Guide</p>
+</header>
+
+<nav id="nav-bar">
+  <button class="active" onclick="show('interviewer',this)">Interviewer Notes</button>
+  <button onclick="show('consent',this)">Consent &amp; Introduction</button>
+  <button onclick="show('background',this)">Background</button>
+  <button onclick="show('species',this)">Bee Species &amp; Identification</button>
+  <button onclick="show('harvest',this)">Harvesting &amp; Management</button>
+  <button onclick="show('quality',this)">Honey Quality &amp; Uses</button>
+  <button onclick="show('plants',this)">Foraging &amp; Plants</button>
+  <button onclick="show('health',this)">Colony Health &amp; Problems</button>
+  <button onclick="show('knowledge',this)">Knowledge &amp; Transmission</button>
+  <button onclick="show('close',this)">Closing</button>
+</nav>
+
+<!-- INTERVIEWER NOTES -->
+<div id="interviewer" class="page active">
+<div class="layout">
+  <h2 class="section">Interviewer guidance</h2>
+
+  <div class="interviewer-note">
+    <span class="note-label">Purpose of this document</span>
+    This is a semi-structured interview guide, not a questionnaire. The questions are prompts to open conversation — not a script to be read aloud in sequence. Follow the participant's lead. If they take the conversation in an unexpected direction, go with them. The most valuable knowledge is often what you did not think to ask about.
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">Newcomer's mindset</span>
+    You are here to learn, not to confirm or correct. Do not introduce scientific names, technical terms, or concepts from your own knowledge. Do not react with surprise or scepticism to anything you hear — this signals judgment and will close the conversation. If something contradicts what you know scientifically, note it carefully without comment. It may be correct, or it may be a different way of knowing the same thing.
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">Working with your translator</span>
+    Brief your translator before each interview. Ask them to: (1) translate as literally as possible rather than paraphrasing or 'improving' answers; (2) note the exact local word used for each bee, product, or concept — this is data; (3) tell you if the participant says something they believe should not be recorded. Debrief with your translator after each interview while the conversation is fresh.
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">Local terms column</span>
+    Throughout this guide there are fields for recording the local term used by the participant. Record these in the participant's own language, in their own spelling or phonetic approximation if needed. These terms are primary data — they reveal how the participant categorises the world, which may not map onto scientific categories.
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">Pacing and silence</span>
+    Ask one question at a time. Allow long silences — do not rush to fill them. Older participants and experienced honey hunters in particular may pause to recall or consider before speaking. A pause is not a signal that the question has been answered. Wait.
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">Free listing</span>
+    Some sections begin with a free listing exercise — simply asking the participant to name everything they know in a category (e.g. "all the kinds of bees you know"). Record the items in the order they are given. The order itself carries information: items listed first tend to be the most salient or important. Do not prompt or suggest items during free listing.
+  </div>
+
+  <div class="sensitive">
+    <strong>Sensitive areas — guidance for the interviewer</strong><br><br>
+    Some knowledge may be considered private, proprietary, or sacred — locations of nesting sites, ceremonial uses of honey or wax, or practices that belong to particular lineages or roles. Watch for signals: hesitation, a change in tone, a glance at others present, or an explicit statement that something is "not for everyone." If you sense reluctance, acknowledge it directly and simply: <em>"You don't need to share that — I only want to know what you are comfortable telling me."</em> Do not press. Do not return to the topic later in the same interview. Note in your field record that the topic was declined so you do not inadvertently raise it again.
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">Snowball sampling</span>
+    At the end of each interview, ask: <em>"Is there someone else in this area who knows a lot about bees, or who has been doing this for a long time?"</em> This is the primary way to find the most knowledgeable participants. Community leaders and headmen can also facilitate introductions — always approach them first when entering a new community.
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">What to do after the interview</span>
+    Write up field notes immediately — within a few hours at most. Note: the setting, who else was present, the participant's apparent comfort level, anything said off-record, your translator's impressions, and any topics that seemed sensitive. These contextual notes are as important as the recorded answers.
+  </div>
+</div>
+</div>
+
+<!-- CONSENT -->
+<div id="consent" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — read this section aloud through your translator</span>
+    Read the introduction below to the participant before beginning. Speak slowly and pause frequently to allow translation. Do not begin the interview until the participant has had the opportunity to ask questions and has given consent. If they decline, thank them and leave.
+  </div>
+
+  <div class="consent-box">
+    <h2>Introduction &amp; Consent</h2>
+    <p>My name is [YOUR NAME]. I am here because I am trying to learn about bees — the bees that live in this area, and the knowledge that people here have about them. I am not from a government office. I am not here to tell anyone what to do or how to keep bees differently.</p>
+    <p>I would like to talk with you about what you know — the kinds of bees you recognise, how you find them, how you know when honey is good, and anything else you are willing to share. You know things that I do not know, and I am here to listen.</p>
+    <p>This conversation is completely <span class="placeholder">[VOLUNTARY / CONFIDENTIAL — confirm wording once data use is decided]</span>. You do not have to answer any question you are not comfortable with. You can stop the conversation at any time, for any reason, and nothing will happen.</p>
+    <p>What I learn from this conversation will be used for <span class="placeholder">[INSERT: purpose of research — e.g. "a study of bee diversity in this region" / "a report that will be shared with..."  — confirm once data use is decided]</span>. <span class="placeholder">[INSERT: will names be used or kept anonymous? — confirm once data use is decided]</span></p>
+    <p>As a small gesture of thanks for your time, <span class="placeholder">[INSERT: compensation — e.g. "I would like to offer you..." — confirm once decided]</span>.</p>
+    <p>Do you have any questions before we begin?</p>
+  </div>
+
+  <h2 class="section">Recording consent</h2>
+  <div class="record-block">
+    <p>I would like to record our conversation on audio so that I can listen again carefully later and make sure I have understood correctly. The recording will only be heard by me and my translator.</p>
+    <p><strong>Is that acceptable to you?</strong></p>
+    <div class="record-options">
+      <div class="record-option"><span class="box"></span> Yes — audio recording agreed</div>
+      <div class="record-option"><span class="box"></span> No — written notes only</div>
+    </div>
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">If audio is declined</span>
+    Accept without comment or pressure. Switch to written notes only. Do not mention recording again. Note the decision in your field record.
+  </div>
+
+  <h2 class="section">Interview record — complete before beginning</h2>
+  <div class="meta-grid">
+    <div class="meta-field"><label>Date</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Time started</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Location / village</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>GPS coordinates</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Interviewer</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Translator</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Interview language(s)</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Recording: audio / notes</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Participant reference code</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Referred by</label><div class="field-line"></div></div>
+  </div>
+
+  <div class="interviewer-note">
+    <span class="note-label">Participant reference code</span>
+    Assign a code (e.g. ZMB-001) rather than recording the participant's name on the form. Keep a separate, secure record linking codes to names if attribution is required. This protects participant privacy and allows anonymisation of data if needed.
+  </div>
+
+</div>
+</div>
+
+<!-- BACKGROUND -->
+<div id="background" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — this section</span>
+    These questions establish context about the participant's experience and relationship with bees. They are also a warm-up — most people enjoy talking about their own history before moving to more specific topics. Keep it conversational. Do not read questions as a list.
+  </div>
+
+  <h2 class="section">Background &amp; experience</h2>
+
+  <div class="q-block">
+    <span class="q-num">B1</span>
+    <p class="q-text">Can you tell me a little about yourself and your relationship with bees? <em>How long have you been involved with bees?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Notes</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">B2</span>
+    <p class="q-text">How did you learn? <em>Who taught you?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local term — teacher / elder / knowledge holder</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">B3</span>
+    <p class="q-text">Is this something that many people in this area do, or only some?</p>
+    <div class="answer-space-lg"></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">B4</span>
+    <p class="q-text">Has your involvement with bees changed over time — either what you do, or how you do it?</p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any references to change over time, environmental shifts, or differences between generations</div>
+  </div>
+
+</div>
+</div>
+
+<!-- SPECIES -->
+<div id="species" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — this section</span>
+    Begin with free listing — let the participant name all the bees they know before asking about any specific one. Record items in the order given. Do not suggest names or indicate that you know of other species. After the list is complete, return to each item and ask follow-up questions.
+  </div>
+
+  <h2 class="section">Bee species &amp; identification</h2>
+
+  <h3 class="subsection">Free listing — all known bees</h3>
+
+  <div class="q-block">
+    <span class="q-num">S1</span>
+    <p class="q-text">Can you tell me all the different kinds of bees you know in this area? <em>Take your time — any kind, big or small.</em></p>
+    <div class="interviewer-note" style="margin-top:.6rem;">Do not prompt. Record in order given. When the participant has finished and pauses, you may ask once: <em>"Are there any others?"</em> — then stop.</div>
+  </div>
+
+  <table class="free-list">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name as given by participant</th>
+        <th>Local term (translator)</th>
+        <th>Notes / description given</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>2</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>3</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>4</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>5</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>6</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>7</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>8</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+    </tbody>
+  </table>
+
+  <h3 class="subsection">Follow-up — for each bee named</h3>
+  <div class="interviewer-note">Work through each bee named above in turn. Ask the same questions for each one. Use the participant's own name for the bee throughout — not any other name.</div>
+
+  <div class="q-block">
+    <span class="q-num">S2</span>
+    <p class="q-text">You mentioned [bee name]. How would you describe it? <em>What does it look like?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local term — colour / size / appearance descriptors</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">S3</span>
+    <p class="q-text">How do you tell [bee name] apart from the others? <em>What is different about it?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any distinguishing characteristics the participant volunteers — colour, size, sound, behaviour, nest type, aggressiveness, sting, smell</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">S4</span>
+    <p class="q-text">Where does [bee name] make its home? <em>Where do you usually find it?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local term — nest / hive / home</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">S5</span>
+    <p class="q-text">Is [bee name] common here, or hard to find?</p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">S6</span>
+    <p class="q-text">Has the number of [bee name] changed since you were younger, or since your parents' time?</p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any references to habitat change, seasonality, or disappearance of species</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">S7</span>
+    <p class="q-text">Are there different kinds within [bee name]? <em>For example, ones that behave differently, look different, or live in different places?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="interviewer-note" style="margin-top:.6rem;">This question may reveal folk sub-categorisation within a species — important data. Record any distinctions the participant makes, in their own terms.</div>
+    <div class="local-term"><span class="lt-label">Local terms — any sub-types named</span><div class="lt-line"></div></div>
+  </div>
+
+</div>
+</div>
+
+<!-- HARVESTING -->
+<div id="harvest" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — this section</span>
+    This section covers how people find nests, access them, and manage bees. Some details — particularly nest locations — may be considered private. Follow sensitivity guidance. If a participant begins to describe a specific location or someone else's nest, do not encourage them to continue.
+  </div>
+
+  <h2 class="section">Finding, harvesting &amp; managing bees</h2>
+
+  <div class="q-block">
+    <span class="q-num">H1</span>
+    <p class="q-text">How do you find a bee nest? <em>What do you look for?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — signs, indicators, guiding animals or birds</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">H2</span>
+    <p class="q-text">What time of year is best for finding bees or collecting honey? <em>How do you know when the time is right?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — seasons, flowering plants, other calendar markers</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">H3</span>
+    <p class="q-text">When you go to take honey, how do you approach the bees? <em>What do you do to be safe, or to calm them?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — smoke, plants used, protective methods</span><div class="lt-line"></div></div>
+    <div class="sensitive" style="font-size:.78rem;margin-top:.5rem;"><strong>Sensitive:</strong> Some practices may have ceremonial or protective significance beyond the practical. Note if the participant seems to describe something beyond the purely practical — do not press for detail.</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">H4</span>
+    <p class="q-text">Do you keep bees, or do you only take from wild nests? <em>Or both?</em></p>
+    <div class="answer-space"></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">H5</span>
+    <p class="q-text"><em>[If they keep bees:]</em> What do you keep them in? <em>How is that made?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — hive type, materials used</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">H6</span>
+    <p class="q-text">When you take honey, how do you decide how much to take? <em>Is there a rule about leaving enough for the bees?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any statements about sustainability, tradition, or rules around harvesting</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">H7</span>
+    <p class="q-text">Is there anything you do — or avoid doing — before going to bees? <em>Any preparation?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="sensitive" style="font-size:.78rem;margin-top:.5rem;"><strong>Sensitive:</strong> This question may invite discussion of dietary restrictions, ceremonial practices, or rules about who may approach bees. Follow sensitivity guidance.</div>
+    <div class="local-term"><span class="lt-label">Local terms — any relevant practices named</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">H8</span>
+    <p class="q-text">Who in your community does this work? <em>Is it everyone, or particular people?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any gender, age, lineage, or role distinctions the participant mentions</div>
+  </div>
+
+</div>
+</div>
+
+<!-- QUALITY -->
+<div id="quality" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — this section</span>
+    This section explores how quality and value are assessed — entirely from the participant's perspective. Do not mention moisture, Brix, fermentation, or any technical concept. Listen for the categories and criteria that matter to them.
+  </div>
+
+  <h2 class="section">Honey quality, products &amp; uses</h2>
+
+  <div class="q-block">
+    <span class="q-num">Q1</span>
+    <p class="q-text">What makes a good honey? <em>How do you know when honey is good?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — quality descriptors (taste, colour, texture, smell)</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">Q2</span>
+    <p class="q-text">Are there different kinds of honey — not just from different bees, but from the same bees at different times, or from different places?</p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — names for different honey types</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">Q3</span>
+    <p class="q-text">Is there honey that is not good — that you would not use, or not sell? <em>What is wrong with it?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — bad honey / spoiled honey</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">Q4</span>
+    <p class="q-text">What do you use honey for?</p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — uses named (food, medicine, trade, ceremony etc.)</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">Q5</span>
+    <p class="q-text">Are there uses for anything else from the bees — besides the honey?</p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — wax, propolis, brood, venom, comb — record whatever is named</span><div class="lt-line"></div></div>
+    <div class="answer-label">Note each product separately and the specific use described</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">Q6</span>
+    <p class="q-text">Do bees — or honey, or anything from them — have any meaning or importance beyond their practical use? <em>In stories, beliefs, or ceremonies?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="sensitive" style="font-size:.78rem;margin-top:.5rem;"><strong>Sensitive:</strong> Cultural and spiritual significance is exactly what you want to learn about — but also the most likely area where participants may not wish to share. Do not press. If they indicate reluctance, say: <em>"That is completely fine — I understand some things are not for sharing."</em></div>
+    <div class="local-term"><span class="lt-label">Local terms — any relevant names or concepts</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">Q7</span>
+    <p class="q-text">How do you store honey after collecting it? <em>For how long?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — storage vessel / method</span><div class="lt-line"></div></div>
+  </div>
+
+</div>
+</div>
+
+<!-- FORAGING & PLANTS -->
+<div id="plants" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — this section</span>
+    This section explores which plants bees are known to visit and what participants observe about foraging behaviour. The goal is to learn their categories and observations — not to confirm or correct plant identifications. If a participant points to or describes a plant, note their description in their own words. Do not introduce plant names. At the end, if the conversation has gone well and the participant is willing, ask whether they could show you any of the plants they have described — and ask permission before collecting any samples.
+  </div>
+
+  <h2 class="section">Foraging &amp; plants</h2>
+
+  <div class="q-block">
+    <span class="q-num">P1</span>
+    <p class="q-text">Do you know which plants the bees go to? <em>Which flowers or trees do they visit?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="interviewer-note" style="margin-top:.6rem;">Begin with free listing — let the participant name plants in any order. Record in order given. Do not suggest plant names.</div>
+  </div>
+
+  <table class="free-list">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Plant name as given</th>
+        <th>Local term (translator)</th>
+        <th>Notes — bee, season, part of plant visited</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>2</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>3</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>4</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>5</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>6</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>7</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>8</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="q-block">
+    <span class="q-num">P2</span>
+    <p class="q-text">Are there certain plants that are especially important — ones the bees really depend on, or that give the best honey?</p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — most important plants named</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">P3</span>
+    <p class="q-text">Are there times of year when there is more for the bees, and times when there is less? <em>What is flowering when the bees are busiest?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — seasons, flowering times, lean periods</span><div class="lt-line"></div></div>
+    <div class="answer-label">Note any seasonal calendar the participant describes — this is valuable phenological data</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">P4</span>
+    <p class="q-text">Do different kinds of bees go to different plants, or do they all visit the same ones?</p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any plant preferences attributed to specific bee types</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">P5</span>
+    <p class="q-text">Are there any plants that seem to be bad for bees, or that bees avoid?</p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — harmful or avoided plants</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">P6</span>
+    <p class="q-text">Have the plants that bees visit changed over time — are there plants that used to be here that are gone now, or new ones that have appeared?</p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any references to land change, clearing, drought, or introduced species</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">P7 — FIELD REQUEST</span>
+    <p class="q-text"><em>[Ask only if the conversation has gone well and the participant seems willing]</em><br><br>
+    Some of the plants you have described — would it be possible for you to show me any of them? I would like to see what they look like, and if you are willing, I would like to take a small sample of flower or pollen — just a few flowers — to look at later. I would only do this with your permission, and I would not take anything without asking first.</p>
+    <div class="answer-space"></div>
+    <div class="record-block" style="margin-top:.6rem;">
+      <div class="record-options">
+        <div class="record-option"><span class="box"></span> Willing to show plants</div>
+        <div class="record-option"><span class="box"></span> Willing for sample collection</div>
+        <div class="record-option"><span class="box"></span> Declined</div>
+      </div>
+    </div>
+    <div class="sensitive" style="font-size:.78rem;margin-top:.6rem;"><strong>Important:</strong> Accept any response without pressure. If declined, do not return to this request. If agreed, collect samples only from what you are shown and have explicit permission for. Label each sample with: participant reference code, local plant name, date, GPS location. Do not collect from sacred sites, private land, or protected areas without explicit permission from the appropriate authority.</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">P8 — SAMPLE RECORD</span>
+    <p class="q-text"><em>[Complete for each plant sample collected]</em></p>
+  </div>
+
+  <table class="free-list">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Local plant name</th>
+        <th>Sample type (flower / pollen / leaf)</th>
+        <th>GPS / location</th>
+        <th>Collection vial ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>2</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>3</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>4</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+      <tr><td>5</td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td><td><span class="line"></span></td></tr>
+    </tbody>
+  </table>
+
+</div>
+</div>
+
+
+<!-- HEALTH -->
+<div id="health" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — this section</span>
+    This section explores what participants observe when bees or colonies are not well. Do not name diseases, parasites, or any specific pathogen — these are your categories, not theirs. Let them describe what they see and what they call it. A participant may describe something that maps onto Varroa, Nosema, or AFB — or they may describe something else entirely. Record what they say, not your interpretation of it.
+  </div>
+
+  <h2 class="section">Colony health &amp; problems</h2>
+
+  <div class="q-block">
+    <span class="q-num">C1</span>
+    <p class="q-text">Can bees become sick, or can a colony go bad? <em>Have you seen this?</em></p>
+    <div class="answer-space-lg"></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">C2</span>
+    <p class="q-text">What do you see when something is wrong with a colony? <em>What are the signs?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — signs of sickness / bad colony</span><div class="lt-line"></div></div>
+    <div class="answer-label">Record each sign separately — smell, appearance of bees, brood, behaviour, etc.</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">C3</span>
+    <p class="q-text">Are there different kinds of problems — different things that can go wrong?</p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — names for different problems</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">C4</span>
+    <p class="q-text">When something goes wrong, what do you do? <em>Is there anything that can help?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — treatments, remedies, practices</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">C5</span>
+    <p class="q-text">Are there things that seem to harm bees — things to avoid near them?</p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note references to plants, smoke, pesticides, animals, human activities, or seasonal factors</div>
+    <div class="local-term"><span class="lt-label">Local terms — harmful things named</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">C6</span>
+    <p class="q-text">Have you noticed any change in bees over the years — are they less common, more difficult, different in some way?</p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">Note any references to environmental change, land use, drought, or other external factors</div>
+  </div>
+
+</div>
+</div>
+
+<!-- KNOWLEDGE -->
+<div id="knowledge" class="page">
+<div class="layout">
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — this section</span>
+    This section explores how knowledge is held, transmitted, and valued within the community. It also opens space for the participant to share anything they feel has not been covered. Keep questions light and open.
+  </div>
+
+  <h2 class="section">Knowledge &amp; transmission</h2>
+
+  <div class="q-block">
+    <span class="q-num">K1</span>
+    <p class="q-text">How is knowledge about bees passed on here? <em>How do young people learn?</em></p>
+    <div class="answer-space-lg"></div>
+    <div class="local-term"><span class="lt-label">Local terms — teaching / learning / apprenticeship</span><div class="lt-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">K2</span>
+    <p class="q-text">Is there someone in this area — or nearby — who knows more about bees than most people? <em>Someone with particular experience or skill?</em></p>
+    <div class="answer-space"></div>
+    <div class="interviewer-note" style="margin-top:.4rem;">This is your snowball sampling question. Record any names or descriptions given. Ask if they could introduce you, or if it would be appropriate to approach that person directly.</div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">K3</span>
+    <p class="q-text">Is the knowledge about bees here changing — are younger people learning the same things that older people know?</p>
+    <div class="answer-space-lg"></div>
+  </div>
+
+  <div class="q-block">
+    <span class="q-num">K4</span>
+    <p class="q-text">Is there anything about bees or honey that you think is important that I have not asked about?</p>
+    <div class="answer-space-lg"></div>
+    <div class="answer-label">This is one of the most important questions — leave generous space and time</div>
+  </div>
+
+</div>
+</div>
+
+<!-- CLOSING -->
+<div id="close" class="page">
+<div class="layout">
+
+  <h2 class="section">Closing the interview</h2>
+
+  <div class="interviewer-note">
+    <span class="note-label">Interviewer — read aloud through translator</span>
+    Use something like the following to close, adapted to fit naturally:
+  </div>
+
+  <div class="consent-box" style="margin-bottom:1.5rem;">
+    <p>Thank you very much for your time and for sharing your knowledge with me. What you have told me is very valuable and I am grateful.</p>
+    <p>If I have any questions later, may I return to speak with you again? <span class="placeholder">[Note response]</span></p>
+    <p>Is there anything you would like to ask me?</p>
+    <p><span class="placeholder">[Offer compensation as agreed — INSERT details here once decided]</span></p>
+  </div>
+
+  <h2 class="section">Post-interview record — complete immediately after</h2>
+  <div class="meta-grid">
+    <div class="meta-field"><label>Time ended</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Duration (approx.)</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Others present during interview</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Participant's apparent comfort level (1–5)</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Topics declined / sensitive areas noted</label><div class="field-line"></div></div>
+    <div class="meta-field"><label>Referred to next participant</label><div class="field-line"></div></div>
+  </div>
+
+  <div class="q-block">
+    <p class="q-text" style="font-size:.85rem;font-weight:500;">Interviewer field notes — write up immediately</p>
+    <div class="answer-space-lg" style="min-height:8rem;"></div>
+    <div class="answer-label">Setting, tone, off-record comments, translator observations, your own impressions — anything not captured in the interview itself</div>
+  </div>
+
+  <div class="q-block">
+    <p class="q-text" style="font-size:.85rem;font-weight:500;">Translator debrief notes</p>
+    <div class="answer-space-lg" style="min-height:5rem;"></div>
+    <div class="answer-label">Translator's impressions, anything lost or difficult in translation, cultural context they can provide</div>
+  </div>
+
+</div>
+</div>
+
+<footer>Indigenous Bee Knowledge Survey &mdash; Zambia &mdash; compiled May 2025 &mdash; Items marked <span style="color:var(--amber-light);">[PLACEHOLDER]</span> require completion before use</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#nav-bar button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

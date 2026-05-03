@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hive Health Screening Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#f5f0e8;--dark:#1a1a18;--amber:#c8821a;--amber-light:#e8a83a;--muted:#6b6558;--border:#d8d0c0;--card-bg:#faf7f2;--accent-green:#3d5a3e;--accent-red:#8b2e2e;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--dark);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
+  header{background:var(--dark);color:var(--cream);padding:2rem 2rem 1.8rem;border-bottom:3px solid var(--amber);}
+  header h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:400;margin-bottom:.3rem;}
+  header p{color:#a09880;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;}
+  nav{background:var(--dark);border-bottom:1px solid #333;padding:.5rem 1rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem;}
+  nav button{background:none;border:none;color:#a09880;font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.5rem .8rem;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;}
+  nav button:hover{color:var(--cream);}
+  nav button.active{color:var(--amber-light);border-bottom-color:var(--amber);}
+  .page{display:none;}.page.active{display:block;}
+  .layout{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem;}
+  h2.section{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+  h2.section:first-of-type{margin-top:0;}
+  .intro{font-size:.95rem;color:var(--muted);line-height:1.8;border-left:2px solid var(--amber);padding-left:1rem;margin-bottom:2rem;}
+  .step-block{background:var(--card-bg);border:1px solid var(--border);padding:1.2rem 1.4rem;margin-bottom:1rem;}
+  .step-num{display:inline-block;background:var(--dark);color:var(--amber-light);font-size:.68rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;margin-bottom:.5rem;}
+  .step-title{font-weight:500;font-size:.95rem;margin-bottom:.4rem;color:var(--dark);}
+  .step-body{font-size:.87rem;color:var(--muted);line-height:1.6;}
+  .step-body strong{color:var(--dark);font-weight:500;}
+  .alert{background:#fff0f0;border-left:3px solid #8b2e2e;padding:.9rem 1.1rem;font-size:.85rem;color:var(--muted);margin:1rem 0;}
+  .alert strong{color:var(--accent-red);}
+  .warning{background:#fff8f0;border-left:3px solid var(--amber);padding:.9rem 1.1rem;font-size:.85rem;color:var(--muted);margin:1rem 0;}
+  .warning strong{color:var(--amber);}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem;}
+  .info-card{background:var(--card-bg);border:1px solid var(--border);padding:1rem;}
+  .info-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:.3rem;}
+  .info-value{font-size:.87rem;color:var(--dark);line-height:1.5;}
+  .ref-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0;}
+  .ref-table thead tr{background:var(--dark);color:var(--cream);}
+  .ref-table th{padding:.55rem .8rem;text-align:left;font-weight:500;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;}
+  .ref-table tbody tr{border-bottom:1px solid var(--border);}
+  .ref-table tbody tr:nth-child(even){background:var(--card-bg);}
+  .ref-table td{padding:.55rem .8rem;vertical-align:top;}
+  .id-key{background:var(--accent-green);color:#d4e8d4;padding:1.3rem;margin:1.5rem 0;}
+  .id-key h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:400;margin-bottom:.8rem;color:#fff;}
+  .id-key ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+  .id-key li{font-size:.87rem;padding-left:1.2rem;position:relative;line-height:1.5;}
+  .id-key li::before{content:'→';position:absolute;left:0;color:var(--amber-light);}
+  .sources{background:#f0ebe0;border:1px solid var(--border);padding:1rem 1.3rem;margin-top:2rem;}
+  .sources h3{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.6rem;}
+  .sources ul{list-style:none;display:flex;flex-direction:column;gap:.3rem;}
+  .sources li{font-size:.78rem;}
+  .sources a{color:var(--accent-green);text-decoration:none;word-break:break-all;}
+  .sources a:hover{text-decoration:underline;}
+  .src-label{color:var(--muted);font-size:.7rem;display:block;}
+  footer{background:var(--dark);color:#666;text-align:center;font-size:.72rem;padding:1.2rem;margin-top:1rem;letter-spacing:.04em;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Hive Health Screening Guide</h1>
+  <p>Varroa &mdash; American Foulbrood &mdash; Nosema &mdash; Tracheal Mite &mdash; South Africa</p>
+</header>
+<nav id="nav-bar">
+  <button class="active" onclick="show('overview',this)">Overview</button>
+  <button onclick="show('varroa',this)">Varroa</button>
+  <button onclick="show('afb',this)">American Foulbrood</button>
+  <button onclick="show('nosema',this)">Nosema</button>
+  <button onclick="show('tracheal',this)">Tracheal Mite</button>
+</nav>
+
+<!-- OVERVIEW -->
+<div id="overview" class="page active">
+<div class="layout">
+  <p class="intro">Four diseases and pests are screened as part of this protocol. Varroa is assessed visually in the field. AFB is assessed visually in the field with a rope test. Nosema and Tracheal mite require lab microscopy using bee samples collected in ethanol at the hive. All screenings use the same adult bee sample collected per hive — collect 30 bees per colony minimum in 70% ethanol.</p>
+
+  <h2 class="section">Screening summary</h2>
+  <table class="ref-table">
+    <thead><tr><th>Disease / Pest</th><th>Causative agent</th><th>Method</th><th>Where done</th><th>Sample required</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Varroa</strong></td><td><em>Varroa destructor</em> (mite)</td><td>Visual inspection — adult bees and uncapped drone brood</td><td>Field</td><td>None — visual only</td></tr>
+      <tr><td><strong>American Foulbrood (AFB)</strong></td><td><em>Paenibacillus larvae</em> (bacterium)</td><td>Visual brood inspection + rope test</td><td>Field</td><td>None — visual only. Comb sample for lab confirmation if positive.</td></tr>
+      <tr><td><strong>Nosema</strong></td><td><em>Nosema ceranae</em> / <em>N. apis</em> (microsporidian)</td><td>Microscopy of crushed bee abdomens; spore count on haemocytometer</td><td>Lab</td><td>20–30 forager bees in 70% ethanol</td></tr>
+      <tr><td><strong>Tracheal mite</strong></td><td><em>Acarapis woodi</em> (mite)</td><td>Dissection of bee thorax; trachea examined under microscope</td><td>Lab</td><td>10–20 forager bees in 70% ethanol</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="section">Bee sample collection (field)</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Collect forager bees</p><p class="step-body">Collect <strong>30 adult forager bees</strong> directly from the hive entrance or from a frame as bees return from foraging. Foragers are older bees and will have the highest pathogen loads. Do not collect nurse bees from inside frames — these are young bees and will underestimate Nosema levels.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-title">Preserve in ethanol</p><p class="step-body">Place bees directly into a pre-labelled glass screw-cap vial containing <strong>5 ml of 70% ethanol</strong>. Seal immediately. Label with the same Sample ID as the honey sample for that hive, with suffix "-BEE" (e.g. BWK-H03-20250601-BEE).</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-title">Record on data sheet</p><p class="step-body">Record: number of bees collected, time of collection, and any observations about bee behaviour (crawling bees, K-wing deformity, dysentery streaks on hive entrance). These are all potential disease indicators worth noting.</p></div>
+
+  <div class="id-key">
+    <h3>Field health observation checklist — per hive visit</h3>
+    <ul>
+      <li>Brood pattern — regular (good) or scattered/irregular (investigate)</li>
+      <li>Capped brood colour — uniform tan/brown (good) or discoloured, sunken, perforated (investigate)</li>
+      <li>Odour from brood — normal sweet smell or foul/sour/rotten (investigate)</li>
+      <li>Varroa visible on adult bees — note count if seen</li>
+      <li>Uncapped drone brood — check for varroa and discolouration</li>
+      <li>Crawling bees near entrance — Nosema, tracheal mite, or pesticide indicator</li>
+      <li>K-wing deformity (wings held at abnormal angle) — tracheal mite indicator</li>
+      <li>Dysentery streaks on hive front — Nosema indicator</li>
+      <li>Colony strength relative to last visit — note any unexplained decline</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- VARROA -->
+<div id="varroa" class="page">
+<div class="layout">
+  <p class="intro"><em>Varroa destructor</em> is a parasitic mite that reproduces in capped brood cells and feeds on adult bees. It is the most significant pest of honey bees globally. Visual inspection is the starting point — it gives a rapid field assessment without any lab work. Varroa is present in South African colonies.</p>
+
+  <h2 class="section">Visual field assessment</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Inspect adult bees</p><p class="step-body">Shake a frame of adult bees onto a white surface (piece of paper, white tray, or white inner cover). Look for <strong>reddish-brown oval mites</strong> (~1.1 mm × 1.6 mm) clinging to the bodies of bees, particularly on the abdomen between segments. Use a hand lens if available. Note how many mites you see per 100 bees examined — this gives a rough infestation rate.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-title">Inspect uncapped drone brood</p><p class="step-body">If drone brood is present (larger capped cells, typically at frame corners), use a capping scratcher or hive tool to uncap several drone cells and expose the white pupae. <strong>Varroa preferentially reproduce in drone cells</strong> — mites are clearly visible as reddish-brown spots on the white pupae. Note: presence/absence and approximate proportion of infested cells.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-title">Check sticky board (if fitted)</p><p class="step-body">If the hive has a mesh floor with a sticky monitoring board, count mites that have dropped onto the board over a known period (typically 24 or 48 hours). Record mite fall per day. This is a passive monitoring method — it does not require any intervention.</p></div>
+
+  <h2 class="section">Interpreting visual results</h2>
+  <table class="ref-table">
+    <thead><tr><th>Observation</th><th>Interpretation</th><th>Action</th></tr></thead>
+    <tbody>
+      <tr><td>No mites visible on 100 adult bees</td><td>Low infestation (does not rule out presence)</td><td>Continue monitoring; no immediate action</td></tr>
+      <tr><td>1–3 mites per 100 bees</td><td>Low-moderate infestation</td><td>Monitor closely; consider alcohol wash for accurate count</td></tr>
+      <tr><td>&gt;3 mites per 100 bees visible</td><td>Significant infestation</td><td>Perform alcohol wash or sugar roll for accurate count; treatment may be required</td></tr>
+      <tr><td>Mites visible on drone pupae in most uncapped cells</td><td>Heavy infestation</td><td>Immediate accurate count and treatment decision required</td></tr>
+      <tr><td>Deformed wing virus (crumpled wings) on adult bees</td><td>Varroa-transmitted virus; significant colony stress</td><td>Treat promptly</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warning"><strong>Note on quantification:</strong> Visual inspection underestimates varroa loads — many mites are hidden in capped cells. An <strong>alcohol wash or sugar roll</strong> gives a much more accurate count (number of mites per 100 bees). This protocol covers visual inspection only as a first pass; add an alcohol wash if resources allow.</div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">MDPI Diversity — Diagnosis of Varroa destructor and sustainable control: a review</span><a href="https://www.mdpi.com/1424-2818/11/12/243" target="_blank">https://www.mdpi.com/1424-2818/11/12/243</a></li>
+      <li><span class="src-label">UF/IFAS — How to quantify Varroa destructor in honey bee colonies</span><a href="https://ask.ifas.ufl.edu/publication/IN1257" target="_blank">https://ask.ifas.ufl.edu/publication/IN1257</a></li>
+      <li><span class="src-label">Honey Bee Health Coalition — Varroa management guide (treatment thresholds)</span><a href="https://honeybeehealthcoalition.org/varroa/" target="_blank">https://honeybeehealthcoalition.org/varroa/</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- AFB -->
+<div id="afb" class="page">
+<div class="layout">
+  <p class="intro">American Foulbrood (AFB) is the most serious bacterial disease of honey bees worldwide. It is caused by <em>Paenibacillus larvae</em> and kills larvae after they have been capped. Spores survive for 70+ years in wax and honey. In most countries including South Africa, AFB is a <strong>notifiable disease</strong> — confirmed cases must be reported to the relevant authority. There is no cure; infected colonies must be destroyed.</p>
+
+  <div class="alert"><strong>Biosecurity alert:</strong> If you suspect AFB, do not move frames, equipment, or honey from that hive to any other hive or apiary. Do not extract honey from suspect frames. Contaminated equipment must be destroyed or sterilised before re-use.</div>
+
+  <h2 class="section">Visual signs to look for</h2>
+  <div class="info-grid">
+    <div class="info-card"><p class="info-label">Brood pattern</p><p class="info-value">Irregular, scattered — a mix of healthy capped brood, empty cells, and discoloured capped cells. "Pepperbox" pattern when severe.</p></div>
+    <div class="info-card"><p class="info-label">Cell cappings</p><p class="info-value">Sunken, concave, darker than normal (brown-black), often perforated or with small holes. Healthy cappings are slightly convex and uniform tan/brown.</p></div>
+    <div class="info-card"><p class="info-label">Larval colour</p><p class="info-value">Infected larvae turn from white/cream to yellow, then coffee-brown. They lie stretched out on the bottom wall of the cell — from the base to the cell opening.</p></div>
+    <div class="info-card"><p class="info-label">Odour</p><p class="info-value">Characteristic foul, glue-like or rotting smell. Note: some AFB strains (ERIC II) have reduced odour — absence of smell does not rule out AFB.</p></div>
+    <div class="info-card"><p class="info-label">Scale</p><p class="info-value">Dried remains of larvae form a hard, dark scale firmly adhered to the lower cell wall — impossible to remove without damaging the cell. Scale does not rope.</p></div>
+    <div class="info-card"><p class="info-label">Tongue</p><p class="info-value">A partially decomposed tongue projecting from the scale upward toward the cell roof is a reliable AFB sign. Not always present.</p></div>
+  </div>
+
+  <h2 class="section">The rope (matchstick) test</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-body">Identify a cell with a <strong>sunken, discoloured, or perforated capping</strong> that looks suspicious.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-body">Insert a <strong>toothpick, thin stick, or matchstick</strong> into the cell and gently stir the contents. Slowly withdraw the stick from the cell.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-body"><strong>Positive result:</strong> The substance ropes out in a thread <strong>25 mm or longer</strong> before breaking — like pulling sticky caramel. This is a strong indicator of AFB. Confirm with laboratory culture or lateral flow test kit.<br><br><strong>Negative result:</strong> The material falls away cleanly or is watery. Note: some AFB strains and late-stage infections may give a watery or negative rope test — a negative result does not completely rule out AFB if visual signs are present.</p></div>
+  <div class="step-block"><span class="step-num">04</span><p class="step-body">Discard the toothpick/stick away from the hive. Do <strong>not reuse</strong> it. Wash hands or change gloves before touching other hives.</p></div>
+
+  <h2 class="section">Lateral flow rapid test kits</h2>
+  <div class="step-block"><span class="step-num">—</span><p class="step-body">Lateral flow device (LFD) test kits for AFB confirmation are available from beekeeping supply companies for approximately <strong>$14 per test</strong>. They use a similar principle to a home pregnancy test — a swab of the suspect material is applied to the strip and a result appears within minutes. These provide more reliable confirmation than the rope test alone, particularly for strains with reduced clinical signs. Recommended if you observe any visual indicators of AFB.</p></div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">UF/IFAS — American foulbrood identification and management</span><a href="https://blogs.ifas.ufl.edu/polkco/2025/04/10/beekeeping-in-florida-understanding-american-and-european-foulbrood-in-honey-bees/" target="_blank">https://blogs.ifas.ufl.edu/polkco/2025/04/10/</a></li>
+      <li><span class="src-label">Agriculture Victoria — Field diagnosis of honey bee brood diseases</span><a href="https://agriculture.vic.gov.au/biosecurity/animal-diseases/honey-bee-pests-and-diseases/field-diagnosis-of-honey-bee-brood-diseases" target="_blank">https://agriculture.vic.gov.au/biosecurity/animal-diseases/</a></li>
+      <li><span class="src-label">BeeAware — American foulbrood</span><a href="https://beeaware.org.au/archive-pest/american-foulbrood/" target="_blank">https://beeaware.org.au/archive-pest/american-foulbrood/</a></li>
+      <li><span class="src-label">Bee Health Extension — Lateral flow diagnostic kits for AFB and EFB</span><a href="https://bee-health.extension.org/diagnostic-kits-for-american-and-european-foulbrood/" target="_blank">https://bee-health.extension.org/diagnostic-kits-for-american-and-european-foulbrood/</a></li>
+      <li><span class="src-label">Penn State Extension — American foulbrood: signs and rope test</span><a href="https://extension.psu.edu/honey-bee-diseases-american-foulbrood" target="_blank">https://extension.psu.edu/honey-bee-diseases-american-foulbrood</a></li>
+      <li><span class="src-label">WOAH — American foulbrood standard method (Paenibacillus larvae)</span><a href="https://www.woah.org/fileadmin/Home/fr/Health_standards/tahm/3.02.02_AMERICAN_FOULBROOD.pdf" target="_blank">WOAH AFB standard method PDF</a></li>
+      <li><span class="src-label">USDA APHIS — AFB case definition and diagnosis</span><a href="https://www.aphis.usda.gov/sites/default/files/american-foulbrood-honey-bees-case-definition_copy.pdf" target="_blank">USDA APHIS AFB case definition PDF</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- NOSEMA -->
+<div id="nosema" class="page">
+<div class="layout">
+  <p class="intro">Nosema is a microsporidian gut parasite of adult bees. <em>Nosema ceranae</em> is the dominant species in South African colonies. It causes dysentery, shortened lifespan, reduced foraging, and colony decline. Diagnosis requires counting spores in crushed bee abdomens under a compound microscope with a haemocytometer. Your stereo microscope is not sufficient — you need a compound microscope at 400× for this assay.</p>
+
+  <div class="warning"><strong>Equipment note:</strong> Nosema spore counting requires a <strong>compound microscope at 400×</strong> and a <strong>haemocytometer</strong> (counting chamber). Your stereo dissecting microscope does not have sufficient magnification. If you do not have access to a compound microscope, preserve the bee samples in ethanol and send to a laboratory. The ethanol-preserved samples from your field collection are suitable.</div>
+
+  <h2 class="section">Field signs to note</h2>
+  <div class="info-grid">
+    <div class="info-card"><p class="info-label">Dysentery streaks</p><p class="info-value">Brown streaking on the front of the hive, landing board, or frames. Indicates bees unable to control defecation inside the hive.</p></div>
+    <div class="info-card"><p class="info-label">Crawling bees</p><p class="info-value">Bees crawling on the ground in front of the hive, unable to fly. May be Nosema, tracheal mite, or pesticide exposure.</p></div>
+    <div class="info-card"><p class="info-label">Spring dwindling</p><p class="info-value">Colony population declining despite adequate food stores and no other obvious disease. Classic N. ceranae presentation.</p></div>
+  </div>
+
+  <h2 class="section">Lab protocol — spore count</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Prepare bee sample</p><p class="step-body">Remove bees from the ethanol vial and blot dry on a paper towel. Count out <strong>10 bees</strong> from the sample. Using forceps, remove and discard the head and thorax of each bee. Retain only the <strong>abdomens</strong> (the striped posterior section). Place all 10 abdomens together in a clean 1.5 ml microcentrifuge tube or small container.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-title">Homogenise</p><p class="step-body">Add <strong>1 ml of distilled water per bee</strong> — so 10 ml total for 10 bees. Crush the abdomens thoroughly against the tube wall with a pestle or glass rod until fully homogenised. The suspension should appear milky-brown.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-title">Load haemocytometer</p><p class="step-body">Apply a small drop of the suspension to the haemocytometer under the cover slip. Allow 2 minutes for spores to settle.</p></div>
+  <div class="step-block"><span class="step-num">04</span><p class="step-title">Count at 400×</p><p class="step-body">Examine under compound microscope at <strong>400×</strong>. Nosema spores are oval, highly refractile (shiny-bright), approximately 4–6 μm long. Count spores in <strong>5 of the large grid squares</strong> on the haemocytometer. Record the total count from all 5 squares.</p></div>
+  <div class="step-block"><span class="step-num">05</span><p class="step-title">Calculate spores per bee</p><p class="step-body">Use the formula:<br><br><strong>Spores per bee = (Count in 5 squares) × 50,000</strong><br><br>This formula applies when using the standard method of 1 ml water per bee with the Neubauer haemocytometer grid.</p></div>
+
+  <h2 class="section">Interpreting results</h2>
+  <table class="ref-table">
+    <thead><tr><th>Spores per bee</th><th>Interpretation</th><th>Recommended action</th></tr></thead>
+    <tbody>
+      <tr><td>&lt;100,000</td><td>Low / no significant infection</td><td>No treatment required; continue monitoring</td></tr>
+      <tr><td>100,000 – 1,000,000</td><td>Moderate infection</td><td>Monitor closely; review colony management</td></tr>
+      <tr><td>&gt;1,000,000</td><td>High infection — treatment threshold</td><td>Consider treatment; consult local authority for approved options in SA</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">UF/IFAS — How to quantify Nosema spore infection rate</span><a href="https://edis.ifas.ufl.edu/publication/IN1123" target="_blank">https://edis.ifas.ufl.edu/publication/IN1123</a></li>
+      <li><span class="src-label">Michigan State University — Nosema testing protocol</span><a href="https://pollinators.msu.edu/resources/resources/Nosema%20Testing.pdf" target="_blank">MSU Nosema testing PDF</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- TRACHEAL MITE -->
+<div id="tracheal" class="page">
+<div class="layout">
+  <p class="intro"><em>Acarapis woodi</em>, the tracheal mite, lives and reproduces inside the mesothoracic tracheae (breathing tubes) of adult bees. It blocks airflow to the flight muscles, shortens bee lifespan, and can cause colony collapse. Detection requires dissection of the bee thorax and inspection of the tracheae under a microscope. Your stereo dissecting microscope is <strong>suitable</strong> for this assay at 20–40×.</p>
+
+  <h2 class="section">Field signs to note</h2>
+  <div class="info-grid">
+    <div class="info-card"><p class="info-label">K-wing</p><p class="info-value">Wings held at an abnormal outward angle (like the letter K) — the hindwing disarticulates from the forewing. A classic but not exclusive sign of tracheal mite infestation.</p></div>
+    <div class="info-card"><p class="info-label">Crawling bees</p><p class="info-value">Bees unable to fly, clustering in front of the hive and climbing grass stems. Overlaps with Nosema and pesticide exposure.</p></div>
+    <div class="info-card"><p class="info-label">Winter/cool season clustering</p><p class="info-value">Tracheal mites spread most easily when bees are clustered. Infestation levels are highest in late winter/early spring in temperate climates.</p></div>
+  </div>
+
+  <h2 class="section">Lab protocol — thorax dissection</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Prepare bees</p><p class="step-body">Remove bees from the ethanol vial and blot dry. Select <strong>10–20 bees</strong> for dissection. Lay each bee dorsal-side up on a dissecting tray and pin it down if necessary.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-title">Remove head and legs</p><p class="step-body">Under the dissecting microscope at low magnification (10–20×), use fine forceps to <strong>remove the head</strong> and <strong>first pair of legs</strong> from the thorax. Pull cleanly from the joint.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-title">Remove the thoracic collar</p><p class="step-body">The <strong>collar</strong> is a small piece of exoskeleton (cuticle) on the front of the thorax, below where the head was attached. Using the forceps, carefully <strong>peel the collar away</strong> from the thorax — it lifts off like a lid. It is critical to remove the <strong>entire collar</strong>. This exposes the mesothoracic tracheae (breathing tubes).</p></div>
+  <div class="step-block"><span class="step-num">04</span><p class="step-title">Inspect the tracheae</p><p class="step-body">With the collar removed, the main tracheal trunk is visible as an inverted <strong>V shape</strong> — two tubes running from the front of the thorax and converging. Examine both tubes carefully at <strong>18–40× magnification</strong>.<br><br><strong>Healthy tracheae:</strong> Crystal clear, transparent, white/pearlescent colour.<br><br><strong>Infested tracheae:</strong> Yellow, brown, or black discolouration; scarring or lesions on the wall. In moderate/heavy infestation, mites are visible through the transparent tracheal wall as small oval bodies. Heavy infestation causes the tracheae to appear dark brown or black.</p></div>
+  <div class="step-block"><span class="step-num">05</span><p class="step-title">Optional — remove tracheae for higher magnification</p><p class="step-body">If scarring is ambiguous, gently pull the tracheal trunk out of the thorax with forceps, place on a slide in a drop of water, and cover with a cover slip. Examine at <strong>100–400× under the compound microscope</strong> to confirm presence of mites.</p></div>
+  <div class="step-block"><span class="step-num">06</span><p class="step-title">Record results</p><p class="step-body">For each bee dissected, record: trachea appearance (clear / discoloured / mites visible), and whether mites were confirmed. Report as proportion infested: e.g. 3 of 10 bees = 30% infestation rate.</p></div>
+
+  <h2 class="section">Interpreting results</h2>
+  <table class="ref-table">
+    <thead><tr><th>Infestation rate</th><th>Interpretation</th></tr></thead>
+    <tbody>
+      <tr><td>0–10%</td><td>Low — normal background level; no action required</td></tr>
+      <tr><td>10–30%</td><td>Moderate — monitor closely; consider resistant stock selection</td></tr>
+      <tr><td>&gt;30%</td><td>High — colony health likely affected; consult local authority for management options in SA</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">UF/IFAS — How to dissect honey bees to detect tracheal mites</span><a href="https://ask.ifas.ufl.edu/publication/IN1072" target="_blank">https://ask.ifas.ufl.edu/publication/IN1072</a></li>
+      <li><span class="src-label">UK National Bee Unit — Tracheal mites fact sheet (PDF)</span><a href="https://www.nationalbeeunit.com/assets/PDFs/3_Resources_for_beekeepers/Fact_Sheets/Fact_02_Acarine_tracheal_mites_v2.pdf" target="_blank">NBU Tracheal mite fact sheet PDF</a></li>
+      <li><span class="src-label">Dave Cushman — Diagnosis of acarine infestation</span><a href="http://www.dave-cushman.net/bee/acarine_diagnosis.html" target="_blank">http://www.dave-cushman.net/bee/acarine_diagnosis.html</a></li>
+      <li><span class="src-label">WOAH — Acarapisosis standard method</span><a href="https://www.woah.org/fileadmin/Home/fr/Health_standards/tahm/3.02.01_ACARAPISOSIS.pdf" target="_blank">WOAH Acarapisosis PDF</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<footer>Hive Health Screening Guide &mdash; South Africa &mdash; compiled May 2025</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#nav-bar button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

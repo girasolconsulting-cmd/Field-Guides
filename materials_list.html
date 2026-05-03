@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Equipment & Materials List — Bee Morphometrics</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --dark: #1a1a18;
+    --amber: #c8821a;
+    --amber-light: #e8a83a;
+    --muted: #6b6558;
+    --border: #d8d0c0;
+    --card-bg: #faf7f2;
+    --accent-green: #3d5a3e;
+    --accent-red: #8b2e2e;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--cream); color: var(--dark); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.7; }
+
+  header { background: var(--dark); color: var(--cream); padding: 2rem 2rem 1.8rem; border-bottom: 3px solid var(--amber); }
+  header h1 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem,3.5vw,2.6rem); font-weight: 400; margin-bottom: .3rem; }
+  header p { color: #a09880; font-size: .82rem; letter-spacing: .12em; text-transform: uppercase; }
+
+  .layout { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.5rem; }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: .5rem;
+    border-bottom: 1px solid var(--border);
+    color: var(--dark);
+  }
+  .section-title:first-of-type { margin-top: 0; }
+
+  .notice {
+    background: var(--card-bg);
+    border-left: 3px solid var(--amber);
+    padding: 1rem 1.2rem;
+    font-size: .88rem;
+    color: var(--muted);
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  table { width: 100%; border-collapse: collapse; font-size: .85rem; margin-bottom: 2.5rem; }
+  thead tr { background: var(--dark); color: var(--cream); }
+  thead th { padding: .65rem .9rem; text-align: left; font-weight: 500; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+  tbody tr { border-bottom: 1px solid var(--border); }
+  tbody tr:last-child { border-bottom: none; }
+  tbody tr:nth-child(even) { background: var(--card-bg); }
+  td { padding: .65rem .9rem; vertical-align: top; line-height: 1.5; }
+  td.item { font-weight: 500; color: var(--dark); }
+  td.spec { color: var(--muted); font-size: .82rem; }
+  td.qty { text-align: center; color: var(--muted); }
+  td.price { font-weight: 500; white-space: nowrap; }
+  td.link a { color: var(--accent-green); text-decoration: none; font-size: .78rem; word-break: break-all; }
+  td.link a:hover { text-decoration: underline; }
+  td.note { font-size: .78rem; color: var(--muted); font-style: italic; }
+
+  .free-badge {
+    display: inline-block;
+    background: var(--accent-green);
+    color: #d4e8d4;
+    font-size: .65rem;
+    padding: .1rem .45rem;
+    letter-spacing: .06em;
+    font-weight: 500;
+    vertical-align: middle;
+    margin-left: .3rem;
+  }
+
+  .total-row td { background: var(--dark) !important; color: var(--cream) !important; font-weight: 500; border: none; }
+  .total-row td.label { font-family: 'Playfair Display', serif; font-size: 1rem; font-style: italic; }
+
+  .subtotal-row td { background: #ede8dc !important; font-weight: 500; border-top: 2px solid var(--border); }
+
+  footer { background: var(--dark); color: #666; text-align: center; font-size: .72rem; padding: 1.2rem; margin-top: 2rem; letter-spacing: .04em; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Equipment &amp; Materials List</h1>
+  <p>Bee Morphometrics &mdash; <em>Apis mellifera</em> subspecies identification &mdash; South Africa</p>
+</header>
+
+<div class="layout">
+
+  <div class="notice">
+    Prices are in USD as of May 2025 and sourced from Amazon.com or manufacturer websites. All prices are approximate — check current listings before ordering. Links are provided for reference; local South African suppliers or laboratory distributors may offer better pricing and avoid import costs. Software items listed as FREE are open-source or freeware.
+  </div>
+
+  <!-- MICROSCOPY -->
+  <h2 class="section-title">Microscopy</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Trinocular stereo zoom microscope with USB camera</td>
+        <td class="spec">AmScope SM-4TZ-144A-18M3. 3.5×–90× zoom, 144-LED ring light, 18MP USB 3.0 camera included, double-arm boom stand, 110–240V. Trinocular port allows simultaneous eyepiece viewing and camera capture to laptop.</td>
+        <td class="qty">1</td>
+        <td class="price">~$950</td>
+        <td class="price">~$950</td>
+        <td class="link"><a href="https://www.amazon.com/AmScope-Trinocular-Stereo-Microscope-3-5X-180X/dp/B06XG6J6WG" target="_blank">amazon.com — AmScope SM-4TZ-144A-18M3</a></td>
+      </tr>
+      <tr>
+        <td class="item">Microscope slides — plain glass</td>
+        <td class="spec">Standard 25×75 mm, 1 mm thickness, pre-cleaned. For mounting wings and tergites flat for photography.</td>
+        <td class="qty">1 box (72 pcs)</td>
+        <td class="price">~$8</td>
+        <td class="price">~$8</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=microscope+slides+plain+glass+72" target="_blank">amazon.com — search "microscope slides plain glass"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Cover slips</td>
+        <td class="spec">22×22 mm, #1.5 thickness (0.17 mm). For pressing wing specimens flat.</td>
+        <td class="qty">1 box (100 pcs)</td>
+        <td class="price">~$8</td>
+        <td class="price">~$8</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=cover+slips+22x22mm+microscope" target="_blank">amazon.com — search "cover slips 22×22mm"</a></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Microscopy subtotal</td>
+        <td class="price">~$966</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- SOFTWARE -->
+  <h2 class="section-title">Software</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">ImageJ / Fiji <span class="free-badge">FREE</span></td>
+        <td class="spec">Open-source image analysis software (NIH). Used for calibrated measurement of wing lengths, wax plate dimensions, hair lengths. Fiji distribution recommended — includes all plugins pre-installed.</td>
+        <td class="qty">1</td>
+        <td class="price">$0</td>
+        <td class="price">$0</td>
+        <td class="link"><a href="https://imagej.net/software/fiji/downloads" target="_blank">imagej.net — Fiji download</a></td>
+      </tr>
+      <tr>
+        <td class="item">DrawWing <span class="free-badge">FREE</span></td>
+        <td class="spec">Specialised honey bee wing morphometrics software. Automates measurement of forewing venation angles (incl. N23, O26, cubital index) from photographs. Windows/Mac.</td>
+        <td class="qty">1</td>
+        <td class="price">$0</td>
+        <td class="price">$0</td>
+        <td class="link"><a href="https://drawwing.org" target="_blank">drawwing.org</a></td>
+      </tr>
+      <tr>
+        <td class="item">AmScope imaging software</td>
+        <td class="spec">Included with the AmScope 18MP camera above. Windows/Mac/Linux. Provides live stream, image capture, and basic measurement tools.</td>
+        <td class="qty">1</td>
+        <td class="price">Included</td>
+        <td class="price">—</td>
+        <td class="link"><a href="https://amscope.com/pages/software-downloads" target="_blank">amscope.com — software downloads</a></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Software subtotal</td>
+        <td class="price">$0</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- FIELD COLLECTION -->
+  <h2 class="section-title">Field collection</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Collection vials — glass, screw cap</td>
+        <td class="spec">Borosilicate glass, 2-dram (7.5 ml), 17×60 mm with polyseal screw caps. Polyseal liner prevents ethanol evaporation. One vial per colony sample (10–20 bees per vial).</td>
+        <td class="qty">100</td>
+        <td class="price">~$0.50 ea</td>
+        <td class="price">~$50</td>
+        <td class="link"><a href="https://ecologysupplies.com/products/screw-cap-vials-glass/" target="_blank">ecologysupplies.com — screw cap glass vials</a></td>
+      </tr>
+      <tr>
+        <td class="item">Ethanol — 70% solution</td>
+        <td class="spec">For specimen preservation in vials. 70% v/v ethanol in water. 500 ml bottle sufficient for initial kit; purchase locally in South Africa. Laboratory or medical grade.</td>
+        <td class="qty">2 × 500 ml</td>
+        <td class="price">~$8 ea</td>
+        <td class="price">~$16</td>
+        <td class="link"><td class="note">Purchase locally in South Africa — pharmacy or lab supplier. Sigma-Aldrich, Merck, or equivalent.</td></td>
+      </tr>
+      <tr>
+        <td class="item">Vial labels — waterproof</td>
+        <td class="spec">Solvent-resistant adhesive labels for writing colony ID, date, location. Alternatively: write on frosted label area with waterproof marker.</td>
+        <td class="qty">1 roll/pack</td>
+        <td class="price">~$10</td>
+        <td class="price">~$10</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=waterproof+lab+labels+vials" target="_blank">amazon.com — search "waterproof lab vial labels"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Waterproof marker</td>
+        <td class="spec">Fine-tip permanent marker (e.g. Sharpie Ultra Fine). For labelling vials in field conditions.</td>
+        <td class="qty">2</td>
+        <td class="price">~$2 ea</td>
+        <td class="price">~$4</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=sharpie+ultra+fine+permanent+marker" target="_blank">amazon.com — Sharpie Ultra Fine</a></td>
+      </tr>
+      <tr>
+        <td class="item">Field notebook — waterproof</td>
+        <td class="spec">Waterproof/all-weather notebook (e.g. Rite in the Rain). For recording colony ID, GPS coordinates, date, hive type, and observations per sample.</td>
+        <td class="qty">1</td>
+        <td class="price">~$15</td>
+        <td class="price">~$15</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=rite+in+the+rain+notebook" target="_blank">amazon.com — Rite in the Rain notebook</a></td>
+      </tr>
+      <tr>
+        <td class="item">Forceps — entomological, fine-tip</td>
+        <td class="spec">Stainless steel, straight fine-point. For handling bees and placing in vials in the field without damaging specimens.</td>
+        <td class="qty">2</td>
+        <td class="price">~$8 ea</td>
+        <td class="price">~$16</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=entomology+forceps+fine+tip+stainless" target="_blank">amazon.com — search "entomology forceps fine tip"</a></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Field collection subtotal</td>
+        <td class="price">~$111</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- LAB DISSECTION -->
+  <h2 class="section-title">Laboratory dissection &amp; preparation</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Forceps — curved, fine-tip</td>
+        <td class="spec">Stainless steel, curved-tip (Dumont #5 or equivalent). For dissection of abdomen and ovariole extraction under the microscope.</td>
+        <td class="qty">2</td>
+        <td class="price">~$12 ea</td>
+        <td class="price">~$24</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=dumont+5+forceps+curved+fine+tip" target="_blank">amazon.com — search "Dumont No.5 forceps"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Dissecting needles / teasing needles</td>
+        <td class="spec">Stainless steel, straight and curved. For separating ovarioles and manipulating wing specimens on slides.</td>
+        <td class="qty">1 set (6 pcs)</td>
+        <td class="price">~$10</td>
+        <td class="price">~$10</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=dissecting+needles+teasing+needles+set" target="_blank">amazon.com — search "dissecting teasing needles"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Dissecting dish / petri dish</td>
+        <td class="spec">90 mm glass or plastic petri dishes. For dissections in saline solution. Alternatively a wax-bottomed dissecting dish.</td>
+        <td class="qty">6</td>
+        <td class="price">~$1 ea</td>
+        <td class="price">~$6</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=petri+dish+90mm+glass" target="_blank">amazon.com — search "petri dish 90mm"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Phosphate buffered saline (PBS) — tablets</td>
+        <td class="spec">For preparing isotonic saline solution for ovariole dissections. Dissolve 1 tablet per 200 ml distilled water. Alternatively use 0.9% NaCl solution prepared locally.</td>
+        <td class="qty">1 pack (100 tabs)</td>
+        <td class="price">~$15</td>
+        <td class="price">~$15</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=PBS+tablets+phosphate+buffered+saline" target="_blank">amazon.com — search "PBS tablets saline"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Distilled water</td>
+        <td class="spec">For preparing saline solution and rinsing specimens. 1L bottle. Purchase locally.</td>
+        <td class="qty">2 × 1L</td>
+        <td class="price">~$3 ea</td>
+        <td class="price">~$6</td>
+        <td class="link"><td class="note">Purchase locally — supermarket or pharmacy.</td></td>
+      </tr>
+      <tr>
+        <td class="item">Lint-free tissues / Kim-wipes</td>
+        <td class="spec">For drying wing specimens before mounting on slides. Low-lint laboratory tissue.</td>
+        <td class="qty">1 box</td>
+        <td class="price">~$8</td>
+        <td class="price">~$8</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=kimwipes+lint+free+tissue" target="_blank">amazon.com — search "Kimwipes laboratory tissue"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Nitrile gloves</td>
+        <td class="spec">Powder-free, size M or L. For handling ethanol-preserved specimens and dissections.</td>
+        <td class="qty">1 box (100 pcs)</td>
+        <td class="price">~$12</td>
+        <td class="price">~$12</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=nitrile+gloves+powder+free+100+pack" target="_blank">amazon.com — search "nitrile gloves powder free"</a></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Lab dissection subtotal</td>
+        <td class="price">~$81</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- REFERENCE MATERIALS -->
+  <h2 class="section-title">Reference materials</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Ruttner tergite pigmentation reference chart</td>
+        <td class="spec">The standard 0–9 scale colour reference for abdominal tergite scoring. Available as a printed plate in Ruttner (1988) or as a digital image from published papers. Print at A4 and laminate for field/lab use.</td>
+        <td class="qty">1 (printed)</td>
+        <td class="price">~$2 (print cost)</td>
+        <td class="price">~$2</td>
+        <td class="link"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8670704/" target="_blank">PMC — "Attack of the dark clones" — Fig 4 colour scale</a></td>
+      </tr>
+      <tr>
+        <td class="item">Bee Morphometrics Field Guide (this document)</td>
+        <td class="spec">The appendix in the bee identification guide covering the 10 morphometric characters. Print for lab bench use.</td>
+        <td class="qty">1 (printed)</td>
+        <td class="price">~$1 (print cost)</td>
+        <td class="price">~$1</td>
+        <td class="link"><td class="note">Print from bee_identification.html — Appendix tab.</td></td>
+      </tr>
+      <tr>
+        <td class="item">Data recording sheet</td>
+        <td class="spec">Printed table with columns for: colony ID, date, GPS, bee number (1–20), and all 10 morphometric measurements. One sheet per colony.</td>
+        <td class="qty">50 sheets</td>
+        <td class="price">~$1 (print cost)</td>
+        <td class="price">~$1</td>
+        <td class="link"><td class="note">Design your own in Excel/Sheets based on the 10 characters in the appendix.</td></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Reference materials subtotal</td>
+        <td class="price">~$4</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- HONEY SAMPLING -->
+  <h2 class="section-title">Honey sampling</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Honey collection jars — 50 ml screw cap</td>
+        <td class="spec">Clear glass or food-grade plastic, 50 ml, leak-proof screw cap. One per hive per sample type. Pre-label before going to field.</td>
+        <td class="qty">100</td>
+        <td class="price">~$0.30 ea</td>
+        <td class="price">~$30</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=50ml+glass+jar+screw+cap+honey+sample" target="_blank">amazon.com — search "50ml glass sample jar screw cap"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Handheld honey refractometer (optical, ATC)</td>
+        <td class="spec">Optical refractometer with Automatic Temperature Compensation (ATC). Reads 10–32% moisture / 58–90°Brix. Calibrated with distilled water. Includes calibration screwdriver and cleaning cloth.</td>
+        <td class="qty">1</td>
+        <td class="price">~$25</td>
+        <td class="price">~$25</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=honey+refractometer+ATC+moisture+brix" target="_blank">amazon.com — search "honey refractometer ATC"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Calibration fluid (distilled water)</td>
+        <td class="spec">Use distilled water (purchased locally) to calibrate refractometer before each field session. 0°Brix = calibration point.</td>
+        <td class="qty">Included above</td>
+        <td class="price">—</td>
+        <td class="price">—</td>
+        <td class="link"><td class="note">Use distilled water already in kit (purchased locally).</td></td>
+      </tr>
+      <tr>
+        <td class="item">Uncapping fork / scratching tool</td>
+        <td class="spec">Stainless steel uncapping fork for scoring comb surface to collect honey drips without destroying comb. Standard beekeeping tool.</td>
+        <td class="qty">1</td>
+        <td class="price">~$12</td>
+        <td class="price">~$12</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=uncapping+fork+beekeeping+stainless" target="_blank">amazon.com — search "uncapping fork beekeeping"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Centrifuge (bench-top, 3000 rpm min)</td>
+        <td class="spec">For pollen analysis — centrifugation of dissolved honey to pellet pollen. Minimum 3000 rpm; 15 ml tube capacity. Lab bench-top model. Can be shared across projects.</td>
+        <td class="qty">1</td>
+        <td class="price">~$200</td>
+        <td class="price">~$200</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=bench+top+centrifuge+3000+rpm+lab" target="_blank">amazon.com — search "bench top centrifuge 3000 rpm"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Centrifuge tubes — 15 ml</td>
+        <td class="spec">Conical bottom, 15 ml polypropylene tubes with screw caps. For pollen extraction from honey samples.</td>
+        <td class="qty">1 rack (50 pcs)</td>
+        <td class="price">~$12</td>
+        <td class="price">~$12</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=15ml+centrifuge+tubes+conical+50+pack" target="_blank">amazon.com — search "15ml centrifuge tubes"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Glycerin jelly (Kaiser's glycerol gelatin)</td>
+        <td class="spec">Mounting medium for pollen slides. Available from lab suppliers. Alternatively: Sigma-Aldrich or equivalent. 100 ml bottle sufficient for many slides.</td>
+        <td class="qty">1 × 100 ml</td>
+        <td class="price">~$35</td>
+        <td class="price">~$35</td>
+        <td class="link"><a href="https://www.sigmaaldrich.com/ZA/en/search#q=glycerol%20gelatin%20mounting&t=all&sort=relevance&b=re%7C%7C0%7C%7CAll&pager.offset=0&searchType=PRODUCT" target="_blank">Sigma-Aldrich ZA — search "glycerol gelatin"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Clear nail varnish</td>
+        <td class="spec">For sealing edges of cover slips on pollen slides. Any clear, fast-drying nail varnish.</td>
+        <td class="qty">1</td>
+        <td class="price">~$3</td>
+        <td class="price">~$3</td>
+        <td class="link"><td class="note">Purchase locally — pharmacy or cosmetics.</td></td>
+      </tr>
+      <tr>
+        <td class="item">Field data sheets (printed)</td>
+        <td class="spec">Printed data recording sheets per hive visit. See labelling protocol in honey guide. Laminate one master copy for reference.</td>
+        <td class="qty">50 sheets</td>
+        <td class="price">~$1 (print)</td>
+        <td class="price">~$1</td>
+        <td class="link"><td class="note">Print from honey_sampling.html — Labelling Protocol tab.</td></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Honey sampling subtotal</td>
+        <td class="price">~$318</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- HIVE HEALTH -->
+  <h2 class="section-title">Hive health screening</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Compound microscope (400× minimum)</td>
+        <td class="spec">Required for Nosema spore counting — the stereo dissecting scope does not have sufficient magnification. Binocular compound microscope, 40×–400×, with LED illumination. Can be a budget model for this purpose.</td>
+        <td class="qty">1</td>
+        <td class="price">~$150</td>
+        <td class="price">~$150</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=compound+microscope+400x+binocular+LED" target="_blank">amazon.com — search "compound microscope 400x binocular"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Haemocytometer (Neubauer improved)</td>
+        <td class="spec">Counting chamber for Nosema spore quantification. Neubauer improved pattern with 0.1 mm depth. Includes two cover glasses.</td>
+        <td class="qty">1</td>
+        <td class="price">~$30</td>
+        <td class="price">~$30</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=neubauer+haemocytometer+improved+counting+chamber" target="_blank">amazon.com — search "Neubauer haemocytometer"</a></td>
+      </tr>
+      <tr>
+        <td class="item">AFB lateral flow test kits</td>
+        <td class="spec">Lateral flow device (LFD) for rapid field confirmation of American Foulbrood. Detects Paenibacillus larvae antigens. ~$14 per test. Stock a minimum of 10 tests.</td>
+        <td class="qty">10</td>
+        <td class="price">~$14 ea</td>
+        <td class="price">~$140</td>
+        <td class="link"><a href="https://bee-health.extension.org/diagnostic-kits-for-american-and-european-foulbrood/" target="_blank">bee-health.extension.org — AFB/EFB diagnostic kits</a></td>
+      </tr>
+      <tr>
+        <td class="item">Toothpicks (for AFB rope test)</td>
+        <td class="spec">Flat or round wooden toothpicks. Use once and discard away from hive. Do not reuse between cells or hives.</td>
+        <td class="qty">1 box (250)</td>
+        <td class="price">~$2</td>
+        <td class="price">~$2</td>
+        <td class="link"><td class="note">Purchase locally.</td></td>
+      </tr>
+      <tr>
+        <td class="item">Microcentrifuge tubes — 1.5 ml</td>
+        <td class="spec">For preparing Nosema spore suspension from crushed bee abdomens. Snap-cap Eppendorf-style tubes.</td>
+        <td class="qty">1 pack (100)</td>
+        <td class="price">~$8</td>
+        <td class="price">~$8</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=1.5ml+microcentrifuge+tubes+snap+cap+100" target="_blank">amazon.com — search "1.5ml microcentrifuge tubes"</a></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Hive health subtotal</td>
+        <td class="price">~$330</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- VOUCHER SPECIMENS -->
+  <h2 class="section-title">Voucher specimens — <em>A. m. capensis</em> and <em>A. m. scutellata</em></h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Collection vials — queen vouchers</td>
+        <td class="spec">Larger vials for queen specimens: 4-dram (15 ml) borosilicate glass with polyseal screw cap. One per queen collected (one queen per hive). Label: hive ID, date, subspecies (if known), caste = QUEEN.</td>
+        <td class="qty">20</td>
+        <td class="price">~$0.80 ea</td>
+        <td class="price">~$16</td>
+        <td class="link"><a href="https://ecologysupplies.com/products/screw-cap-vials-glass/" target="_blank">ecologysupplies.com — 4-dram glass vials</a></td>
+      </tr>
+      <tr>
+        <td class="item">Collection vials — drone vouchers</td>
+        <td class="spec">2-dram (7.5 ml) borosilicate glass screw-cap vials. 3–5 drones per hive per vial. Label: hive ID, date, subspecies, caste = DRONE.</td>
+        <td class="qty">20</td>
+        <td class="price">~$0.50 ea</td>
+        <td class="price">~$10</td>
+        <td class="link"><a href="https://ecologysupplies.com/products/screw-cap-vials-glass/" target="_blank">ecologysupplies.com — 2-dram glass vials</a></td>
+      </tr>
+      <tr>
+        <td class="item">Collection vials — forager vouchers</td>
+        <td class="spec">2-dram (7.5 ml) borosilicate glass screw-cap vials. 10–20 forager workers per hive per vial. Label: hive ID, date, subspecies, caste = FORAGER. This is also the bee sample used for Nosema and tracheal mite screening — one collection serves both purposes.</td>
+        <td class="qty">40</td>
+        <td class="price">~$0.50 ea</td>
+        <td class="price">~$20</td>
+        <td class="link"><a href="https://ecologysupplies.com/products/screw-cap-vials-glass/" target="_blank">ecologysupplies.com — 2-dram glass vials</a></td>
+      </tr>
+      <tr>
+        <td class="item">Ethanol — 70% (additional for vouchers)</td>
+        <td class="spec">Additional 70% ethanol for preserving voucher specimens. Allow 5 ml per vial minimum. Purchase locally in South Africa.</td>
+        <td class="qty">2 × 500 ml extra</td>
+        <td class="price">~$8 ea</td>
+        <td class="price">~$16</td>
+        <td class="link"><td class="note">Purchase locally — pharmacy or lab supplier.</td></td>
+      </tr>
+      <tr>
+        <td class="item">Voucher specimen labels — pre-printed</td>
+        <td class="spec">Pre-printed labels with fields for: Sample ID, Site, Hive ID, Date, GPS, Subspecies, Caste, Collector. Waterproof solvent-resistant labels. Alternatively: write in pencil on white card inside the vial (pencil survives ethanol; ballpoint does not).</td>
+        <td class="qty">1 roll</td>
+        <td class="price">~$10</td>
+        <td class="price">~$10</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=waterproof+specimen+labels+solvent+resistant" target="_blank">amazon.com — search "waterproof specimen labels"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Specimen vial storage box</td>
+        <td class="spec">Compartmented storage box for vials — keeps capensis and scutellata specimens separated and labelled. Cardboard or plastic compartment box. Can use a fishing tackle box.</td>
+        <td class="qty">2</td>
+        <td class="price">~$10 ea</td>
+        <td class="price">~$20</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=compartment+storage+box+small+vials" target="_blank">amazon.com — search "compartment storage box"</a></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Voucher specimens subtotal</td>
+        <td class="price">~$92</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <!-- POLLEN REFERENCE SAMPLES -->
+  <h2 class="section-title">Pollen reference sample collection — field</h2>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Item</th>
+        <th style="width:28%">Specification</th>
+        <th style="width:5%">Qty</th>
+        <th style="width:10%">Unit Price</th>
+        <th style="width:10%">Total</th>
+        <th style="width:25%">Source / Link</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="item">Collection vials — plant samples</td>
+        <td class="spec">2-dram (7.5 ml) borosilicate glass screw-cap vials with polyseal lids. For collecting flower and pollen reference samples in the field. One vial per plant sample. Label with participant code, local plant name, GPS, and date.</td>
+        <td class="qty">50</td>
+        <td class="price">~$0.50 ea</td>
+        <td class="price">~$25</td>
+        <td class="link"><a href="https://ecologysupplies.com/products/screw-cap-vials-glass/" target="_blank">ecologysupplies.com — 2-dram glass vials</a></td>
+      </tr>
+      <tr>
+        <td class="item">Silica gel desiccant packets</td>
+        <td class="spec">For drying and preserving flower samples during transport. Place 1–2 packets in storage box with vials. Alternatively, dry samples before sealing by leaving vials open in a warm dry place for 24 hours.</td>
+        <td class="qty">1 pack (50 packets)</td>
+        <td class="price">~$8</td>
+        <td class="price">~$8</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=silica+gel+desiccant+packets+small" target="_blank">amazon.com — search "silica gel desiccant packets"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Fine-tip forceps (field — additional pair)</td>
+        <td class="spec">For handling flowers and pollen without contamination. Keep one pair dedicated to plant collection — separate from bee dissection forceps.</td>
+        <td class="qty">1</td>
+        <td class="price">~$8</td>
+        <td class="price">~$8</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=entomology+forceps+fine+tip+stainless" target="_blank">amazon.com — search "fine tip forceps"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Small paper envelopes / glassine bags</td>
+        <td class="spec">For loose flower/pollen samples before transfer to vials. Glassine (wax paper) does not absorb moisture or contaminate samples. Useful for bulkier flower material.</td>
+        <td class="qty">1 pack (100)</td>
+        <td class="price">~$8</td>
+        <td class="price">~$8</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=glassine+envelopes+small+coin+bags" target="_blank">amazon.com — search "glassine envelopes small"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Sample labels — waterproof, additional</td>
+        <td class="spec">Pre-printed or blank waterproof labels for plant sample vials. Fields: participant code, local plant name, GPS, date, collector. Keep separate from bee sample labels to avoid mix-up.</td>
+        <td class="qty">1 roll</td>
+        <td class="price">~$10</td>
+        <td class="price">~$10</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=waterproof+lab+labels+vials" target="_blank">amazon.com — search "waterproof lab vial labels"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Plant press (portable, field)</td>
+        <td class="spec">Lightweight portable plant press for pressing a voucher specimen of each sampled plant alongside the pollen sample. Essential for later botanical identification. Strap-and-board design with blotting paper.</td>
+        <td class="qty">1</td>
+        <td class="price">~$25</td>
+        <td class="price">~$25</td>
+        <td class="link"><a href="https://www.amazon.com/s?k=portable+plant+press+field+botanical" target="_blank">amazon.com — search "portable plant press botanical"</a></td>
+      </tr>
+      <tr>
+        <td class="item">Blotting paper / newspaper</td>
+        <td class="spec">For use in the plant press. Newspaper is an acceptable substitute. Replace regularly during drying to prevent mould.</td>
+        <td class="qty">1 pack</td>
+        <td class="price">~$5</td>
+        <td class="price">~$5</td>
+        <td class="link"><td class="note">Purchase locally — stationery or art supply. Newspaper is a free substitute.</td></td>
+      </tr>
+      <tr class="subtotal-row">
+        <td colspan="4" style="text-align:right;padding-right:1rem;">Pollen reference samples subtotal</td>
+        <td class="price">~$89</td>
+        <td></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- TOTAL -->
+  <table>
+    <tbody>
+      <tr class="total-row">
+        <td colspan="3" class="label">Estimated total (USD)</td>
+        <td class="price" style="color:#e8a83a;font-size:1.1rem;">~$2,052</td>
+        <td colspan="2"></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="notice" style="margin-top:1.5rem;">
+    <strong>Notes on costs:</strong> The microscope (~$950) is the dominant cost. The AmScope SM-4TZ-144A-18M3 with built-in 18MP USB camera is recommended as an all-in-one unit — it avoids the need to purchase a separate camera adapter. If budget is constrained, a binocular scope with a separately purchased USB camera adapter (~$150–200) is a lower-cost alternative, though less convenient. All consumables (ethanol, saline, gloves) should be sourced locally in South Africa to avoid import and shipping costs. USD prices do not include shipping or import duties to South Africa.
+  </div>
+
+</div>
+
+<footer>
+  Equipment &amp; Materials List — Bee Morphometrics, Honey Sampling &amp; Hive Health Project &mdash; compiled May 2025. Prices approximate; verify before ordering.
+</footer>
+
+</body>
+</html>

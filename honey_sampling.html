@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Honey Sampling & Analysis Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#f5f0e8;--dark:#1a1a18;--amber:#c8821a;--amber-light:#e8a83a;--muted:#6b6558;--border:#d8d0c0;--card-bg:#faf7f2;--accent-green:#3d5a3e;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--dark);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
+  header{background:var(--dark);color:var(--cream);padding:2rem 2rem 1.8rem;border-bottom:3px solid var(--amber);}
+  header h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3.5vw,2.6rem);font-weight:400;margin-bottom:.3rem;}
+  header p{color:#a09880;font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;}
+  nav{background:var(--dark);border-bottom:1px solid #333;padding:.5rem 1rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem;}
+  nav button{background:none;border:none;color:#a09880;font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.5rem .8rem;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;}
+  nav button:hover{color:var(--cream);}
+  nav button.active{color:var(--amber-light);border-bottom-color:var(--amber);}
+  .page{display:none;}.page.active{display:block;}
+  .layout{max-width:900px;margin:0 auto;padding:2.5rem 1.5rem;}
+  h2.section{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:400;margin:2.5rem 0 1rem;padding-bottom:.5rem;border-bottom:1px solid var(--border);}
+  h2.section:first-of-type{margin-top:0;}
+  .intro{font-size:.95rem;color:var(--muted);line-height:1.8;border-left:2px solid var(--amber);padding-left:1rem;margin-bottom:2rem;}
+  .step-block{background:var(--card-bg);border:1px solid var(--border);padding:1.2rem 1.4rem;margin-bottom:1rem;}
+  .step-num{display:inline-block;background:var(--dark);color:var(--amber-light);font-size:.68rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;margin-bottom:.5rem;}
+  .step-title{font-weight:500;font-size:.95rem;margin-bottom:.4rem;color:var(--dark);}
+  .step-body{font-size:.87rem;color:var(--muted);line-height:1.6;}
+  .step-body strong{color:var(--dark);font-weight:500;}
+  .warning{background:#fff8f0;border-left:3px solid var(--amber);padding:.9rem 1.1rem;font-size:.85rem;color:var(--muted);margin:1rem 0;}
+  .warning strong{color:var(--amber);}
+  .info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:1.5rem;}
+  .info-card{background:var(--card-bg);border:1px solid var(--border);padding:1rem;}
+  .info-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:.3rem;}
+  .info-value{font-size:.87rem;color:var(--dark);line-height:1.5;}
+  .label-box{background:var(--dark);color:var(--cream);padding:1.2rem 1.4rem;margin:1.2rem 0;font-size:.82rem;line-height:1.9;}
+  .label-box .label-title{font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;margin-bottom:.8rem;color:var(--amber-light);}
+  .label-field{color:#a09880;font-size:.75rem;letter-spacing:.06em;display:inline-block;width:160px;}
+  .ref-table{width:100%;border-collapse:collapse;font-size:.83rem;margin:1rem 0;}
+  .ref-table thead tr{background:var(--dark);color:var(--cream);}
+  .ref-table th{padding:.55rem .8rem;text-align:left;font-weight:500;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;}
+  .ref-table tbody tr{border-bottom:1px solid var(--border);}
+  .ref-table tbody tr:nth-child(even){background:var(--card-bg);}
+  .ref-table td{padding:.55rem .8rem;vertical-align:top;}
+  .id-key{background:var(--accent-green);color:#d4e8d4;padding:1.3rem;margin:1.5rem 0;}
+  .id-key h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:400;margin-bottom:.8rem;color:#fff;}
+  .id-key ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+  .id-key li{font-size:.87rem;padding-left:1.2rem;position:relative;line-height:1.5;}
+  .id-key li::before{content:'→';position:absolute;left:0;color:var(--amber-light);}
+  .sources{background:#f0ebe0;border:1px solid var(--border);padding:1rem 1.3rem;margin-top:2rem;}
+  .sources h3{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.6rem;}
+  .sources ul{list-style:none;display:flex;flex-direction:column;gap:.3rem;}
+  .sources li{font-size:.78rem;}
+  .sources a{color:var(--accent-green);text-decoration:none;word-break:break-all;}
+  .sources a:hover{text-decoration:underline;}
+  .src-label{color:var(--muted);font-size:.7rem;display:block;}
+  footer{background:var(--dark);color:#666;text-align:center;font-size:.72rem;padding:1.2rem;margin-top:1rem;letter-spacing:.04em;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Honey Sampling &amp; Analysis Guide</h1>
+  <p>Field collection &mdash; Brix measurement &mdash; Pollen analysis &mdash; Comb metrics &mdash; South Africa</p>
+</header>
+<nav id="nav-bar">
+  <button class="active" onclick="show('field',this)">Field Sampling</button>
+  <button onclick="show('labelling',this)">Labelling Protocol</button>
+  <button onclick="show('brix',this)">Brix &amp; Moisture</button>
+  <button onclick="show('pollen',this)">Pollen Analysis</button>
+  <button onclick="show('comb',this)">Comb Metrics</button>
+</nav>
+
+<!-- FIELD SAMPLING -->
+<div id="field" class="page active">
+<div class="layout">
+  <p class="intro">Honey samples are collected in three forms — from capped comb, uncapped comb, and extracted bulk honey — each giving different information. One composite sample per hive is sufficient for brix and pollen analysis. Samples must be collected before applying any treatments and handled with clean, uncontaminated equipment throughout.</p>
+
+  <h2 class="section">Before you start</h2>
+  <div class="info-grid">
+    <div class="info-card"><p class="info-label">Best time to sample</p><p class="info-value">During a honey flow or immediately post-flow. Avoid sampling during dearth when bees are defensive. Early morning or late afternoon is preferable.</p></div>
+    <div class="info-card"><p class="info-label">Equipment per hive</p><p class="info-value">Clean 50 ml screw-cap collection jar; hive tool; uncapping knife or fork; disposable gloves; pre-printed labels; waterproof marker; field notebook.</p></div>
+    <div class="info-card"><p class="info-label">Hygiene</p><p class="info-value">Change gloves between hives. Clean hive tool with 70% ethanol between hives. Never reuse collection jars. Contamination between colonies will invalidate the sample.</p></div>
+    <div class="info-card"><p class="info-label">Minimum sample volume</p><p class="info-value">30 ml minimum per hive composite. This is sufficient for one brix reading and one pollen slide. Collect 50 ml if possible to allow for repeat measurements.</p></div>
+  </div>
+
+  <h2 class="section">Sample type 1 — Capped comb honey</h2>
+  <div class="warning"><strong>Note:</strong> Capped comb honey represents mature, low-moisture honey. It is the most representative sample of the colony's current honey stores and the most reliable for brix analysis.</div>
+
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Select the frame</p><p class="step-body">Choose a frame from the <strong>honey super</strong> (not the brood box) that is at least <strong>80% capped</strong>. Avoid frames with visible brood, pollen, or propolis contamination. Gently brush bees from the face of the frame before removing it.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-body">Using a clean uncapping fork or hive tool, score a <strong>V-shaped groove</strong> 5–7 cm long across the capped surface. The point of the V should face downward so honey runs to the lowest point.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-body">Hold the frame at a slight angle over your collection jar and allow the honey to drip freely into the jar. Do not squeeze or scrape — collect <strong>drips only</strong>. Collect 15–20 ml from this method. Bees will repair the comb within a few hours.</p></div>
+  <div class="step-block"><span class="step-num">04</span><p class="step-body">Record <strong>frame position</strong> (e.g. super frame 3 from left), approximate <strong>% capped</strong>, and any visual observations on the field data sheet.</p></div>
+
+  <h2 class="section">Sample type 2 — Uncapped comb honey</h2>
+  <div class="warning"><strong>Note:</strong> Uncapped honey is <strong>not mature</strong> — it will have higher moisture content and lower brix. It represents recently deposited nectar. Record clearly that the sample is from uncapped comb. Do not mix with capped honey in the same jar. Useful for tracking what the bees are currently bringing in, not as a quality measure.</div>
+
+  <div class="step-block"><span class="step-num">01</span><p class="step-body">Select a frame with a visible band of <strong>uncapped (open) honey cells</strong>. These are typically found at the top of the frame, above the brood nest.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-body">Score the same V-groove across open cells and collect drips into a <strong>separate, labelled jar</strong> — clearly marked "UNCAPPED." Collect 10–15 ml.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-body">Note on the data sheet: frame position, proportion of cells open, and estimated colour of the honey.</p></div>
+
+  <h2 class="section">Sample type 3 — Extracted bulk honey composite</h2>
+  <div class="warning"><strong>Note:</strong> If honey has already been extracted, take the composite sample from the bulk extracted honey <strong>before it is filtered or heated</strong>. Heated or filtered honey destroys pollen — pollen analysis will not be possible from such a sample.</div>
+
+  <div class="step-block"><span class="step-num">01</span><p class="step-body">Stir the bulk honey thoroughly with a clean stainless steel spoon or stick for at least 60 seconds to <strong>homogenise</strong> the sample before collecting.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-body">Collect 30–50 ml from the <strong>middle of the vessel</strong> (not the surface or bottom where moisture and sediment are uneven). Use a clean ladle or syringe.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-body">Label clearly with hive ID, extraction date, and "BULK EXTRACTED." Record extraction date and any processing (heating, straining) on the data sheet.</p></div>
+
+  <div class="id-key">
+    <h3>Field collection checklist — per hive</h3>
+    <ul>
+      <li>New gloves on before opening hive</li>
+      <li>Hive tool cleaned with ethanol since last hive</li>
+      <li>Collection jar pre-labelled with hive ID and date</li>
+      <li>Frame selected from honey super, not brood box</li>
+      <li>Minimum 30 ml collected per sample type</li>
+      <li>Jar sealed immediately after collection</li>
+      <li>GPS coordinates, frame position, and observations recorded</li>
+      <li>Sample kept out of direct sunlight and away from heat</li>
+    </ul>
+  </div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">EPA HiveScience — Honey sample collection protocol</span><a href="https://19january2021snapshot.epa.gov/citizen-science/hivescience-honey-sample-collection_.html" target="_blank">https://19january2021snapshot.epa.gov/citizen-science/hivescience-honey-sample-collection_.html</a></li>
+      <li><span class="src-label">Analytica NZ — Honey sampling dos and don'ts</span><a href="https://www.analytica.co.nz/publications/honey-sampling-some-dos-donts/" target="_blank">https://www.analytica.co.nz/publications/honey-sampling-some-dos-donts/</a></li>
+      <li><span class="src-label">UK Government — Protocol for honey reference sampling</span><a href="https://assets.publishing.service.gov.uk/media/6527cbcb2548ca0014ddf1ab/Published_Protocol-_GC_honey_sampling.pdf" target="_blank">UK Gov honey sampling protocol (PDF)</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- LABELLING PROTOCOL -->
+<div id="labelling" class="page">
+<div class="layout">
+  <p class="intro">Every sample must be uniquely identified at the point of collection and linked to a paper data record. The label on the jar is the primary ID; the field data sheet is the supporting record. Both must agree. Never rely on memory.</p>
+
+  <h2 class="section">Sample label — required fields</h2>
+  <div class="label-box">
+    <p class="label-title">Honey Sample Label</p>
+    <p><span class="label-field">Sample ID:</span> [SITE]-[HIVE]-[DATE]-[TYPE]</p>
+    <p><span class="label-field">Example:</span> BWK-H03-20250601-CAP</p>
+    <p style="margin-top:.8rem;font-size:.72rem;color:#888;">TYPE codes: CAP = capped comb &nbsp;|&nbsp; UNC = uncapped comb &nbsp;|&nbsp; EXT = extracted bulk</p>
+    <p style="margin-top:.8rem;"><span class="label-field">Site name:</span> ___________________________</p>
+    <p><span class="label-field">Hive ID:</span> ___________________________</p>
+    <p><span class="label-field">GPS:</span> ___________________________</p>
+    <p><span class="label-field">Date collected:</span> ___________________________</p>
+    <p><span class="label-field">Collector:</span> ___________________________</p>
+    <p><span class="label-field">Sample type:</span> ___________________________</p>
+    <p><span class="label-field">Subspecies (if known):</span> ___________________________</p>
+    <p><span class="label-field">Notes:</span> ___________________________</p>
+  </div>
+
+  <h2 class="section">Field data sheet — per hive visit</h2>
+  <table class="ref-table">
+    <thead><tr><th>Field</th><th>What to record</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Sample ID</td><td>As per label format above</td><td>BWK-H03-20250601-CAP</td></tr>
+      <tr><td>Site name</td><td>Farm or location name</td><td>Boland West Apiary</td></tr>
+      <tr><td>GPS coordinates</td><td>Decimal degrees, 5 dp minimum</td><td>-33.92451, 18.86732</td></tr>
+      <tr><td>Date &amp; time</td><td>ISO format: YYYY-MM-DD HH:MM</td><td>2025-06-01 08:45</td></tr>
+      <tr><td>Hive ID</td><td>Physical label on hive</td><td>H-03 (red marking)</td></tr>
+      <tr><td>Hive type</td><td>Langstroth, top-bar, traditional log, feral</td><td>Langstroth 10-frame</td></tr>
+      <tr><td>Subspecies</td><td>capensis / scutellata / hybrid / unknown</td><td>Unknown (hybrid zone)</td></tr>
+      <tr><td>Sample type</td><td>CAP / UNC / EXT</td><td>CAP</td></tr>
+      <tr><td>Frame position</td><td>Super number, frame number from left</td><td>Super 1, Frame 4</td></tr>
+      <tr><td>% capped (CAP only)</td><td>Visual estimate</td><td>~85%</td></tr>
+      <tr><td>Honey colour</td><td>Pale / amber / dark / black</td><td>Pale amber</td></tr>
+      <tr><td>Volume collected (ml)</td><td>Estimate</td><td>~35 ml</td></tr>
+      <tr><td>Colony strength</td><td>Frames of bees: weak (&lt;3) / moderate (3–6) / strong (&gt;6)</td><td>Strong (~8 frames)</td></tr>
+      <tr><td>Brix reading</td><td>Field refractometer reading (°Brix)</td><td>81.2°Bx</td></tr>
+      <tr><td>Field observations</td><td>Brood pattern, temper, varroa visible, AFB signs, unusual odour</td><td>Good pattern, calm, no AFB signs</td></tr>
+      <tr><td>Collector initials</td><td></td><td>JD</td></tr>
+    </tbody>
+  </table>
+
+  <div class="id-key">
+    <h3>Sample ID format explained</h3>
+    <ul>
+      <li><strong>SITE</strong> — 3-letter abbreviation for the apiary or farm (e.g. BWK = Boland West Karroo)</li>
+      <li><strong>HIVE</strong> — H01, H02 etc. matching physical hive labels</li>
+      <li><strong>DATE</strong> — YYYYMMDD format (no spaces or slashes, sorts chronologically)</li>
+      <li><strong>TYPE</strong> — CAP, UNC, or EXT</li>
+      <li>For subspecies voucher samples add suffix: -CAP = <em>capensis</em>, -SCU = <em>scutellata</em></li>
+      <li>Write the full Sample ID on the jar lid AND the side in waterproof marker as a backup</li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- BRIX -->
+<div id="brix" class="page">
+<div class="layout">
+  <p class="intro">Brix measures the concentration of dissolved solids (primarily sugars) in honey, expressed as grams of sucrose per 100 g of solution. For honey, higher Brix = lower moisture = better quality and safer storage. The handheld optical refractometer is the standard field tool. Take the reading as close to collection time as possible.</p>
+
+  <h2 class="section">Understanding the readings</h2>
+  <table class="ref-table">
+    <thead><tr><th>Brix (°Bx)</th><th>Approx. moisture %</th><th>Interpretation</th></tr></thead>
+    <tbody>
+      <tr><td>&gt;80°Bx</td><td>&lt;18%</td><td>Excellent — safe for storage, low fermentation risk</td></tr>
+      <tr><td>79–80°Bx</td><td>18–19%</td><td>Good — standard commercial quality</td></tr>
+      <tr><td>77–79°Bx</td><td>19–21%</td><td>Marginal — fermentation possible over time</td></tr>
+      <tr><td>&lt;77°Bx</td><td>&gt;21%</td><td>High moisture — fermentation likely; not suitable for long-term storage</td></tr>
+      <tr><td>Uncapped comb</td><td>Variable</td><td>Immature honey — always higher moisture, not comparable to capped</td></tr>
+    </tbody>
+  </table>
+
+  <h2 class="section">Step-by-step field measurement</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Calibrate before first use each day</p><p class="step-body">Clean the prism with a damp lint-free cloth and dry completely. Place 2–3 drops of <strong>distilled water</strong> on the prism and close the cover. Look through the eyepiece — the boundary line should read exactly <strong>0°Brix</strong>. If not, adjust the calibration screw until it reads 0. Re-calibrate if temperature changes by more than 5°C during the session.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-title">Clean between samples</p><p class="step-body">Wipe the prism thoroughly dry with a clean cloth between every sample. Any honey residue will contaminate the next reading. Do not rinse with water and then measure — the prism must be <strong>completely dry</strong>.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-title">Apply sample</p><p class="step-body">Place <strong>2–3 drops</strong> of honey on the prism using a clean toothpick or spatula. Close the cover plate gently and allow 30 seconds for the sample to equilibrate with the prism temperature before reading.</p></div>
+  <div class="step-block"><span class="step-num">04</span><p class="step-title">Read and record</p><p class="step-body">Hold the refractometer toward a bright light source (daylight, not direct sun). Look through the eyepiece — you will see a sharp boundary between a bright and dark field. Read the °Brix value at the boundary line. Record to one decimal place. Take <strong>two readings</strong> per sample and average them.</p></div>
+  <div class="step-block"><span class="step-num">05</span><p class="step-title">Temperature compensation</p><p class="step-body">Most handheld honey refractometers have Automatic Temperature Compensation (ATC) for the range 10–30°C. If your instrument does not have ATC: add 0.03°Brix per °C above 20°C; subtract 0.03°Brix per °C below 20°C. Record ambient temperature alongside each reading.</p></div>
+
+  <div class="warning"><strong>Important:</strong> Crystallised honey cannot be read directly. Gently warm the sample (maximum 40°C — do not boil) until fully liquefied and allow to cool to room temperature before measuring. Note on data sheet that the sample was crystallised.</div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">Hanna Instruments Africa — Measuring honey moisture with refractometer</span><a href="https://blog.hannaservice.eu/refraction-index-measuring-honey-moisture-with-refractometer/" target="_blank">https://blog.hannaservice.eu/refraction-index-measuring-honey-moisture-with-refractometer/</a></li>
+      <li><span class="src-label">Honey Bee Suite — Honey refractometers explained</span><a href="https://www.honeybeesuite.com/honey-refractometers-measure-moisture-content/" target="_blank">https://www.honeybeesuite.com/honey-refractometers-measure-moisture-content/</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- POLLEN -->
+<div id="pollen" class="page">
+<div class="layout">
+  <p class="intro">Pollen grains in honey are preserved intact and reflect the floral sources visited by forager bees during honey production. This protocol uses the <strong>glycerin jelly mount method</strong> — no hazardous chemicals required. The goal is to count how many distinct pollen types (morphotypes) are present in the sample, not to identify each to species level.</p>
+
+  <div class="warning"><strong>Critical:</strong> Pollen analysis requires <strong>unfiltered, unheated honey</strong>. Commercial honey that has been filtered or heated above 40°C will have destroyed or removed most pollen. Always note on the sample label whether any heating or filtering has occurred.</div>
+
+  <h2 class="section">Equipment needed for lab</h2>
+  <div class="info-grid">
+    <div class="info-card"><p class="info-label">Equipment</p><p class="info-value">Stereo/dissecting microscope (100–400× recommended for pollen); centrifuge (bench-top, 3000 rpm minimum); centrifuge tubes (15 ml); glass slides and cover slips; hot plate or water bath (40°C max).</p></div>
+    <div class="info-card"><p class="info-label">Reagents</p><p class="info-value">Distilled water; glycerin jelly (Kaiser's glycerol gelatin — available from lab suppliers); clear nail varnish (to seal cover slips).</p></div>
+    <div class="info-card"><p class="info-label">From your kit</p><p class="info-value">Fine forceps; dissecting needles; glass slides; cover slips; lint-free tissues; nitrile gloves; Kimwipes.</p></div>
+  </div>
+
+  <h2 class="section">Protocol — glycerin jelly mount</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Dissolve the honey</p><p class="step-body">Weigh out <strong>10 g of honey</strong> into a clean 15 ml centrifuge tube. Add <strong>20 ml of warm distilled water</strong> (40°C — do not exceed). Stir gently until the honey is fully dissolved. Do not shake vigorously — this breaks pollen grains.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-title">First centrifugation</p><p class="step-body">Centrifuge at <strong>3000 rpm for 10 minutes</strong>. A pellet will form at the bottom of the tube containing pollen, wax particles, and debris. Carefully pour off (decant) the supernatant, leaving approximately 2 cm of liquid above the pellet.</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-title">Wash</p><p class="step-body">Refill the tube with distilled water to the 15 ml mark. Gently resuspend the pellet by rolling the tube between your palms (do not vortex). Centrifuge again at <strong>3000 rpm for 10 minutes</strong>. Decant the supernatant, leaving ~1 cm above the pellet. Repeat this wash step once more (total: 2 washes).</p></div>
+  <div class="step-block"><span class="step-num">04</span><p class="step-title">Mount the slide</p><p class="step-body">Place a small piece of <strong>glycerin jelly</strong> (approximately 2 mm cube) on a clean glass slide. Warm gently on a hot plate at 40°C until the jelly melts. Using a clean dissecting needle, transfer a small amount of the pollen pellet into the liquid glycerin jelly and mix gently. Lower a cover slip carefully at an angle to avoid air bubbles. Allow to cool and solidify at room temperature.</p></div>
+  <div class="step-block"><span class="step-num">05</span><p class="step-title">Seal the slide</p><p class="step-body">Once set, seal the edges of the cover slip with <strong>clear nail varnish</strong>. Allow to dry completely. Label the slide with the Sample ID on the frosted end using a pencil. Slides can be stored flat at room temperature for weeks.</p></div>
+  <div class="step-block"><span class="step-num">06</span><p class="step-title">Examine and count</p><p class="step-body">Examine the slide at <strong>100–400×</strong> magnification. Scan the slide systematically in horizontal rows (transects). For each distinct pollen type you encounter, record it. Count a minimum of <strong>100 pollen grains total</strong> for a basic diversity estimate; 300+ for a more robust count. Record: total grains counted, number of distinct morphotypes observed, rough estimate of proportions (dominant, frequent, occasional, rare).</p></div>
+
+  <h2 class="section">Recording results</h2>
+  <table class="ref-table">
+    <thead><tr><th>Frequency class</th><th>% of total grains</th><th>Record as</th></tr></thead>
+    <tbody>
+      <tr><td>Dominant</td><td>&gt;45%</td><td>DOM</td></tr>
+      <tr><td>Secondary</td><td>16–45%</td><td>SEC</td></tr>
+      <tr><td>Minor</td><td>3–15%</td><td>MIN</td></tr>
+      <tr><td>Trace</td><td>&lt;3%</td><td>TRA</td></tr>
+    </tbody>
+  </table>
+
+  <div class="warning"><strong>Note on identification:</strong> Identifying pollen to species in South African honey requires a local reference collection. At this stage, record morphotypes by their visual characteristics — size (small/medium/large), shape (round, tricolporate, inaperturate etc.), surface texture (smooth, spiny, granular), and colour (pale yellow, orange, white). Note these characteristics to allow later comparison or expert review. Photograph representative grains if possible via the microscope camera.</div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">Louveaux et al. (1978) — Methods of melissopalynology (classic reference)</span><a href="https://www.service-public.pf/dag/wp-content/uploads/sites/28/2018/06/annexe3-article-methode-melissopalynology-Louveaux_etal1978.pdf" target="_blank">Louveaux et al. 1978 PDF</a></li>
+      <li><span class="src-label">Tandfonline — Comparing acetolysed and hydrated methods for honey pollen analysis</span><a href="https://www.tandfonline.com/doi/full/10.1080/00173134.2024.2348651" target="_blank">https://www.tandfonline.com/doi/full/10.1080/00173134.2024.2348651</a></li>
+      <li><span class="src-label">BeekeepersRealm — Melissopalynology for beginners</span><a href="https://beekeepersrealm.com/melissopalynology-for-beginners-pollen-identification/" target="_blank">https://beekeepersrealm.com/melissopalynology-for-beginners-pollen-identification/</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<!-- COMB METRICS -->
+<div id="comb" class="page">
+<div class="layout">
+  <p class="intro">Comb cell size varies between <em>A. m. capensis</em> and <em>A. m. scutellata</em> and may serve as a supplementary colony character. Worker cell size also correlates with bee body size. These measurements take approximately 5 minutes per frame and can be done at the hive during a standard inspection using a ruler or digital calipers.</p>
+
+  <h2 class="section">What to measure</h2>
+  <div class="info-grid">
+    <div class="info-card"><p class="info-label">Worker cell diameter</p><p class="info-value">Internal distance between opposite parallel walls of worker brood cells. Expected range for <em>A. mellifera</em>: 4.6–5.5 mm. African subspecies tend toward the lower end.</p></div>
+    <div class="info-card"><p class="info-label">Drone cell diameter</p><p class="info-value">Internal distance between opposite parallel walls of drone brood cells. Expected range: 6.1–6.9 mm.</p></div>
+    <div class="info-card"><p class="info-label">Cell depth</p><p class="info-value">Length of the cell from opening to base. Worker cells typically 10–12 mm deep; honey cells elongated up to 16 mm during strong flows.</p></div>
+    <div class="info-card"><p class="info-label">Cells per 10 cm</p><p class="info-value">Count how many worker cells fit across 10 cm of comb. Divide 100 by this count to get average cell diameter. Quick field method — no calipers needed.</p></div>
+  </div>
+
+  <h2 class="section">Measurement protocol</h2>
+  <div class="step-block"><span class="step-num">01</span><p class="step-title">Select the frame</p><p class="step-body">Choose a <strong>worker brood frame</strong> from the brood box — a frame with drawn, used comb (not new white wax). Brush bees from the face. Avoid measuring foundation-drawn comb from the outer edge where cells may be irregular.</p></div>
+  <div class="step-block"><span class="step-num">02</span><p class="step-title">Measure 10 cells across</p><p class="step-body">Using a ruler, place one edge at the <strong>inner wall of one cell</strong> and measure across <strong>10 consecutive cells</strong> to the opposite inner wall. Record the total in mm. Divide by 10 to get the average cell diameter. Take 3 measurements in different areas of the frame (top, middle, bottom) and average.<br><br><strong>Example:</strong> 10 cells = 50 mm → average cell diameter = 5.0 mm</p></div>
+  <div class="step-block"><span class="step-num">03</span><p class="step-title">Measure drone cells (if present)</p><p class="step-body">Drone comb is typically found at the lower corners of brood frames. Measure 10 drone cells the same way. Note the approximate proportion of drone comb on the frame.</p></div>
+  <div class="step-block"><span class="step-num">04</span><p class="step-title">Record</p><p class="step-body">Record on the field data sheet: frame position, worker cell mean (mm), drone cell mean if measured, cell depth if measured, any irregularities (wax moth damage, old dark comb, etc.).</p></div>
+
+  <h2 class="section">Reference values</h2>
+  <table class="ref-table">
+    <thead><tr><th>Measurement</th><th>A. m. scutellata (typical)</th><th>A. m. capensis (typical)</th><th>General A. mellifera range</th></tr></thead>
+    <tbody>
+      <tr><td>Worker cell diameter</td><td>~4.7–5.0 mm</td><td>~4.9–5.2 mm</td><td>4.6–5.5 mm</td></tr>
+      <tr><td>Drone cell diameter</td><td>~6.1–6.4 mm</td><td>~6.2–6.5 mm</td><td>6.1–6.9 mm</td></tr>
+      <tr><td>Cells per 10 cm (worker)</td><td>~20–21</td><td>~19–20</td><td>18–22</td></tr>
+    </tbody>
+  </table>
+  <div class="warning"><strong>Note:</strong> Cell size alone is not a reliable subspecies marker — it overlaps considerably between subspecies and varies with comb age, foundation type, and local conditions. Use it as a supplementary observation alongside morphometrics, not as a primary identification method.</div>
+
+  <div class="sources">
+    <h3>Sources</h3>
+    <ul>
+      <li><span class="src-label">Oxford Academic — Cell structure dimensions in Apis mellifera and Apis cerana</span><a href="https://academic.oup.com/jinsectscience/article/21/4/1/6313200" target="_blank">https://academic.oup.com/jinsectscience/article/21/4/1/6313200</a></li>
+      <li><span class="src-label">Ruttner (1988) — Biogeography and taxonomy of honeybees (cell size reference values)</span><a href="https://link.springer.com/book/10.1007/978-3-642-72649-1" target="_blank">https://link.springer.com/book/10.1007/978-3-642-72649-1</a></li>
+    </ul>
+  </div>
+</div>
+</div>
+
+<footer>Honey Sampling &amp; Analysis Guide &mdash; South Africa &mdash; compiled May 2025</footer>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#nav-bar button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bee Research Field Guide Hub — South Africa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root{--cream:#f5f0e8;--dark:#1a1a18;--amber:#c8821a;--amber-light:#e8a83a;--muted:#6b6558;--border:#d8d0c0;--card-bg:#faf7f2;--accent-green:#3d5a3e;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--cream);color:var(--dark);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;min-height:100vh;}
+
+  header{background:var(--dark);color:var(--cream);padding:3rem 2rem 2.5rem;text-align:center;border-bottom:3px solid var(--amber);}
+  header h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:400;letter-spacing:.02em;margin-bottom:.4rem;}
+  header p{color:#a09880;font-size:.88rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem;}
+
+  .layout{max-width:960px;margin:0 auto;padding:3rem 1.5rem;}
+
+  .intro{font-size:.95rem;color:var(--muted);line-height:1.8;border-left:2px solid var(--amber);padding-left:1.2rem;margin-bottom:3rem;max-width:680px;}
+
+  .section-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:1.2rem;}
+
+  .guide-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;margin-bottom:3rem;}
+
+  .guide-card{background:var(--card-bg);border:1px solid var(--border);padding:1.8rem;display:flex;flex-direction:column;gap:.8rem;text-decoration:none;color:inherit;transition:border-color .2s,background .2s;}
+  .guide-card:hover{border-color:var(--amber);background:#fffcf5;}
+
+  .guide-card .card-tag{font-size:.65rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:500;}
+  .guide-card h2{font-family:'Playfair Display',serif;font-size:1.35rem;font-style:italic;font-weight:400;line-height:1.2;}
+  .guide-card p{font-size:.85rem;color:var(--muted);line-height:1.6;}
+
+  .guide-card .topics{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem;}
+  .topic-pill{background:var(--dark);color:#c8bfa8;font-size:.65rem;padding:.15rem .55rem;letter-spacing:.06em;}
+
+  .guide-card .card-link{margin-top:auto;font-size:.78rem;color:var(--accent-green);font-weight:500;letter-spacing:.05em;}
+
+  .util-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-bottom:3rem;}
+  .util-card{background:var(--dark);color:var(--cream);padding:1.2rem 1.4rem;text-decoration:none;display:flex;flex-direction:column;gap:.4rem;transition:background .2s;}
+  .util-card:hover{background:#2a2a28;}
+  .util-card .util-tag{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-light);font-weight:500;}
+  .util-card h3{font-size:1rem;font-weight:400;}
+  .util-card p{font-size:.78rem;color:#a09880;line-height:1.5;}
+
+  .todo-block{background:var(--card-bg);border:1px solid var(--border);padding:1.4rem;}
+  .todo-block h3{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.8rem;}
+  .todo-block ul{list-style:none;display:flex;flex-direction:column;gap:.4rem;}
+  .todo-block li{font-size:.85rem;padding-left:1.2rem;position:relative;color:var(--muted);}
+  .todo-block li::before{content:'○';position:absolute;left:0;color:var(--amber);font-size:.7rem;top:.15rem;}
+
+  footer{background:var(--dark);color:#555;text-align:center;font-size:.72rem;padding:1.5rem;letter-spacing:.04em;margin-top:2rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Bee Research Field Guides</h1>
+  <p>South Africa &mdash; <em>Apis mellifera</em> subspecies &mdash; Honey &amp; Colony Health</p>
+</header>
+
+<div class="layout">
+
+  <p class="intro">A collection of field and laboratory guides for bee identification, honey sampling, and colony health assessment — focused on the two South African honey bee subspecies <em>A. m. capensis</em> and <em>A. m. scutellata</em>. All guides are designed to be used in the field and in the lab.</p>
+
+  <p class="section-label">Field &amp; Laboratory Guides</p>
+
+  <div class="guide-grid">
+
+    <a class="guide-card" href="bee_identification.html">
+      <span class="card-tag">Guide 01</span>
+      <h2>Bee Genus Identification</h2>
+      <p>Identification characteristics, size bars, nesting biology, field ID cues, and morphometric appendix for 26 bee genera including both South African honey bee subspecies.</p>
+      <div class="topics">
+        <span class="topic-pill">24 genera</span>
+        <span class="topic-pill">Apis mellifera</span>
+        <span class="topic-pill">Morphometrics appendix</span>
+        <span class="topic-pill">Size bars</span>
+      </div>
+      <span class="card-link">Open guide →</span>
+    </a>
+
+    <a class="guide-card" href="honey_sampling.html">
+      <span class="card-tag">Guide 02</span>
+      <h2>Honey Sampling &amp; Analysis</h2>
+      <p>Field collection protocols for capped, uncapped, and extracted honey. Labelling and chain of custody. Brix measurement with handheld refractometer. Pollen diversity analysis by glycerin jelly mount. Comb cell size metrics.</p>
+      <div class="topics">
+        <span class="topic-pill">Brix / moisture</span>
+        <span class="topic-pill">Pollen analysis</span>
+        <span class="topic-pill">Labelling protocol</span>
+        <span class="topic-pill">Comb metrics</span>
+      </div>
+      <span class="card-link">Open guide →</span>
+    </a>
+
+    <a class="guide-card" href="hive_health.html">
+      <span class="card-tag">Guide 03</span>
+      <h2>Hive Health Screening</h2>
+      <p>Field and lab protocols for screening four key diseases and pests. Varroa visual inspection. American Foulbrood rope test and lateral flow confirmation. Nosema spore counting. Tracheal mite thorax dissection.</p>
+      <div class="topics">
+        <span class="topic-pill">Varroa</span>
+        <span class="topic-pill">American Foulbrood</span>
+        <span class="topic-pill">Nosema</span>
+        <span class="topic-pill">Tracheal mite</span>
+      </div>
+      <span class="card-link">Open guide →</span>
+    </a>
+
+
+    <a class="guide-card" href="indigenous_knowledge_survey.html">
+      <span class="card-tag">Guide 04</span>
+      <h2>Indigenous Bee Knowledge Survey</h2>
+      <p>Semi-structured ethnoentomological interview guide for honey hunters and traditional beekeepers in Zambia. Covers bee species, harvesting, honey quality, colony health, foraging plants, and cultural significance.</p>
+      <div class="topics">
+        <span class="topic-pill">Zambia</span>
+        <span class="topic-pill">Free listing</span>
+        <span class="topic-pill">Local terms</span>
+        <span class="topic-pill">Foraging plants</span>
+        <span class="topic-pill">Consent protocol</span>
+      </div>
+      <span class="card-link">Open guide →</span>
+    </a>
+
+  </div>
+
+  <p class="section-label">Reference Documents</p>
+
+  <div class="util-grid">
+    <a class="util-card" href="materials_list.html">
+      <span class="util-tag">Equipment &amp; Materials</span>
+      <h3>Full Procurement List</h3>
+      <p>Complete itemised equipment and materials list with specifications, quantities, approximate USD prices, and purchase links. Covers all three guides.</p>
+    </a>
+  </div>
+
+</div>
+
+<footer>Bee Research Field Guides &mdash; South Africa &mdash; compiled May 2025 &mdash; for internal use</footer>
+
+</body>
+</html>

@@ -1,0 +1,2530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bee Genus Identification Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--cream:#f5f0e8;--dark:#1a1a18;--amber:#c8821a;--amber-light:#e8a83a;--muted:#6b6558;--border:#d8d0c0;--card-bg:#faf7f2;--accent-green:#3d5a3e;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background-color:var(--cream);color:var(--dark);font-family:'DM Sans',sans-serif;font-weight:300;line-height:1.7;}
+header{background:var(--dark);color:var(--cream);padding:2rem 2rem 1.8rem;text-align:center;border-bottom:3px solid var(--amber);}
+header h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,3rem);font-weight:400;letter-spacing:.02em;margin-bottom:.3rem;}
+header p{color:#a09880;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;}
+nav{background:var(--dark);border-bottom:1px solid #333;padding:.5rem 1rem;display:flex;flex-wrap:wrap;justify-content:center;gap:.2rem;}
+nav button{background:none;border:none;color:#a09880;font-family:'DM Sans',sans-serif;font-size:.75rem;letter-spacing:.06em;text-transform:uppercase;padding:.5rem .8rem;cursor:pointer;border-bottom:2px solid transparent;transition:all .2s;}
+nav button:hover{color:var(--cream);}
+nav button.active{color:var(--amber-light);border-bottom-color:var(--amber);}
+.page{display:none;}.page.active{display:block;}
+.bee-layout{max-width:1000px;margin:0 auto;padding:2.5rem 1.5rem;}
+.bee-hero{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:2.5rem;align-items:start;}
+@media(max-width:680px){.bee-hero{grid-template-columns:1fr;}}
+.photo-block{position:relative;}
+.photo-block img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;border:1px solid var(--border);}
+.photo-placeholder{width:100%;aspect-ratio:4/3;background:#e8e0d0;border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;}
+.photo-placeholder p{font-size:.8rem;color:var(--muted);text-align:center;padding:0 1rem;}
+.photo-credit{background:var(--dark);color:#888;font-size:.68rem;padding:.45rem .75rem;letter-spacing:.04em;line-height:1.5;}
+.photo-credit a{color:var(--amber-light);text-decoration:none;}
+.photo-credit a:hover{text-decoration:underline;}
+.genus-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin-bottom:.3rem;font-weight:500;}
+.genus-name{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-style:italic;font-weight:400;line-height:1.1;margin-bottom:.3rem;}
+.common-name{font-size:.95rem;color:var(--muted);font-weight:400;margin-bottom:1.2rem;}
+.taxonomy-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1.2rem;}
+.taxon-pill{background:var(--dark);color:#c8bfa8;font-size:.68rem;padding:.2rem .65rem;letter-spacing:.07em;font-weight:400;}
+.intro-text{font-size:.95rem;color:var(--muted);line-height:1.8;border-left:2px solid var(--amber);padding-left:1rem;}
+.section-divider{border:none;border-top:1px solid var(--border);margin:2rem 0;}
+.size-bar-block{background:var(--card-bg);border:1px solid var(--border);padding:1.1rem 1.4rem;margin-bottom:2rem;}
+.size-bar-label{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:1rem;}
+.sb-row{display:flex;align-items:center;gap:8px;margin-bottom:10px;}
+.sb-label{font-size:.7rem;color:var(--muted);width:72px;flex-shrink:0;text-align:right;}
+.sb-label.ref{opacity:.55;}
+.sb-track{position:relative;flex:1;height:7px;border-radius:4px;background:var(--border);}
+.sb-track.ref{background:transparent;border:1px solid var(--border);opacity:.55;}
+.sb-fill{position:absolute;top:0;height:100%;border-radius:4px;}
+.sb-tick{position:absolute;top:-4px;width:1.5px;height:15px;border-radius:1px;}
+.sb-tick-label{position:absolute;top:13px;font-size:.62rem;color:var(--muted);transform:translateX(-50%);white-space:nowrap;}
+.sb-divider{height:1px;background:var(--border);margin:8px 0 10px 80px;}
+.sb-legend{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;}
+.sb-legend-item{display:flex;align-items:center;gap:5px;font-size:.7rem;color:var(--muted);}
+.sb-legend-swatch{width:10px;height:10px;border-radius:2px;flex-shrink:0;}
+.characteristics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-bottom:2rem;}
+.char-card{background:var(--card-bg);border:1px solid var(--border);padding:1.1rem;}
+.char-icon{font-size:1.3rem;margin-bottom:.5rem;display:block;}
+.char-label{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);font-weight:500;margin-bottom:.35rem;}
+.char-value{font-size:.87rem;color:var(--dark);font-weight:400;line-height:1.5;}
+.no-info{color:var(--muted);font-style:italic;}
+.id-key{background:var(--accent-green);color:#d4e8d4;padding:1.4rem;margin-bottom:2rem;}
+.id-key h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:400;margin-bottom:.8rem;color:#fff;letter-spacing:.04em;}
+.id-key ul{list-style:none;display:flex;flex-direction:column;gap:.45rem;}
+.id-key li{font-size:.87rem;padding-left:1.2rem;position:relative;line-height:1.5;}
+.id-key li::before{content:'→';position:absolute;left:0;color:var(--amber-light);font-size:.78rem;}
+.sources-block{background:#f0ebe0;border:1px solid var(--border);padding:1.1rem 1.4rem;}
+.sources-block h3{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:500;margin-bottom:.7rem;}
+.sources-block ul{list-style:none;display:flex;flex-direction:column;gap:.35rem;}
+.sources-block li{font-size:.8rem;}
+.sources-block a{color:var(--accent-green);text-decoration:none;word-break:break-all;}
+.sources-block a:hover{text-decoration:underline;}
+.source-label{color:var(--muted);font-size:.72rem;display:block;margin-bottom:.05rem;}
+footer{background:var(--dark);color:#666;text-align:center;font-size:.72rem;padding:1.2rem;letter-spacing:.04em;margin-top:1rem;}
+</style>
+</head>
+<body>
+<header>
+  <h1>Bee Genus Field Guide</h1>
+  <p>Identification &middot; Characteristics &middot; Verified Sources &middot; 24 Genera</p>
+</header>
+<nav id="nav-bar">
+<button onclick="showPage('amegilla',this)" class="active">Amegilla</button>
+<button onclick="showPage('anthidium',this)">Anthidium</button>
+<button onclick="showPage('anthophora',this)">Anthophora</button>
+<button onclick="showPage('axestotrigona',this)">Axestotrigona</button>
+<button onclick="showPage('braunsapis',this)">Braunsapis</button>
+<button onclick="showPage('ceratina',this)">Ceratina</button>
+<button onclick="showPage('chalicodoma',this)">Chalicodoma</button>
+<button onclick="showPage('ctenoplectra',this)">Ctenoplectra</button>
+<button onclick="showPage('epeolus',this)">Epeolus</button>
+<button onclick="showPage('heriades',this)">Heriades</button>
+<button onclick="showPage('hypotrigona',this)">Hypotrigona</button>
+<button onclick="showPage('lipotriches',this)">Lipotriches</button>
+<button onclick="showPage('megachile',this)">Megachile</button>
+<button onclick="showPage('meliponula',this)">Meliponula</button>
+<button onclick="showPage('nomia',this)">Nomia</button>
+<button onclick="showPage('pasites',this)">Pasites</button>
+<button onclick="showPage('plebeina',this)">Plebeina</button>
+<button onclick="showPage('pseudoanthidium',this)">Pseudoanthidium</button>
+<button onclick="showPage('serapista',this)">Serapista</button>
+<button onclick="showPage('tetralonia',this)">Tetralonia</button>
+<button onclick="showPage('tetraloniella',this)">Tetraloniella</button>
+<button onclick="showPage('thyreus',this)">Thyreus</button>
+<button onclick="showPage('xylocopa',this)">Xylocopa</button>
+<button onclick="showPage('zonalictus',this)">Zonalictus</button>
+<button onclick="showPage('amscutellata',this)">Apis mellifera scutellata</button>
+<button onclick="showPage('amcapensis',this)">Apis mellifera capensis</button>
+<button onclick="showPage('appendix',this)">Appendix</button>
+</nav>
+<div id="pages-container">
+<div id="amegilla" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Amegilla_cingulata_4.jpg/640px-Amegilla_cingulata_4.jpg" alt="Amegilla cingulata — blue-banded bee" onerror="this.parentElement.innerHTML='&lt;div class=\'photo-placeholder\'&gt;&lt;p&gt;Photo not available&lt;/p&gt;&lt;/div&gt;'">
+        <div class="photo-credit">Photo: James Niland, CC BY 2.0 &mdash; <a href="https://commons.wikimedia.org/wiki/File:Amegilla_cingulata_4.jpg" target="_blank">Wikimedia Commons</a> &mdash; <em>Amegilla cingulata</em></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Amegilla</h2>
+        <p class="common-name">Blue-banded Bees &amp; Digger Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Anthophorini</span>
+          <span class="taxon-pill">~260 species</span>
+        </div>
+        <p class="intro-text">A large genus of fast-flying, solitary bees best known for striking iridescent blue or white abdominal bands. Widespread across the Old World and Australia; important buzz pollinators of native and crop plants.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:33.3%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:33.3%;background:#c8821a;"><span class="sb-tick-label">10mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#c8821a;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔵</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Iridescent metallic <strong>blue or white transverse bands</strong> across a dark abdomen — the defining feature. Males often have more bands than females.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Body and legs densely hairy; thorax covered in pale to tawny fur. Long tongue for deep-flower foraging.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Old World tropics, Mediterranean, Middle East, South/SE Asia, and Australia. Few species above 45° N latitude.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">All species burrow in soft, bare, or sparsely vegetated soil — embankments, sandy cliffs. Each female excavates her own tunnel provisioning cells with pollen and nectar. Aggregations common; larvae overwinter underground.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">✈️</span>
+      <p class="char-label">Flight behaviour</p>
+      <p class="char-value">Extremely fast and agile; high-pitched buzz. Some species nearly impossible to catch in the field.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Look for vivid iridescent <strong>blue bands</strong> on a dark abdomen</li>
+<li>Robust hairy body resembling a small bumblebee but with a clearly banded abdomen</li>
+<li>High-pitched whining buzz in flight; very rapid, darting movement</li>
+<li>Distinguished from <em>Anthophora</em> by <strong>absence of an arolium</strong> between tarsal claws</li>
+<li>Males often sleep communally, gripping plant stems with mandibles</li>
+<li>Capable of <strong>buzz pollination (sonication)</strong> — vibrates flowers to release pollen</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Amegilla</span><a href="https://en.wikipedia.org/wiki/Amegilla" target="_blank">https://en.wikipedia.org/wiki/Amegilla</a></li>
+<li><span class="source-label">Wikimedia Commons — photo source</span><a href="https://commons.wikimedia.org/wiki/File:Amegilla_cingulata_4.jpg" target="_blank">https://commons.wikimedia.org/wiki/File:Amegilla_cingulata_4.jpg</a></li>
+<li><span class="source-label">Field of Mars EEC — Blue-banded bee fact sheet</span><a href="https://fieldofmar-e.schools.nsw.gov.au/fact-sheets/invertebrates/blue-banded-bee-fact-sheet" target="_blank">https://fieldofmar-e.schools.nsw.gov.au/fact-sheets/invertebrates/blue-banded-bee-fact-sheet</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="anthidium" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Anthidium_florentinum_01.JPG/640px-Anthidium_florentinum_01.JPG" alt="Anthidium florentinum — wool carder bee" onerror="this.parentElement.innerHTML='&lt;div class=\'photo-placeholder\'&gt;&lt;p&gt;Photo not available&lt;/p&gt;&lt;/div&gt;'">
+        <div class="photo-credit">Photo: Sanja565658, CC BY-SA 3.0 &mdash; <a href="https://commons.wikimedia.org/wiki/File:Anthidium_florentinum_01.JPG" target="_blank">Wikimedia Commons</a> &mdash; <em>Anthidium florentinum</em></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Anthidium</h2>
+        <p class="common-name">Wool Carder Bees &amp; Potter Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Megachilidae</span>
+          <span class="taxon-pill">Tribe: Anthidiini</span>
+          <span class="taxon-pill">~100+ species</span>
+        </div>
+        <p class="intro-text">Compact, boldly patterned bees often mistaken for small wasps. Notable for highly territorial males that are unusually large compared to females, and females that 'card' plant fibres to line nest cells.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">&#9792; female</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:26.7%;width:13.3%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:26.7%;background:#c8821a;"><span class="sb-tick-label">8mm</span></div>
+        <div class="sb-tick" style="left:40.0%;background:#c8821a;"><span class="sb-tick-label">12mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label">&#9794; male</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:40.0%;width:20.0%;background:#3d5a3e;"></div>
+        <div class="sb-tick" style="left:40.0%;background:#3d5a3e;"><span class="sb-tick-label">12mm</span></div>
+        <div class="sb-tick" style="left:60.0%;background:#3d5a3e;"><span class="sb-tick-label">18mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Female</div><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#3d5a3e;"></div>Male</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🟡</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value"><strong>Yellow or pale spots/patches on a black abdomen.</strong> Pattern variable by species. Resembles a wasp at a glance but lacks waist constriction.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Relatively sparse hair. Compact, robust form. Males of <em>A. manicatum</em> have <strong>three spine-like teeth</strong> at the abdominal apex.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Cosmopolitan — Eurasia, Africa, and the Americas. <em>A. manicatum</em> introduced to North America and New Zealand.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Cavity nesters — use pre-existing holes in wood, hollow stems, stone walls, or the ground. Females line and partition cells using carded plant fibres, resin, or mud. <em>A. florentinum</em> often nests in holes in walls and trees.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">⚔️</span>
+      <p class="char-label">Behaviour</p>
+      <p class="char-value">Males aggressively patrol flower patches, body-slamming intruders. Females 'card' wool from fuzzy-leaved plants to construct nest cells.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Yellow or cream <strong>spots or patches on a black abdomen</strong> — wasp-like but no waist constriction</li>
+<li>Males visibly <strong>larger than females</strong> — the reverse of most bee genera</li>
+<li>Highly aggressive male: watch for a bee actively chasing other insects from flowers</li>
+<li>Females carry pollen on the <strong>underside of the abdomen</strong> (scopa), not on the legs</li>
+<li>Males of <em>A. manicatum</em> have three visible <strong>spines at the tail tip</strong></li>
+<li>Females observed collecting visible tufts of plant fibre (carding) is a strong ID cue</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Anthidium</span><a href="https://en.wikipedia.org/wiki/Anthidium" target="_blank">https://en.wikipedia.org/wiki/Anthidium</a></li>
+<li><span class="source-label">Wikimedia Commons — photo source</span><a href="https://commons.wikimedia.org/wiki/File:Anthidium_florentinum_01.JPG" target="_blank">https://commons.wikimedia.org/wiki/File:Anthidium_florentinum_01.JPG</a></li>
+<li><span class="source-label">BugGuide — Genus Anthidium</span><a href="https://www.bugguide.net/node/view/7743" target="_blank">https://www.bugguide.net/node/view/7743</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="anthophora" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Anthophora_plumipes_m_fcr.jpg/640px-Anthophora_plumipes_m_fcr.jpg" alt="Anthophora plumipes — hairy-footed flower bee (male)" onerror="this.parentElement.innerHTML='&lt;div class=\'photo-placeholder\'&gt;&lt;p&gt;Photo not available&lt;/p&gt;&lt;/div&gt;'">
+        <div class="photo-credit">Photo: gailhampshire, CC BY 2.0 &mdash; <a href="https://commons.wikimedia.org/wiki/File:Anthophora_plumipes_m_fcr.jpg" target="_blank">Wikimedia Commons</a> &mdash; <em>Anthophora plumipes (male)</em></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Anthophora</h2>
+        <p class="common-name">Digger Bees &amp; Flower Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Anthophorini</span>
+          <span class="taxon-pill">450+ species</span>
+        </div>
+        <p class="intro-text">One of the largest bee genera in Apidae. Stout, furry bees that are convincing bumblebee mimics. Among the earliest to emerge in spring, exceptionally fast in flight, and important pollinators of tubular flowers.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:33.3%;width:23.3%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:33.3%;background:#c8821a;"><span class="sb-tick-label">10mm</span></div>
+        <div class="sb-tick" style="left:56.7%;background:#c8821a;"><span class="sb-tick-label">17mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🐝</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Densely furry, bumblebee-like. Black or dark abdomen often with <strong>pale hair bands</strong>. Males frequently have a distinctive <strong>pale (white or yellow) face</strong>.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🦵</span>
+      <p class="char-label">Legs</p>
+      <p class="char-value">Females have <strong>very densely hairy hind legs</strong> (scopae) for carrying large pollen loads — a key field mark. Some males have blade-like modified hind leg armature.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Holarctic and sub-Saharan Africa; most abundant in northern temperate zones. Over 450 species in 14 subgenera.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Nearly all species dig in soil — level ground and vertical clay or sandy banks. Cells have waterproof linings; larvae do not spin cocoons. Some females build conical <em>tumuli</em> (chimneys) at entrances. Solitary but large aggregations common; females vigorously defend nest entrances.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">✈️</span>
+      <p class="char-label">Flight behaviour</p>
+      <p class="char-value">Bullet-fast, hovering precisely at flowers; long tongue extended mid-flight. High-pitched buzz. One of the earliest genera active in spring.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Dense fur gives a <strong>bumblebee-like silhouette</strong> but body more compact with a protruding clypeus</li>
+<li>Males have a <strong>pale (white/yellow) facial patch</strong> — fastest distinction from Bombus</li>
+<li>Females: look for <strong>very hairy hind legs</strong> packed with pollen (orange or yellow scopae)</li>
+<li>Distinguished from <em>Amegilla</em> by the presence of an <strong>arolium</strong> between tarsal claws</li>
+<li>Extremely rapid bullet-like flight with audible high-pitched buzz</li>
+<li>Females may build conical soil tumuli (chimneys) at nest entrances</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Anthophora</span><a href="https://en.wikipedia.org/wiki/Anthophora" target="_blank">https://en.wikipedia.org/wiki/Anthophora</a></li>
+<li><span class="source-label">Wikipedia — Anthophora plumipes</span><a href="https://en.wikipedia.org/wiki/Anthophora_plumipes" target="_blank">https://en.wikipedia.org/wiki/Anthophora_plumipes</a></li>
+<li><span class="source-label">Wild Bees of Texas — Anthophora</span><a href="https://www.wildbeestexas.com/anthophora" target="_blank">https://www.wildbeestexas.com/anthophora</a></li>
+<li><span class="source-label">Vermont Atlas of Life — Digger bees</span><a href="https://val.vtecostudies.org/projects/vtbees/anthophora/" target="_blank">https://val.vtecostudies.org/projects/vtbees/anthophora/</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="axestotrigona" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Axestotrigona</h2>
+        <p class="common-name">African Stingless Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Meliponini</span>
+          <span class="taxon-pill">~8 species</span>
+        </div>
+        <p class="intro-text">A genus of small African stingless bees lacking yellow integumental markings. Highly eusocial and producing honey. Found in tropical African forest habitats; often treated as a subgenus of Meliponula.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:16.7%;width:6.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:16.7%;background:#c8821a;"><span class="sb-tick-label">5mm</span></div>
+        <div class="sb-tick" style="left:23.3%;background:#c8821a;"><span class="sb-tick-label">7mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Small, uniformly dark bees <strong>lacking yellow integumental markings</strong>. Dull, matte integument. Hind tibia keirotrichiate zone extends to the retromarginal edge — a key diagnostic.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Small and compact. Distinguished from related stingless bee genera by specific hind tibia features requiring close examination.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Sub-Saharan tropical Africa — West, Central, and East Africa including Tanzania, Cameroon, and Ghana.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Nests in tree hollows or abandoned structures. Entrance is a bee-sized hole on a short rounded cerumen platform. Honey and pollen stored in separate spherical pots. Colonies can be large.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🐝</span>
+      <p class="char-label">Sociality</p>
+      <p class="char-value">Highly eusocial with a queen, workers, and drones. Workers produce vibrational alarm signals in defense. Honey is of good quality.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Very small (5–7 mm), dark, uniformly coloured — <strong>no yellow integumental markings</strong></li>
+<li>Stingless — workers can bite but cannot sting</li>
+<li>Nest entrance is a short rounded cerumen platform on a tree hollow</li>
+<li>Distinguished from <em>Liotrigona</em> by dull rather than shiny integument</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">PMC — Stingless bee classification and biology</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10401200/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC10401200/</a></li>
+<li><span class="source-label">Springer — Nest architecture of Meliponula (Axestotrigona) ferruginea</span><a href="https://link.springer.com/article/10.1007/s12038-018-9840-8" target="_blank">https://link.springer.com/article/10.1007/s12038-018-9840-8</a></li>
+<li><span class="source-label">NCBI — Guarding vibrations in Axestotrigona ferruginea</span><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8146115/" target="_blank">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8146115/</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="braunsapis" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Braunsapis</h2>
+        <p class="common-name">Reed Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Allodapini</span>
+          <span class="taxon-pill">~80 species</span>
+        </div>
+        <p class="intro-text">The largest genus in the allodapine tribe. Slender, mostly dark 'reed bees' that burrow in plant stem pith. Remarkable for showing the full sociality spectrum from solitary to eusocial within one genus. Important pollinators of cashew and other crops.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:13.3%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:13.3%;background:#c8821a;"><span class="sb-tick-label">4mm</span></div>
+        <div class="sb-tick" style="left:30.0%;background:#c8821a;"><span class="sb-tick-label">9mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Slender, <strong>mostly black bees</strong>; some paler or reddish. Elongated body; no bold markings. More slender than most other small bees.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Sparse hair; reduced scopa on hind tibia. Parasitic species have shortened mouthparts and heads.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Africa, Asia (India, SE Asia), and Australasia. Afrotropical origin with dispersal to Madagascar and beyond.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Burrow in the pith of plant stems — African blue basil, lantana, cashew. Females excavate downward; pollen stored on burrow walls; larvae fed progressively. Nests often have narrowed entrances made of fibre or pith.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🤝</span>
+      <p class="char-label">Sociality</p>
+      <p class="char-value">Extraordinary range: solitary foundresses to eusocial colonies of 2–4 bees. Some species are social parasites that invade and replace the egg-layer in host nests.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Very slender, small, mostly black bee found near pithy plant stems</li>
+<li>Nest burrows visible in cut ends of stems — narrowed entrance often present</li>
+<li>No bold colour markings; progressive brood provisioning (larvae not sealed) is characteristic</li>
+<li>Social parasites never observed carrying pollen — a cleptoparasite clue</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Braunsapis</span><a href="https://en.wikipedia.org/wiki/Braunsapis" target="_blank">https://en.wikipedia.org/wiki/Braunsapis</a></li>
+<li><span class="source-label">Tandfonline — Biological notes on Braunsapis mixta</span><a href="https://www.tandfonline.com/doi/abs/10.1080/00218839.2022.2028965" target="_blank">https://www.tandfonline.com/doi/abs/10.1080/00218839.2022.2028965</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="ceratina" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Ceratina</h2>
+        <p class="common-name">Small Carpenter Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Ceratinini</span>
+          <span class="taxon-pill">300+ species</span>
+        </div>
+        <p class="intro-text">Cosmopolitan small carpenter bees — the sole lineage of their tribe. Often mistaken for sweat bees due to small size and metallic sheen. Nest in dead plant stems; show a range of social behaviour from solitary to weakly eusocial.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:10.0%;width:40.0%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:10.0%;background:#c8821a;"><span class="sb-tick-label">3mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#c8821a;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">💚</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Dark, shining, often <strong>metallic (blue-green, purple, or black)</strong> body with sparse hair. Most species have <strong>yellow or white face markings</strong>, especially males.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Slender, cylindrical; practically hairless-looking. Weak scopa on hind tibia. Separated from Halictidae by long glossa and tiny jugal lobe on hindwing.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Cosmopolitan — all continents except Antarctica. 300+ species in 23 subgenera; 22 in North America, 1 in Britain (<em>C. cyanea</em>).</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Nest in dead/broken plant stems with soft pith — brambles, roses, teasel, elderberry, bamboo — or in old wood. Females excavate downward creating cells divided by pith particles, each with a pollen ball. Nests 3–30 cm deep; bees overwinter in stems.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🤝</span>
+      <p class="char-label">Sociality</p>
+      <p class="char-value">Variable: mostly solitary but some subsocial or weakly eusocial. Some species are parthenogenetic (reproduce without mating).</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Very small, shiny, almost hairless metallic bee — blue-green, purple, or black</li>
+<li>Most species have <strong>white or yellow dots/lines on face</strong> above the mouth</li>
+<li>Look for nest burrows in cut ends of hollow or pithy plant stems</li>
+<li>Much smaller than <em>Xylocopa</em> (large carpenter bees); different wing venation from Halictidae</li>
+<li>Solitary or small groups in same stem; no large colony</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Ceratina</span><a href="https://en.wikipedia.org/wiki/Ceratina" target="_blank">https://en.wikipedia.org/wiki/Ceratina</a></li>
+<li><span class="source-label">NC State Extension — Small carpenter bees</span><a href="https://content.ces.ncsu.edu/small-carpenter-bees" target="_blank">https://content.ces.ncsu.edu/small-carpenter-bees</a></li>
+<li><span class="source-label">Buzzaboutbees — Ceratina small carpenter bees</span><a href="https://www.buzzaboutbees.net/ceratina-small-carpenter-bees.html" target="_blank">https://www.buzzaboutbees.net/ceratina-small-carpenter-bees.html</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="chalicodoma" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Chalicodoma</h2>
+        <p class="common-name">Mason Bees / Dauber Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Megachilidae</span>
+          <span class="taxon-pill">Tribe: Megachilini</span>
+          <span class="taxon-pill">~60 species</span>
+        </div>
+        <p class="intro-text">A subgenus of Megachile — the 'mason bees' studied by naturalist Jean-Henri Fabre. They construct durable mud nests cemented to stones, walls, and branches. Nests can last years and are reused by successive generations.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:33.3%;width:33.3%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:33.3%;background:#c8821a;"><span class="sb-tick-label">10mm</span></div>
+        <div class="sb-tick" style="left:66.7%;background:#c8821a;"><span class="sb-tick-label">20mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Robust, dark (black or dark brown) bees with pale hair bands on the abdomen. Females have ventral pollen scopae. Mandibles without cutting edges between teeth.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🧱</span>
+      <p class="char-label">Nest material</p>
+      <p class="char-value">Builds exposed <strong>ball- or dome-shaped nests from mud</strong> mixed with sand and saliva — cemented to rocks, walls, or branches. Hard when dry; historically found on ancient monuments.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Primarily Old World — Europe, Africa, Middle East, and Asia. About 60 species worldwide.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Builds <strong>exposed mud or clay nests</strong> on stones, walls, and branches. Some species also nest in natural cavities and old wasp nests. Nests durable — reused year after year by future generations.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Females carry pollen in ventral scopae (underside of abdomen) rather than on legs. Associated with a range of flowering plants.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Look for round or dome-shaped <strong>mud nests</strong> cemented to rocks, walls, or woody stems</li>
+<li>Robust dark bee; females carry pollen under the abdomen (not on hind legs)</li>
+<li>Often in exposed, sunny, sheltered spots near clay or sandy soil</li>
+<li>Reused nests growing larger over generations is a characteristic sign</li>
+<li>Scopae visible as orange/pale fur on underside of abdomen when pollen-loaded</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Exotic Bee ID — Chalicodoma</span><a href="https://idtools.org/exotic_bee/index.cfm?packageID=1189&entityID=9139" target="_blank">https://idtools.org/exotic_bee/index.cfm?packageID=1189&entityID=9139</a></li>
+<li><span class="source-label">Wikipedia — Megachile (includes Chalicodoma)</span><a href="https://en.wikipedia.org/wiki/Megachile" target="_blank">https://en.wikipedia.org/wiki/Megachile</a></li>
+<li><span class="source-label">Springer — Megachile (Chalicodoma) parietina nest ecology</span><a href="https://link.springer.com/article/10.1007/s10841-023-00519-2" target="_blank">https://link.springer.com/article/10.1007/s10841-023-00519-2</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="ctenoplectra" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Ctenoplectra</h2>
+        <p class="common-name">Oil-collecting Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Ctenoplectrini</span>
+          <span class="taxon-pill">~19 species</span>
+        </div>
+        <p class="intro-text">Highly specialised oil-collecting bees from tropical Africa and Asia. They collect floral oils exclusively from Cucurbitaceae flowers using unique comb-like tibial spurs. Closely related cleptoparasitic genus Ctenoplectrina also exists.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:23.3%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:23.3%;background:#c8821a;"><span class="sb-tick-label">7mm</span></div>
+        <div class="sb-tick" style="left:40.0%;background:#c8821a;"><span class="sb-tick-label">12mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Small to medium, dark bees with <strong>short tongues and modified scopae</strong> adapted for oil collection. Large comb-like tibial spurs on hind legs are the key structural feature.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🦵</span>
+      <p class="char-label">Legs</p>
+      <p class="char-value"><strong>Enlarged tibial spurs with close-set teeth</strong> on hind legs — adapted to squeeze floral oil from sternal hair brushes. Oil is carried back to provision nest cells.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Tropical Africa (9 species) and Asia including Malaysia, Taiwan, and Australia (11 species). Tribe originated in Africa in the Early Eocene.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Nests in <strong>small pre-existing holes in wood or stone</strong>, or old nests of other bees. Cells provisioned with a floral oil and pollen mixture; oil also used to line cell walls.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Obligate specialists on <em>Momordica</em>, <em>Thladiantha</em>, and other Cucurbitaceae. Females sweep oil from petals with abdominal sternal brushes in a side-sweeping motion.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Distinctive <strong>comb-like tibial spurs</strong> on hind legs (requires close examination)</li>
+<li>Short tongue — unlike most bees of similar size</li>
+<li>Associated with Cucurbitaceae flowers (gourds, cucumbers, bitter melons)</li>
+<li>Modified abdominal hair brushes (sternae) for oil collection — unusual among bees</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Ctenoplectrini</span><a href="https://en.wikipedia.org/wiki/Ctenoplectridae" target="_blank">https://en.wikipedia.org/wiki/Ctenoplectridae</a></li>
+<li><span class="source-label">Springer — Filmed copulation and biology of Ctenoplectra</span><a href="https://link.springer.com/article/10.1007/s13592-024-01102-7" target="_blank">https://link.springer.com/article/10.1007/s13592-024-01102-7</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="epeolus" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Epeolus</h2>
+        <p class="common-name">Variegated Cuckoo Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Epeolini</span>
+          <span class="taxon-pill">~100 species</span>
+        </div>
+        <p class="intro-text">Cleptoparasitic cuckoo bees that lay eggs in the nests of Colletes (cellophane bees). Do not build nests or collect pollen. Recognised by bold black-and-white patterning and abdominal spines used to pierce the waterproof cell lining of hosts.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:16.7%;width:33.3%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:16.7%;background:#c8821a;"><span class="sb-tick-label">5mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#c8821a;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🎭</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value"><strong>Bold black-and-white patterns</strong> on thorax and abdomen formed by dense flat-lying hairs. Chunky thorax. Some species have red markings. Pattern varies by species.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value"><strong>No scopa (pollen-collecting hairs)</strong> — females never collect pollen. Reduced body hair; often a thickened exoskeleton.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Worldwide; ~100 species. Most species found near nesting aggregations of host Colletes bees.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><strong>Does not build its own nest.</strong> Female enters a host Colletes burrow and uses abdominal <strong>saw-like spines</strong> to pierce the plastic-like cell lining, depositing a glue-coated egg. The Epeolus larva kills the host egg and consumes the pollen provision.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">👁️</span>
+      <p class="char-label">Behaviour</p>
+      <p class="char-value">Found near or hovering over host aggregations and foraging on nearby flowers for nectar only. Both sexes sleep outside at night with no fixed home.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li><strong>Bold close-cropped black-and-white hair patterns</strong> on abdomen and thorax</li>
+<li>No visible pollen load or hairy hind legs — a reliable sign of a cleptoparasite</li>
+<li>Often seen near or hovering over ground aggregations of Colletes bees</li>
+<li>Females have saw-like abdominal tip structures — visible at close range</li>
+<li>Often mistaken for <em>Triepeolus</em>, which is usually larger</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Epeolus</span><a href="https://en.wikipedia.org/wiki/Epeolus" target="_blank">https://en.wikipedia.org/wiki/Epeolus</a></li>
+<li><span class="source-label">Wild Bees of Texas — Epeolus/Triepeolus</span><a href="https://www.wildbeestexas.com/triepeolus" target="_blank">https://www.wildbeestexas.com/triepeolus</a></li>
+<li><span class="source-label">Florida Wildflower Foundation — Cuckoo bees</span><a href="https://www.flawildflowers.org/know-your-native-pollinators-cuckoo-bees/" target="_blank">https://www.flawildflowers.org/know-your-native-pollinators-cuckoo-bees/</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="heriades" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Heriades</h2>
+        <p class="common-name">Resin Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Megachilidae</span>
+          <span class="taxon-pill">Tribe: Osmiini</span>
+          <span class="taxon-pill">138 species</span>
+        </div>
+        <p class="intro-text">Small black resin bees with heavily pitted integument and conspicuous white ventral scopae on females. They use plant resin to partition and seal nest cells in pre-existing cavities. A transverse ridge on the first abdominal segment is a key structural character.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:13.3%;width:20.0%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:13.3%;background:#c8821a;"><span class="sb-tick-label">4mm</span></div>
+        <div class="sb-tick" style="left:33.3%;background:#c8821a;"><span class="sb-tick-label">10mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Small slender black bees with <strong>coarsely pitted (golf ball-like) integument</strong> on head and thorax. Thin white hair bands at rims of abdominal segments. Female abdomen concave; male abdomen curls under.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Females have <strong>conspicuous white or pale orange scopal hairs on the underside of the abdomen</strong> — visible to the naked eye. A transverse carina separates the front face of the first abdominal segment.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Palaearctic, Nearctic, Afrotropical, and Oriental regions. 138 species worldwide.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Nests in <strong>pre-existing cavities</strong> — insect burrows in dead wood, hollow stems, or beetle holes. Cell partitions and entrance plugs constructed from plant <strong>resin</strong> mixed with sand, pebbles, or wood fibres. Uses insect hotels readily. Some species nest in reed galls.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Some species are pollen specialists; association with Asteraceae (composites) is common. Females carry pollen in white scopal hairs under the abdomen.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Very small black bee with <strong>coarsely pitted (sculptured) head and thorax</strong></li>
+<li>Thin white bands at edges of abdominal segments — not full bands</li>
+<li>Female abdomen concave from the side; male abdomen curls under noticeably</li>
+<li>White to pale orange scopal hairs visible under female abdomen when pollen-loaded</li>
+<li>Nest entrances plugged with resin — sometimes mixed with small stones</li>
+<li>Often found near daisy-family (Asteraceae) flowers</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Minnesota Native Bees — Heriades</span><a href="https://www.beesmn.org/heriades" target="_blank">https://www.beesmn.org/heriades</a></li>
+<li><span class="source-label">Wild Bees of Texas — Heriades resin bees</span><a href="https://www.wildbeestexas.com/heriades" target="_blank">https://www.wildbeestexas.com/heriades</a></li>
+<li><span class="source-label">Buzzaboutbees — Heriades</span><a href="https://www.buzzaboutbees.net/heriades-resin-bees.html" target="_blank">https://www.buzzaboutbees.net/heriades-resin-bees.html</a></li>
+<li><span class="source-label">Exotic Bee ID — Heriades</span><a href="https://idtools.org/exotic_bee/index.cfm?packageID=1181&entityID=8959" target="_blank">https://idtools.org/exotic_bee/index.cfm?packageID=1181&entityID=8959</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="hypotrigona" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Hypotrigona</h2>
+        <p class="common-name">Minute African Stingless Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Meliponini</span>
+          <span class="taxon-pill">~6 species</span>
+        </div>
+        <p class="intro-text">Among the smallest bees in Africa, these minute stingless bees are found commonly across sub-Saharan Africa. Highly eusocial; produce prized medicinal honey; build distinctive trumpet-shaped entrance tubes. Two species are managed for honey in East Africa.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:6.7%;width:6.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:6.7%;background:#c8821a;"><span class="sb-tick-label">2mm</span></div>
+        <div class="sb-tick" style="left:13.3%;background:#c8821a;"><span class="sb-tick-label">4mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Minute, <strong>dull and matte</strong> dark bees with a reticulate to micro-alveolate (tiny pitted) integument. Broadly rounded distal superior angle of the hind tibia is a key diagnostic. No functional sting.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Very small and compact. Can be confused with <em>Liotrigona</em> but Hypotrigona has a duller (less shiny) integument. Some hoverflies can be mistaken for this genus.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Sub-Saharan Africa from Senegal east to Eritrea and south to northern South Africa. Common in East African forest and savannah.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Builds nests in <strong>dry logs, rock crevices, wall cavities, or living tree hollows</strong>. Characteristic <strong>trumpet-shaped tubular entrance</strong> projects from the nest opening. Honey and pollen stored in separate spherical pots. Brood cells in clusters or irregular layers.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🐝</span>
+      <p class="char-label">Sociality</p>
+      <p class="char-value">Highly eusocial; colonies up to ~850 adults. Age-based division of labour. Honey has traditional medicinal uses in many African communities.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Minute size (2–4 mm) — easily overlooked; among Africa's smallest bees</li>
+<li>Dull matte dark integument — less shiny than the similar genus <em>Liotrigona</em></li>
+<li>Stingless — cannot sting but may bite</li>
+<li>Trumpet-shaped entrance tube at nest site is a strong ID cue</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">PMC — Stingless bee classification and biology</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10401200/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC10401200/</a></li>
+<li><span class="source-label">Lucid Central — Hypotrigona bees fact sheet</span><a href="https://keys.lucidcentral.org/keys/v3/eafrinet/bee_genera/key/african_bee_genera/Media/Html_eafrica/Hypotrigona_bees.htm" target="_blank">https://keys.lucidcentral.org/keys/v3/eafrinet/bee_genera/key/african_bee_genera/Media/Html_eafrica/Hypotrigona_bees.htm</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="lipotriches" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Lipotriches</h2>
+        <p class="common-name">Sweat Bees / Nomia Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Halictidae</span>
+          <span class="taxon-pill">Tribe: Nomiinae</span>
+          <span class="taxon-pill">~340 species</span>
+        </div>
+        <p class="intro-text">A large genus of Old World sweat bees distinguished from Nomia by pale hair bands (not shiny enamel-like integument bands). Several South African species are grass pollen specialists — unusual among bees. Can form enormous nesting aggregations.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:20.0%;width:20.0%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:20.0%;background:#c8821a;"><span class="sb-tick-label">6mm</span></div>
+        <div class="sb-tick" style="left:40.0%;background:#c8821a;"><span class="sb-tick-label">12mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🟡</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Medium-sized banded bees with <strong>prominent pale hair bands</strong> on abdominal margins — not shiny enamel-like bands (which characterise Nomia). Often metallic sheen. Many species dark with golden or white hair bands.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Relatively slender body compared to other Nomiinae. Short furry thorax hair. Females collect pollen on hind leg tibiae and femora.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Eastern Hemisphere only (Africa, Madagascar, Iran, India, Asia, New Guinea, Australia). Absent from Europe. ~340 species in 9 subgenera.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Ground-nesters — dig burrows in soil. Solitary to communally nesting. In optimal conditions can form <strong>massive aggregations with tens of thousands of nests per hectare</strong>. Males often cluster in roosting aggregations. Up to 3 females may share a nest entrance, taking turns guarding.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌾</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Important pollinators; 5 South African species specialise on grass pollen. Important crop pollinators in Africa and Australia.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li><strong>Pale hair bands</strong> (not shiny integument bands) on abdominal margins — key difference from Nomia</li>
+<li>Slender body relative to other Nomiinae; metallic sheen common</li>
+<li>Ground nester; look for aggregations in open bare soil</li>
+<li>Males in roosting ball-shaped clusters clinging together in early morning</li>
+<li>Pollen collected on hind legs, not under abdomen</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Lipotriches</span><a href="https://en.wikipedia.org/wiki/Lipotriches" target="_blank">https://en.wikipedia.org/wiki/Lipotriches</a></li>
+<li><span class="source-label">Aussiebee — Lipotriches and Nomia bees</span><a href="https://www.aussiebee.com.au/nomia-and-lipotriches.html" target="_blank">https://www.aussiebee.com.au/nomia-and-lipotriches.html</a></li>
+<li><span class="source-label">Lucid Central — Lipotriches fact sheet</span><a href="https://keys.lucidcentral.org/keys/v3/eafrinet/bee_genera/key/african_bee_genera/Media/Html_eafrica/Lipotriches_bees.htm" target="_blank">https://keys.lucidcentral.org/keys/v3/eafrinet/bee_genera/key/african_bee_genera/Media/Html_eafrica/Lipotriches_bees.htm</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="megachile" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Megachile</h2>
+        <p class="common-name">Leafcutter Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Megachilidae</span>
+          <span class="taxon-pill">Tribe: Megachilini</span>
+          <span class="taxon-pill">1500+ species</span>
+        </div>
+        <p class="intro-text">One of the largest bee genera worldwide. Females use powerful mandibles to cut precise circular/oval leaf or petal pieces to line and cap nest cells — leaving distinctive circular holes in smooth-edged leaves. Important wild and commercial pollinators.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">&#9792; female</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:30.0%;width:20.0%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:30.0%;background:#c8821a;"><span class="sb-tick-label">9mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#c8821a;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label">&#9794; male</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:23.3%;width:16.7%;background:#3d5a3e;"></div>
+        <div class="sb-tick" style="left:23.3%;background:#3d5a3e;"><span class="sb-tick-label">7mm</span></div>
+        <div class="sb-tick" style="left:40.0%;background:#3d5a3e;"><span class="sb-tick-label">12mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Female</div><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#3d5a3e;"></div>Male</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🟤</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Dark (black) bees with <strong>contrasting white hair bands</strong> on the abdomen. Females have a <strong>pollen brush (scopa) on the underside of the abdomen</strong> — turns orange/yellow when loaded with pollen.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">✂️</span>
+      <p class="char-label">Mandibles</p>
+      <p class="char-value">Strong scissor-like mandibles for cutting leaves. Females: pointed abdomen; males: blunter rounder abdomen with hairy face; some males have enlarged colourful front legs.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Worldwide — one of the most cosmopolitan bee genera. 1,500+ species. Includes commercially important alfalfa leafcutter bee (<em>M. rotundata</em>).</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Cavity nesters — nests in narrow pre-existing cavities: hollow stems, wood burrows, snail shells, holes in concrete, soil. Female cuts neat circular/oval leaf pieces (~2.5 cm) to construct cigar-shaped cells each with a single egg on a pollen ball.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Generally polylectic (generalist). Females easily spotted returning with leaf pieces held under the abdomen, or with abdomen noticeably orange-tipped from pollen.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li><strong>Pollen-loaded underside of abdomen</strong> turning orange/yellow — not hind legs like most bees</li>
+<li>Look for neat <strong>circular or oval holes cut in smooth-edged leaves</strong> nearby</li>
+<li>Robust dark bee with white hair bands; pointed female abdomen</li>
+<li>Female carrying leaf pieces folded under body in flight is unmistakable</li>
+<li>Nest holes plugged with green or brown leaf pieces — easy to spot in bee hotels</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Megachile</span><a href="https://en.wikipedia.org/wiki/Megachile" target="_blank">https://en.wikipedia.org/wiki/Megachile</a></li>
+<li><span class="source-label">NC State Extension — Leafcutter bees</span><a href="https://content.ces.ncsu.edu/leafcutter-bees" target="_blank">https://content.ces.ncsu.edu/leafcutter-bees</a></li>
+<li><span class="source-label">USDA — Leafcutting bees (Megachile)</span><a href="https://www.fs.usda.gov/wildflowers/pollinators/pollinator-of-the-month/megachile_bees.shtml" target="_blank">https://www.fs.usda.gov/wildflowers/pollinators/pollinator-of-the-month/megachile_bees.shtml</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="meliponula" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Meliponula</h2>
+        <p class="common-name">African Stingless Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Meliponini</span>
+          <span class="taxon-pill">~13 species</span>
+        </div>
+        <p class="intro-text">A modestly robust genus of African stingless bees found commonly throughout tropical Africa. Some species nest underground and are widely kept for medicinal honey in East Africa. The focus of growing meliponiculture interest.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:20.0%;width:6.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:20.0%;background:#c8821a;"><span class="sb-tick-label">6mm</span></div>
+        <div class="sb-tick" style="left:26.7%;background:#c8821a;"><span class="sb-tick-label">8mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Modest-sized, robust, dark bees. Species vary from black to reddish-brown. Stingless. Pubescent propodeum (hairy upper thorax-abdomen junction) distinguishes from similar genus <em>Plebeiella</em>.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Compact body. Sting complex present but reduced and largely non-functional. Inter-specific differences in nest entrance colour and structure can aid identification.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Tropical Africa, from Guinea east to Kenya and south to Namibia and Botswana. Common in forest, savannah, and farmland.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Variable — some species (e.g. <em>M. beccarii</em>) build <strong>subterranean nests</strong> at ~50 cm depth in varied soils; others nest in tree hollows or termite/ant nests. Well-defined entrance tube, involucrum, brood area, and separate honey/pollen pots. Entrances guarded by 2–12 workers.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🐝</span>
+      <p class="char-label">Sociality</p>
+      <p class="char-value">Highly eusocial. Non-aggressive and do not bite when disturbed. Honey has medicinal properties. Growing importance in African meliponiculture.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Small (6–8 mm), stout, dark stingless bee — no functional sting</li>
+<li>Ground-nesting species (<em>M. beccarii</em>) identified by soil entrance guarded by workers</li>
+<li>Tree-nesting species have a cerumen entrance tube into a hollow</li>
+<li>Honey and pollen stored in separate round pots inside nest</li>
+<li>Pubescent (hairy) propodeum distinguishes from similar genus <em>Plebeiella</em></li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">PMC — Stingless bee classification and biology</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10401200/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC10401200/</a></li>
+<li><span class="source-label">Tandfonline — Nest ecology of Meliponula beccarii, Kenya</span><a href="https://www.tandfonline.com/doi/full/10.1080/00218839.2025.2500787" target="_blank">https://www.tandfonline.com/doi/full/10.1080/00218839.2025.2500787</a></li>
+<li><span class="source-label">Springer — Nesting ecology of stingless bees, Ethiopia</span><a href="https://link.springer.com/article/10.1007/s42690-023-00946-3" target="_blank">https://link.springer.com/article/10.1007/s42690-023-00946-3</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="nomia" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Nomia</h2>
+        <p class="common-name">Banded Nomia / Alkali Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Halictidae</span>
+          <span class="taxon-pill">Tribe: Nomiinae</span>
+          <span class="taxon-pill">~130 species</span>
+        </div>
+        <p class="intro-text">Sweat bees with striking iridescent abdominal bands that shimmer with green, blue, or pearl tones. Some species form the largest known ground-nesting bee aggregations in the world. Nomia melanderi is a key commercial pollinator of alfalfa.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:23.3%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:23.3%;background:#c8821a;"><span class="sb-tick-label">7mm</span></div>
+        <div class="sb-tick" style="left:40.0%;background:#c8821a;"><span class="sb-tick-label">12mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🟢</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Black bees with distinctive <strong>opalescent, pearlescent, or neon-coloured bands</strong> on the abdomen — shiny enamel-like integument (not hair bands). Blue, green, teal, or white iridescence. Males often have enlarged hind tibiae.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🦵</span>
+      <p class="char-label">Legs</p>
+      <p class="char-value">Males of many species have <strong>modified, enlarged hind tibiae</strong> used to grasp females during mating. Leg structure varies by species. Females collect pollen on hind leg tibiae and femora.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Cosmopolitan — Africa, tropical Asia, Australia, and North America. ~130 species. <em>N. melanderi</em> (alkali bee) native to western North America, prefers salty soils.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><strong>Ground-nesters</strong> — solitary or communal nests in soil. Can form <strong>the largest bee nesting aggregations in the world</strong> (over 700 nests per square yard at one site). Urn-shaped cells; some nests reused by multiple generations.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌾</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value"><em>N. melanderi</em> (alkali bee) is a specialist pollinator of alfalfa. Some Washington State farmers commercially manage alkali bee populations.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Pearlescent or neon <strong>iridescent abdominal bands</strong> — the signature feature (vs. hair bands in Lipotriches)</li>
+<li>Black body with 2–4 prominent shiny bands on abdomen</li>
+<li>Males often have visibly swollen flat or spurred hind tibiae</li>
+<li>Forewing basal vein not as strongly arched as other Halictidae — diagnostic</li>
+<li>Massive ground-nesting aggregations in salty or bare compacted soil</li>
+<li>Pollen collected on hind legs not under abdomen</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Nomia (bee)</span><a href="https://en.wikipedia.org/wiki/Nomia_(genus)" target="_blank">https://en.wikipedia.org/wiki/Nomia_(genus)</a></li>
+<li><span class="source-label">Minnesota Native Bees — Nomia</span><a href="https://www.beesmn.org/nomia" target="_blank">https://www.beesmn.org/nomia</a></li>
+<li><span class="source-label">USDA — Alkali bee (Nomia melanderi)</span><a href="https://www.fs.usda.gov/wildflowers/pollinators/pollinator-of-the-month/alkali_bee.shtml" target="_blank">https://www.fs.usda.gov/wildflowers/pollinators/pollinator-of-the-month/alkali_bee.shtml</a></li>
+<li><span class="source-label">Lucid Central — Nomia bees fact sheet</span><a href="https://keys.lucidcentral.org/keys/v3/eafrinet/bee_genera/key/african_bee_genera/Media/Html_eafrica/Nomia_bees.htm" target="_blank">https://keys.lucidcentral.org/keys/v3/eafrinet/bee_genera/key/african_bee_genera/Media/Html_eafrica/Nomia_bees.htm</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="pasites" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Pasites</h2>
+        <p class="common-name">Cuckoo Bees (Ammobatini)</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Ammobatini</span>
+          <span class="taxon-pill">~21 species</span>
+        </div>
+        <p class="intro-text">A genus of cleptoparasitic cuckoo bees from Africa, Madagascar, and Asia. They parasitise ground-nesting Nomiinae bees (primarily Pseudapis/Nomiapis). First instar larvae use sickle-shaped mandibles to kill the host egg.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:16.7%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:16.7%;background:#c8821a;"><span class="sb-tick-label">5mm</span></div>
+        <div class="sb-tick" style="left:33.3%;background:#c8821a;"><span class="sb-tick-label">10mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🎭</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Small, dark bees with <strong>pale (white or yellow) abdominal maculations</strong>. No pollen-collecting scopae. Somewhat thickened exoskeleton. Somewhat wasp-like in appearance.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value"><strong>No scopa</strong> — females do not collect pollen. Reduced body hair. First instar larvae have distinctive <strong>sickle-shaped mandibles</strong>. Eggs characteristically folded with a textured operculum.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Holarctic south to South Africa and Madagascar; across northern Asia to Korea; south to Pakistan, India, and most recently Vietnam. Most species in African/Malagasy fauna.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><strong>Does not build its own nest.</strong> Female enters underground host nest (mainly <em>Pseudapis/Nomiapis</em>), deposits a characteristic folded egg in the brood cell wall. Larva kills the host egg and consumes its pollen provision.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">👁️</span>
+      <p class="char-label">Behaviour</p>
+      <p class="char-value">Females patrol near host nesting aggregations. Most species presumed to parasitise Nomiinae bees. No fixed home territory.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Small dark bee with pale abdominal markings — <strong>no pollen on body</strong> when observed</li>
+<li>Seen near or hovering over ground aggregations of Nomiinae sweat bees</li>
+<li>No scopa (pollen-collecting hairs) anywhere on body</li>
+<li>Slightly thickened exoskeleton compared to host bees</li>
+<li>Definitive ID requires specialist examination of morphology</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">BioOne — The cuckoo bee genus Pasites in central Vietnam</span><a href="https://bioone.org/journals/american-museum-novitates/volume-2024/issue-4022/4022.1/The-Cuckoo-Bee-Genus-Pasites-in-Central-Vietnam-Hymenoptera/10.1206/4022.1.full" target="_blank">https://bioone.org/journals/american-museum-novitates/volume-2024/issue-4022/4022.1/The-Cuckoo-Bee-Genus-Pasites-in-Central-Vietnam-Hymenoptera/10.1206/4022.1.full</a></li>
+<li><span class="source-label">Academia.edu — Natural history of Pasites maculatus</span><a href="https://www.academia.edu/107593888/The_Natural_History_of_the_Old_World_Nomadine_Parasitic_Bee_Pasites_maculatus_Anthophoridae_Nomadinae_and_Its_Host_Pseudapis_diversipes_Halictidae_Nomiinae_" target="_blank">https://www.academia.edu/107593888/The_Natural_History_of_the_Old_World_Nomadine_Parasitic_Bee_Pasites_maculatus_Anthophoridae_Nomadinae_and_Its_Host_Pseudapis_diversipes_Halictidae_Nomiinae_</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="plebeina" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Plebeina</h2>
+        <p class="common-name">African Stingless Bees / Mopane Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Meliponini</span>
+          <span class="taxon-pill">~3 species</span>
+        </div>
+        <p class="intro-text">Small African stingless bees sometimes called 'mopane bees'. Best known for clustering around eyes and sweaty skin of large animals including humans. They are harmless pollinators seeking moisture and salts, not blood.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:13.3%;width:6.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:13.3%;background:#c8821a;"><span class="sb-tick-label">4mm</span></div>
+        <div class="sb-tick" style="left:20.0%;background:#c8821a;"><span class="sb-tick-label">6mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Small, dark, stingless bees. Difficult to separate from <em>Hypotrigona</em> in the field — wing morphometrics and DNA barcoding often needed. Stingless. Attracted to moisture on skin and eyes.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Small compact body. Brood cells in the nest form <strong>horizontal clusters</strong>, not regular combs. <em>P. hildebrandti</em> produces relatively low honey yield per colony.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Sub-Saharan Africa. <em>P. armata</em> widespread in southern Africa; <em>P. hildebrandti</em> recorded from Kenya, Tanzania, and Uganda.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><em>P. armata</em>: ground-nesting — a single sticky resinous tube projects a few centimetres above the soil as the sole entrance. <em>P. hildebrandti</em>: nests in tree cavities; brood cells in horizontal clusters. Honey and pollen stored in separate spherical pots.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🐝</span>
+      <p class="char-label">Sociality</p>
+      <p class="char-value">Highly eusocial. Workers can bite but cannot sting. Sometimes called 'sweat bees' (confusingly — unrelated to Halictidae sweat bees) due to attraction to perspiration.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Small (4–6 mm) dark stingless bee — cannot sting but may bite</li>
+<li><em>P. armata</em>: look for a short resinous tube projecting from the ground as nest entrance</li>
+<li>Attraction to sweat, eyes, and moist skin is a behavioural field cue</li>
+<li>Brood cells in horizontal clusters (not vertical combs) inside nest</li>
+<li>Confusion with Hypotrigona common — specialist examination often needed</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Whole Earth Education — Stingless mopane bees</span><a href="https://wholeeartheducation.com/stingless-mopane-bees-of-southern-africa/" target="_blank">https://wholeeartheducation.com/stingless-mopane-bees-of-southern-africa/</a></li>
+<li><span class="source-label">Springer — Nesting ecology of stingless bees in Africa</span><a href="https://link.springer.com/chapter/10.1007/978-3-319-61839-5_16" target="_blank">https://link.springer.com/chapter/10.1007/978-3-319-61839-5_16</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="pseudoanthidium" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Pseudoanthidium</h2>
+        <p class="common-name">Carder Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Megachilidae</span>
+          <span class="taxon-pill">Tribe: Anthidiini</span>
+          <span class="taxon-pill">~64 species</span>
+        </div>
+        <p class="intro-text">A diverse Old World genus of carder bees closely related to Anthidium. Most species associated with Asteraceae pollen. Cavity nesters in wood, stems, and plant galls. The nesting biology of most species is poorly known.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:20.0%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:20.0%;background:#c8821a;"><span class="sb-tick-label">6mm</span></div>
+        <div class="sb-tick" style="left:36.7%;background:#c8821a;"><span class="sb-tick-label">11mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🟡</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Variable — black with pale (yellow/white) maculate bands, or entirely black. Rounded but produced axillae (wing-base projections) — key character distinguishing from <em>Anthidium</em>. No arolium between tarsal claws.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Compact, robust anthidiine form. Females carry pollen in a ventral scopa (under the abdomen). Males have a single apical tooth (sometimes bifid) on anterior and middle tibiae.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Mainly Old World — Europe, Africa, and Asia. 64 species in 12 subgenera. <em>P. nanum</em> is the most widespread European species.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Most species nest in <strong>pre-existing cavities</strong> — wood, stems, plant galls (oak galls, reed galls), or crevices. <em>P. nanum</em> nests in reed stalks and oak galls creating vertical oval cells. Some species (e.g. <em>P. repetitum</em>) are highly invasive.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Most species specialise on Asteraceae (composites). A few also visit Fabaceae, Boraginaceae, and Brassicaceae.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Similar to <em>Anthidium</em> but with <strong>rounded (not pointed) axillae</strong> — key structural difference</li>
+<li>No arolium between tarsal claws (unlike some similar genera)</li>
+<li>Black with pale abdominal maculations, or entirely black</li>
+<li>Females carry pollen under abdomen (ventral scopa) like other Megachilidae</li>
+<li>Often associated with daisy-family (Asteraceae) flowers</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Exotic Bee ID — Pseudoanthidium</span><a href="https://idtools.org/exotic_bee/index.cfm?packageID=1181&entityID=8988" target="_blank">https://idtools.org/exotic_bee/index.cfm?packageID=1181&entityID=8988</a></li>
+<li><span class="source-label">IDmyBee — Pseudoanthidium</span><a href="https://www.idmybee.com/pseudoanthidium.html" target="_blank">https://www.idmybee.com/pseudoanthidium.html</a></li>
+<li><span class="source-label">JHR — Nest structure of Pseudoanthidium nanum</span><a href="https://jhr.pensoft.net/article/87215/" target="_blank">https://jhr.pensoft.net/article/87215/</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="serapista" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Serapista</h2>
+        <p class="common-name">African Carder Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Megachilidae</span>
+          <span class="taxon-pill">Tribe: Anthidiini</span>
+          <span class="taxon-pill">6 species</span>
+        </div>
+        <p class="intro-text">A small genus of sub-Saharan African carder bees comprising 6 valid species (revised 2016). Notable for building unusual exposed aerial nests from plant down, animal fur, and feathers attached to plant stems — rather than nesting in cavities.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:23.3%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:23.3%;background:#c8821a;"><span class="sb-tick-label">7mm</span></div>
+        <div class="sb-tick" style="left:40.0%;background:#c8821a;"><span class="sb-tick-label">12mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Dark bees with variable pale markings. Structurally similar to Anthidium and Pseudoanthidium. Specific morphological characters in mandibles and facial structure needed for genus-level ID.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Robust, compact anthidiine form. Females carry pollen in a ventral scopa under the abdomen. Specific mandible and facial characters separate species within the genus.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Endemic to sub-Saharan Africa. 6 species distributed across eastern and southern Africa. Revised by Eardley and Griswold (2016).</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><strong>Exposed aerial nests on plant stems and shrubs</strong> — unusual among carder bees. Nest material includes plant down (from Asteraceae), animal hairs, and sometimes feathers. <em>S. friesei</em> builds on shrubs; <em>S. denticulata</em> uses plant down with animal hairs. Some species also nest in Fabaceae stems.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Primarily associated with Asteraceae and Fabaceae. Presence of exposed fluffy nests on these plant families may indicate Serapista.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Look for small fluffy exposed <strong>aerial nests on stems or shrubs</strong> made of plant down and fur</li>
+<li>Anthidiine bee shape (similar to Anthidium) in sub-Saharan Africa</li>
+<li>Females carry pollen under the abdomen (not on hind legs)</li>
+<li>Association with Asteraceae and Fabaceae foraging patches</li>
+<li>Definitive species-level ID requires specialist examination</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Exotic Bee ID — Serapista</span><a href="https://idtools.org/exotic_bee/index.cfm?packageID=1181&entityID=8992" target="_blank">https://idtools.org/exotic_bee/index.cfm?packageID=1181&entityID=8992</a></li>
+<li><span class="source-label">PubMed — Taxonomic revision of Serapista Cockerell</span><a href="https://pubmed.ncbi.nlm.nih.gov/27395094/" target="_blank">https://pubmed.ncbi.nlm.nih.gov/27395094/</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="tetralonia" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Tetralonia</h2>
+        <p class="common-name">Long-horned Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Eucerini</span>
+          <span class="taxon-pill">~35 species</span>
+        </div>
+        <p class="intro-text">A Western Palaearctic genus of long-horned bees mainly associated with Asteraceae pollen. Males have long antennae and yellow face markings. Ground-nesters. Distinguished from the closely related Eucera by flat clypeus, non-linear malar space, and plumose scopal hairs.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:23.3%;width:23.3%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:23.3%;background:#c8821a;"><span class="sb-tick-label">7mm</span></div>
+        <div class="sb-tick" style="left:46.7%;background:#c8821a;"><span class="sb-tick-label">14mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">📡</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Medium-sized robust hairy bees. Males have <strong>conspicuously long antennae</strong> and typically a <strong>yellow clypeus marking</strong>. Females darker and less conspicuously marked. Flat (not protuberant) clypeus.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Dense pilosity with oval body shape. Females have plumose (feathery) scopal hairs on hind legs. Three submarginal cells in forewing — an important structural character.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Western Palaearctic — Mediterranean basin to Central Asia. 35 species; most associated with Asteraceae; a minority specialise on Malvaceae, Caprifoliaceae, or Onagraceae.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><strong>Ground-nesters</strong> — solitary; burrow into bare or sparsely vegetated soil. Aggregations possible in suitable soil conditions.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Predominantly specialists of <strong>Asteraceae</strong> (composites). Some species specialise on plants with large pollen grains such as mallows (Malvaceae) or evening primroses (Onagraceae).</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Males: <strong>long antennae</strong> and yellow clypeus (face marking) are strong field cues</li>
+<li>Flat (not bulging) clypeus distinguishes from <em>Eucera</em></li>
+<li>Three submarginal cells in forewing — useful under magnification</li>
+<li>Dense oval-bodied hairy bee associated with composite (daisy) flowers</li>
+<li>Mediterranean and warm temperate climates</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Pollinator Academy — Tetralonia genus (PDF)</span><a href="https://pollinatoracademy.eu/assets/Uploads/Document/BEE-GENUS-TETRALONIA-2024.05.01.pdf" target="_blank">https://pollinatoracademy.eu/assets/Uploads/Document/BEE-GENUS-TETRALONIA-2024.05.01.pdf</a></li>
+<li><span class="source-label">IDmyBee — Tetralonia</span><a href="https://www.idmybee.com/tetralonia.html" target="_blank">https://www.idmybee.com/tetralonia.html</a></li>
+<li><span class="source-label">MDPI — Tetralonia species with atypical pollen hosts</span><a href="https://www.mdpi.com/2673-6500/4/1/7" target="_blank">https://www.mdpi.com/2673-6500/4/1/7</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="tetraloniella" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Tetraloniella</h2>
+        <p class="common-name">Long-horned Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Eucerini</span>
+          <span class="taxon-pill">100+ species</span>
+        </div>
+        <p class="intro-text">A genus of long-horned bees (tribe Eucerini) found primarily in North America and the Old World. Males have long antennae and pale facial markings. Ground-nesters; some species form multi-generational aggregations. Note: many New World species now reclassified into Eucera.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:20.0%;width:26.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:20.0%;background:#c8821a;"><span class="sb-tick-label">6mm</span></div>
+        <div class="sb-tick" style="left:46.7%;background:#c8821a;"><span class="sb-tick-label">14mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">📡</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Males have <strong>long antennae</strong> and <strong>pale (yellow or white) markings on mandibles, clypeus, and labrum</strong>. Abdomens often banded by pale hairs. Some males have tooth-like projections on T6.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🦵</span>
+      <p class="char-label">Legs</p>
+      <p class="char-value">Females have <strong>dense, plumose (feathery) scopal hairs on hind legs</strong> for pollen collection — sometimes conspicuously shaggy. Males may have enlarged or modified hind femora.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">North America (majority of species) and Old World (Middle East, Arabia). Note: many former New World species now reclassified as <em>Eucera (Xenoglossodes)</em> following a 2018 revision.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><strong>Ground-nesters</strong> — solitary; nest in soil. Some species reuse the same nesting sites over several generations. Aggregations have been recorded.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌸</span>
+      <p class="char-label">Foraging</p>
+      <p class="char-value">Some generalists; some specialists of Asteraceae or Fabaceae. Males often found on composite flowers.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Males: <strong>very long antennae</strong> extending back to abdomen; pale clypeus and labrum</li>
+<li>Females: dense feathery pollen-collecting hairs on hind legs</li>
+<li>Pale hair bands on a dark abdomen</li>
+<li>Ground nester in bare or sparse soils</li>
+<li>Note: many species formerly in this genus now moved to <em>Eucera</em> — check current taxonomy</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Tetraloniella</span><a href="https://en.wikipedia.org/wiki/Tetraloniella" target="_blank">https://en.wikipedia.org/wiki/Tetraloniella</a></li>
+<li><span class="source-label">Wild Bees of Texas — Tetraloniella/Eucera</span><a href="https://www.wildbeestexas.com/tetraloniella-eucera" target="_blank">https://www.wildbeestexas.com/tetraloniella-eucera</a></li>
+<li><span class="source-label">PMC — New Tetraloniella species from Arabia</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3307365/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC3307365/</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="thyreus" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Thyreus</h2>
+        <p class="common-name">Cloak-and-dagger Bees / Neon Cuckoo Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Melectini</span>
+          <span class="taxon-pill">~200 species</span>
+        </div>
+        <p class="intro-text">Striking, jewel-like cuckoo bees with brilliant iridescent blue or white spots on a velvety black body. They parasitise the ground-nesting burrows of Amegilla bees. Their thick exoskeleton is thought to protect them inside the host nest.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:26.7%;width:20.0%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:26.7%;background:#c8821a;"><span class="sb-tick-label">8mm</span></div>
+        <div class="sb-tick" style="left:46.7%;background:#c8821a;"><span class="sb-tick-label">14mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">💎</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value"><strong>Brilliant blue (or white) iridescent spots/patches on a velvety black body.</strong> Compact, tank-like build. Spots formed by iridescent flattened hairs. Some species have blue on the face, legs, and thorax.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value"><strong>No scopa</strong> — females do not collect pollen. Robust, thick exoskeleton. Markings may mimic Amegilla hosts in some species.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Old World — primarily Africa, Asia, and Australasia. About 200 species. Well represented in Australia (neon cuckoo bee, domino cuckoo bee, chequered cuckoo bee).</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><strong>Does not build its own nest.</strong> Female pursues Amegilla hosts to locate burrow nests, waits for the host to leave, then enters and lays an egg in a partly completed brood cell. The Thyreus larva (enlarged mandibles) hatches first, kills the host egg, and consumes the pollen provision.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">✈️</span>
+      <p class="char-label">Flight behaviour</p>
+      <p class="char-value">Jerky hover-and-dart flight. Often spotted near Amegilla nesting sites or at flowers. Females observed following Amegilla bees to locate nests.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li><strong>Brilliant blue or white iridescent spots</strong> on a black body — immediately striking and unmistakable</li>
+<li>Tank-like compact shape; thicker exoskeleton than similar-sized bees</li>
+<li>No visible pollen load or hairy hind legs — a cleptoparasite</li>
+<li>Jerky hovering flight near ground near Amegilla nesting aggregations</li>
+<li>Often seen following or hovering near blue-banded bees (Amegilla)</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Thyreus nitidulus (neon cuckoo bee)</span><a href="https://en.wikipedia.org/wiki/Thyreus_nitidulus" target="_blank">https://en.wikipedia.org/wiki/Thyreus_nitidulus</a></li>
+<li><span class="source-label">Wikipedia — Thyreus caeruleopunctatus (chequered cuckoo bee)</span><a href="https://en.wikipedia.org/wiki/Thyreus_caeruleopunctatus" target="_blank">https://en.wikipedia.org/wiki/Thyreus_caeruleopunctatus</a></li>
+<li><span class="source-label">Aussiebee — Thyreus cloak-and-dagger bees</span><a href="https://www.aussiebee.com.au/thyreus.html" target="_blank">https://www.aussiebee.com.au/thyreus.html</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="xylocopa" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Xylocopa</h2>
+        <p class="common-name">Large Carpenter Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Xylocopini</span>
+          <span class="taxon-pill">500+ species</span>
+        </div>
+        <p class="intro-text">The large carpenter bees — among the most distinctive of all bees. Named for excavating nesting tunnels in dead wood and bamboo using powerful mandibles. Worldwide distribution; some of the largest bees on earth.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">&#9792; female</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:50.0%;width:26.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:50.0%;background:#c8821a;"><span class="sb-tick-label">15mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#c8821a;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label">&#9794; male</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:43.3%;width:23.3%;background:#3d5a3e;"></div>
+        <div class="sb-tick" style="left:43.3%;background:#3d5a3e;"><span class="sb-tick-label">13mm</span></div>
+        <div class="sb-tick" style="left:66.7%;background:#3d5a3e;"><span class="sb-tick-label">20mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Female</div><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#3d5a3e;"></div>Male</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🖤</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Large, robust, often mostly <strong>black</strong> with a characteristically <strong>bare, shiny black abdomen</strong>. Thorax covered with yellow, orange, white, or black hair. Males of many species have a <strong>pale/yellow face</strong>.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪵</span>
+      <p class="char-label">Mandibles</p>
+      <p class="char-value">Powerful heavy mandibles for boring into solid wood. Nesting entrance holes are <strong>perfectly circular, ~16 mm in diameter</strong> — left on underside of timbers, branches, or bamboo culms.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Worldwide except Antarctica. 500+ species in 31 subgenera. Most abundant in Africa and tropical Asia.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Females bore tunnels <strong>into dead wood, structural timber, or bamboo</strong> (subgenus Proxylocopa digs in soil). Entrances on undersides of beams; tunnels 30–45 cm long with cells partitioned by chewed wood. Nests reused by generations. Some species primitively eusocial.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🐝</span>
+      <p class="char-label">Behaviour</p>
+      <p class="char-value">Males hover aggressively near nesting sites but cannot sting. Females can sting but are docile. Deep, loud buzz in flight. Large size and distinctive glossy black abdomen make this genus hard to mistake.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Large size (15–28 mm) and <strong>shiny bare black abdomen</strong> — immediately distinctive</li>
+<li>Thorax densely hairy (yellow/orange/white) contrasting with smooth abdomen</li>
+<li>Males: pale or yellow face; often hover near nesting sites</li>
+<li>Look for <strong>perfectly circular entrance holes</strong> (~16 mm) on underside of timber, logs, or bamboo</li>
+<li>Loud deep buzz in flight; larger and louder than bumblebees</li>
+<li>Woodchip or sawdust debris below entrance holes indicates active nesting</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Carpenter bee (Xylocopa)</span><a href="https://en.wikipedia.org/wiki/Carpenter_bee" target="_blank">https://en.wikipedia.org/wiki/Carpenter_bee</a></li>
+<li><span class="source-label">Ohio State Extension — Carpenter bees</span><a href="https://ohioline.osu.edu/factsheet/hyg-2074" target="_blank">https://ohioline.osu.edu/factsheet/hyg-2074</a></li>
+<li><span class="source-label">UF IFAS — Large carpenter bees Xylocopa</span><a href="https://ask.ifas.ufl.edu/publication/IN619" target="_blank">https://ask.ifas.ufl.edu/publication/IN619</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="zonalictus" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Zonalictus</h2>
+        <p class="common-name">Sweat Bees</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Halictidae</span>
+          <span class="taxon-pill">Tribe: Halictini</span>
+          <span class="taxon-pill">Unknown / few described</span>
+        </div>
+        <p class="intro-text">A poorly documented and obscure genus of Halictidae (sweat bees). Published literature is very limited; most accessible records relate to specimen collections in Africa. General characteristics are likely typical of small to medium Halictinae sweat bees.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:13.3%;width:16.7%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:13.3%;background:#c8821a;"><span class="sb-tick-label">4mm</span></div>
+        <div class="sb-tick" style="left:30.0%;background:#c8821a;"><span class="sb-tick-label">9mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">❓</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value"><span class='no-info'>Specific identification characteristics for Zonalictus could not be found in available literature. As a Halictidae member, likely small, dark, and possibly with hair banding on the abdomen.</span></p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value"><span class='no-info'>Body and hair characteristics specific to Zonalictus are not documented in accessible sources. General Halictinae characters (metallic or dark colouration, curved basal vein in forewing) likely apply.</span></p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value"><span class='no-info'>Distribution information for Zonalictus could not be confirmed from available sources. Likely African based on species list context.</span></p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value"><span class='no-info'>Nesting information for Zonalictus could not be found. As a Halictidae member it likely nests in the ground, as typical for most family members.</span></p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">📋</span>
+      <p class="char-label">Note</p>
+      <p class="char-value">Zonalictus is a very obscure genus with extremely limited published information in accessible literature. Specialist entomological collections or African bee taxonomy publications would be needed for further details.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Information insufficient for reliable field identification cues</li>
+<li>Likely a small, dark Halictidae member based on family characteristics</li>
+<li>Specialist entomological expertise required for definitive identification</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Note: No reliable open-access sources found for this genus</span></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="amscutellata" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Apis mellifera scutellata</h2>
+        <p class="common-name">African / Savannah Honey Bee</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Apini</span>
+          <span class="taxon-pill">1 subspecies</span>
+        </div>
+        <p class="intro-text">The African or savannah honey bee — one of two honey bee subspecies native to South Africa. Found across the savannah and bushveld north of the Cape Fold mountains. Known internationally as the source of the 'Africanised' or 'killer' bee after introduction to Brazil in 1957. Highly defensive, prolific, and ecologically important.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:33.3%;width:10.0%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:33.3%;background:#c8821a;"><span class="sb-tick-label">10mm</span></div>
+        <div class="sb-tick" style="left:43.3%;background:#c8821a;"><span class="sb-tick-label">13mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🟡</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value">Light-coloured phenotype. Workers have a <strong>yellow-orange banded abdomen</strong> with black stripes — lighter overall than <em>A. m. capensis</em>. Thorax covered in short pale hair. Corbicula (pollen basket) on hind legs.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Compact typical honey bee form. Workers 10–13 mm. Slightly smaller on average than <em>capensis</em> but the difference is too small for reliable field use. Short sparse hair.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Native to central and southern Africa; dominant across most of South Africa <strong>north</strong> of the Cape Fold mountains. A stable hybrid zone exists where it meets <em>capensis</em> to the south.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Nests in natural cavities — tree hollows, rock crevices, roof spaces, occasionally underground. Strongly prone to <strong>swarming</strong> and <strong>absconding</strong>. May usurp existing colonies. Nest entrance heavily guarded.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">⚠️</span>
+      <p class="char-label">Behaviour</p>
+      <p class="char-value">Highly <strong>defensive</strong> — responds to disturbance with large numbers of stinging workers pursuing intruders much further than European bees. Defensive traits are ecological adaptations, not random aggression.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li>Lighter <strong>yellow-orange banded abdomen</strong> — less black than <em>capensis</em> on average</li>
+<li>Found north of the Cape Fold mountains in savannah and bushveld habitat</li>
+<li>Highly defensive around the nest; large numbers of bees respond to disturbance</li>
+<li>Prone to swarming and absconding — colonies may disappear suddenly</li>
+<li><strong>Important caveat:</strong> the two South African subspecies are considered visually near-indistinguishable by most scientific sources — reliable separation requires tergite colour scoring and morphometrics</li>
+<li>In the hybrid zone (Eastern Cape), confident field ID to subspecies level is not possible</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Apis mellifera scutellata</span><a href="https://en.wikipedia.org/wiki/Apis_mellifera_scutellata" target="_blank">https://en.wikipedia.org/wiki/Apis_mellifera_scutellata</a></li>
+<li><span class="source-label">SANBI — African honeybee</span><a href="https://www.sanbi.org/animal-of-the-week/african-honeybee/" target="_blank">https://www.sanbi.org/animal-of-the-week/african-honeybee/</a></li>
+<li><span class="source-label">PMC — Population genomics of South African honey bees</span><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6094452/" target="_blank">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6094452/</a></li>
+<li><span class="source-label">Springer — Morphometric comparison capensis vs scutellata</span><a href="https://link.springer.com/article/10.1007/s13592-019-00651-6" target="_blank">https://link.springer.com/article/10.1007/s13592-019-00651-6</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+<div id="amcapensis" class="page">
+  <div class="bee-layout">
+    <div class="bee-hero">
+      <div class="photo-block"><div class="photo-placeholder"><p style="font-size:2rem;margin-bottom:.3rem;">🔍</p><p>No freely licensed photo was identified for this genus.<br>See sources below for reference images.</p></div></div>
+      <div>
+        <p class="genus-label">Genus</p>
+        <h2 class="genus-name">Apis mellifera capensis</h2>
+        <p class="common-name">Cape Honey Bee</p>
+        <div class="taxonomy-row">
+          <span class="taxon-pill">Family: Apidae</span>
+          <span class="taxon-pill">Tribe: Apini</span>
+          <span class="taxon-pill">1 subspecies</span>
+        </div>
+        <p class="intro-text">The Cape honey bee — endemic to the Western and Eastern Cape provinces of South Africa (the fynbos region). One of the most biologically remarkable bee subspecies in the world: workers can lay diploid female eggs without mating (thelytoky), enabling them to act as social parasites of <em>A. m. scutellata</em> colonies — the so-called 'capensis calamity'.</p>
+      </div>
+    </div>
+    <hr class="section-divider">
+    <div class="size-bar-block">
+      <p class="size-bar-label">Body length &mdash; scale 0&#x2013;30 mm</p>
+      <div class="sb-row">
+      <span class="sb-label">adult</span>
+      <div class="sb-track">
+        <div class="sb-fill" style="left:36.7%;width:10.0%;background:#c8821a;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#c8821a;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:46.7%;background:#c8821a;"><span class="sb-tick-label">14mm</span></div>
+      </div>
+    </div><div class="sb-divider"></div><div class="sb-row">
+      <span class="sb-label ref">honeybee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:36.7%;width:13.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:36.7%;background:#888;"><span class="sb-tick-label">11mm</span></div>
+        <div class="sb-tick" style="left:50.0%;background:#888;"><span class="sb-tick-label">15mm</span></div>
+      </div>
+    </div><div class="sb-row">
+      <span class="sb-label ref">bumblebee</span>
+      <div class="sb-track ref">
+        <div class="sb-fill" style="left:53.3%;width:23.3%;background:#888888;"></div>
+        <div class="sb-tick" style="left:53.3%;background:#888;"><span class="sb-tick-label">16mm</span></div>
+        <div class="sb-tick" style="left:76.7%;background:#888;"><span class="sb-tick-label">23mm</span></div>
+      </div>
+    </div>
+      <div class="sb-legend"><div class="sb-legend-item"><div class="sb-legend-swatch" style="background:#c8821a;"></div>Adult</div><div class="sb-legend-item" style="opacity:.6;"><div class="sb-legend-swatch" style="background:#888888;"></div>Honeybee / Bumblebee reference</div></div>
+    </div>
+    <div class="characteristics-grid"><div class="char-card">
+      <span class="char-icon">🔲</span>
+      <p class="char-label">Key marking</p>
+      <p class="char-value"><strong>Darker phenotype</strong> than <em>A. m. scutellata</em>. Workers have an <strong>almost entirely black abdomen</strong> with reduced yellow banding. Tergite colour is the most reliable visual distinction between the two South African subspecies.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🪶</span>
+      <p class="char-label">Body &amp; hair</p>
+      <p class="char-value">Compact typical honey bee form. Workers 11–14 mm — marginally larger on average than <em>scutellata</em> workers but the difference is too small for reliable field use. Short sparse hair. Corbicula on hind legs.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🌍</span>
+      <p class="char-label">Distribution</p>
+      <p class="char-value">Endemic to the Western Cape and Eastern Cape provinces. Confined to the coastal side of the Cape Fold mountain range (the fynbos biome). A stable hybrid zone separates it from <em>A. m. scutellata</em> to the north.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🏠</span>
+      <p class="char-label">Nesting</p>
+      <p class="char-value">Nests in natural cavities — tree hollows, rock crevices, roof spaces. Less prone to swarming and absconding than <em>scutellata</em>. Generally more manageable for beekeeping within its native fynbos range. Important pollinator of fynbos and Cape agricultural crops.</p>
+    </div>
+<div class="char-card">
+      <span class="char-icon">🧬</span>
+      <p class="char-label">Unique biology</p>
+      <p class="char-value">Workers reproduce thelytokously — laying <strong>diploid female eggs without mating</strong>. Workers can develop into pseudoqueens mimicking queen pheromones. When <em>capensis</em> workers infiltrate <em>scutellata</em> colonies (often via migratory beekeeping) they parasitise and ultimately kill the host colony.</p>
+    </div></div>
+    <div class="id-key">
+      <h3>Key field identification points</h3>
+      <ul><li><strong>Darker abdomen</strong> — almost entirely black with reduced yellow banding — the most useful visual cue vs <em>scutellata</em></li>
+<li>Found south of the Cape Fold mountains in fynbos, Western Cape, and Eastern Cape</li>
+<li>Less defensive than <em>scutellata</em> — more manageable behaviour around the nest</li>
+<li>Tergite (abdominal segment) colour is the most reliable field distinction between the two subspecies</li>
+<li><strong>Important caveat:</strong> the two South African subspecies are considered visually near-indistinguishable by most scientific sources — definitive separation requires morphometrics, not casual observation</li>
+<li>In the hybrid zone (Eastern Cape), confident field ID to subspecies level is not possible</li></ul>
+    </div>
+    <div class="sources-block">
+      <h3>Verification sources</h3>
+      <ul><li><span class="source-label">Wikipedia — Cape honey bee</span><a href="https://en.wikipedia.org/wiki/Cape_honey_bee" target="_blank">https://en.wikipedia.org/wiki/Cape_honey_bee</a></li>
+<li><span class="source-label">BeeAware — Cape honeybee</span><a href="https://beeaware.org.au/archive-pest/cape-honey-bee/" target="_blank">https://beeaware.org.au/archive-pest/cape-honey-bee/</a></li>
+<li><span class="source-label">PMC — Genetics of colour traits in SA honey bees</span><a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8670704/" target="_blank">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC8670704/</a></li>
+<li><span class="source-label">SABIO — Honeybees of South Africa</span><a href="https://sabio.org.za/honeybees-of-south-africa/" target="_blank">https://sabio.org.za/honeybees-of-south-africa/</a></li>
+<li><span class="source-label">Springer — Morphometric comparison capensis vs scutellata</span><a href="https://link.springer.com/article/10.1007/s13592-019-00651-6" target="_blank">https://link.springer.com/article/10.1007/s13592-019-00651-6</a></li>
+</ul>
+    </div>
+  </div>
+</div>
+</div>
+<div id="appendix" class="page">
+  <div class="bee-layout">
+    <div style="max-width:760px;">
+      <p class="genus-label">Appendix</p>
+      <h2 class="genus-name" style="font-size:2rem;margin-bottom:.5rem;">Morphometric identification</h2>
+      <p class="common-name"><em>Apis mellifera capensis</em> vs <em>A. m. scutellata</em></p>
+      <p class="intro-text" style="margin-bottom:2rem;">The two South African honey bee subspecies cannot be separated by casual visual inspection. Reliable differentiation requires formal morphometric analysis of worker bees using a dissecting microscope, calibrated imaging software, and a minimum sample of 10 workers per colony. The ten characters below, derived from Hepburn et al. (1998) as applied to South African subspecies, are the standard set used in published research.</p>
+
+      <hr class="section-divider">
+
+      <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:1.3rem;margin-bottom:1.5rem;">What you need</h3>
+      <div class="characteristics-grid" style="margin-bottom:2rem;">
+        <div class="char-card">
+          <span class="char-icon">🔬</span>
+          <p class="char-label">Equipment</p>
+          <p class="char-value">Dissecting microscope (10–40×); calibrated digital camera or USB microscope; imaging software (ImageJ is free and widely used); fine forceps; 70% ethanol for specimen preservation.</p>
+        </div>
+        <div class="char-card">
+          <span class="char-icon">🐝</span>
+          <p class="char-label">Specimens</p>
+          <p class="char-value">Minimum 10 worker bees per colony, ideally 20. Collect foragers directly from the hive entrance — avoid nurse bees (smaller, less melanised). Store in 70% ethanol or freeze immediately.</p>
+        </div>
+        <div class="char-card">
+          <span class="char-icon">📋</span>
+          <p class="char-label">Approach</p>
+          <p class="char-value">Measure all 10 characters below from each worker. Average across the sample of workers to get a colony mean. Compare colony means against published reference values, or enter data into <em>DrawWing</em> or <em>Beemorpho</em> software for automated classification.</p>
+        </div>
+      </div>
+
+      <hr class="section-divider">
+
+      <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:1.3rem;margin-bottom:1.5rem;">The ten diagnostic characters</h3>
+
+      <!-- Character 1 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">01</span>
+          <p class="char-label" style="margin:0;">Tergite A3 pigmentation — <em>most discriminating character</em></p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The degree of black pigmentation on the 3rd abdominal tergite (dorsal abdominal plate). Scored on the <strong>Ruttner 0–9 scale</strong>: 0 = fully black, 9 = no black (fully yellow/pale).<br><br>
+        <strong>How to measure:</strong> Remove the abdomen and place tergite A3 flat under the microscope. Compare against the Ruttner reference chart and assign a score.<br><br>
+        <strong>What to expect:</strong> <em>A. m. scutellata</em> scores higher (more yellow; typically 4–7). <em>A. m. capensis</em> scores lower (more black; typically 0–3). This single character provides the strongest separation of the two subspecies.</p>
+      </div>
+
+      <!-- Character 2 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">02</span>
+          <p class="char-label" style="margin:0;">Scutellum pigmentation</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> Pigmentation of the scutellum — the triangular plate on the dorsal thorax between the wing bases. Scored on a <strong>0–5 scale</strong> (0 = fully black, 5 = fully pale/yellow).<br><br>
+        <strong>How to measure:</strong> View the thorax dorsally under the microscope and assign a score from the reference chart.<br><br>
+        <strong>What to expect:</strong> <em>Scutellata</em> tends to score higher (more pale). <em>Capensis</em> tends to score lower (darker). Used in combination with tergite pigmentation for improved accuracy.</p>
+      </div>
+
+      <!-- Character 3 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">03</span>
+          <p class="char-label" style="margin:0;">Scutellar plate pigmentation</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> Pigmentation of the scutellar plate (the smaller plate immediately behind the scutellum). Scored on the same 0–9 Ruttner scale.<br><br>
+        <strong>How to measure:</strong> View the thorax dorsally; score the scutellar plate separately from the scutellum itself.<br><br>
+        <strong>What to expect:</strong> Same directional trend as scutellum — <em>scutellata</em> paler, <em>capensis</em> darker. Together, characters 1–3 form the core pigmentation battery.</p>
+      </div>
+
+      <!-- Character 4 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">04</span>
+          <p class="char-label" style="margin:0;">Forewing length</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The total length of the right forewing, measured from the base of the costal vein to the wingtip. Expressed in mm.<br><br>
+        <strong>How to measure:</strong> Remove the right forewing and place flat on a slide. Photograph under calibrated microscope and measure in ImageJ from the base of costa to the wing apex.<br><br>
+        <strong>What to expect:</strong> <em>Capensis</em> workers tend to have slightly longer forewings on average than <em>scutellata</em>, though there is considerable overlap. Typical range for African subspecies: 8.0–9.5 mm.</p>
+      </div>
+
+      <!-- Character 5 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">05</span>
+          <p class="char-label" style="margin:0;">Forewing angle N23</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The angle at vein junction N23 in the forewing (a specific intersection point in the wing venation network, numbered according to Ruttner's system). Measured in degrees.<br><br>
+        <strong>How to measure:</strong> Photograph the right forewing flat under the microscope. In ImageJ or DrawWing software, mark the N23 junction and the two veins meeting at it, then measure the angle. DrawWing software can automate this from a photograph.<br><br>
+        <strong>What to expect:</strong> Differs between subspecies. Used as part of the multivariate wing venation profile rather than as a standalone character.</p>
+      </div>
+
+      <!-- Character 6 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">06</span>
+          <p class="char-label" style="margin:0;">Forewing angle O26</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The angle at vein junction O26 in the forewing. The second of the two key venation angles for distinguishing South African subspecies.<br><br>
+        <strong>How to measure:</strong> As for N23 — photograph the forewing and measure in imaging software.<br><br>
+        <strong>What to expect:</strong> Combined with N23, these two angles provide the main wing venation discrimination. DrawWing and Beemorpho software handle both angles simultaneously from a single forewing photograph.</p>
+      </div>
+
+      <!-- Character 7 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">07</span>
+          <p class="char-label" style="margin:0;">Wax plate (sternite A4) — transverse width</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The width of the wax mirror (wax-secreting plate) on the underside of abdominal sternite 4, measured across its widest point. Expressed in mm.<br><br>
+        <strong>How to measure:</strong> Remove the abdomen, expose the ventral surface, and photograph sternite A4 flat. Measure the widest transverse dimension of the wax plate in ImageJ.<br><br>
+        <strong>What to expect:</strong> Wax plate dimensions differ between subspecies and contribute to overall body size discrimination.</p>
+      </div>
+
+      <!-- Character 8 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">08</span>
+          <p class="char-label" style="margin:0;">Wax plate (sternite A4) — transverse length</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The length of the same wax mirror on sternite A4, measured along its long axis. Expressed in mm.<br><br>
+        <strong>How to measure:</strong> Same preparation as character 7 — measure the longitudinal dimension of the wax plate.<br><br>
+        <strong>What to expect:</strong> Used in combination with wax plate width. Both wax plate measurements reflect overall body size and contribute to multivariate separation of the subspecies.</p>
+      </div>
+
+      <!-- Character 9 -->
+      <div class="char-card" style="margin-bottom:1.2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">09</span>
+          <p class="char-label" style="margin:0;">Cover hair length on tergite A6</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The length of the longest cover hairs (overhairs) on the 6th abdominal tergite. Expressed in mm.<br><br>
+        <strong>How to measure:</strong> Under the microscope, identify the longest cover hairs on tergite A6 (the rear-most visible dorsal abdominal plate). Measure several and record the mean maximum length.<br><br>
+        <strong>What to expect:</strong> Hair length varies between subspecies and is part of the pilosity (hairiness) profile that contributes to overall subspecies discrimination.</p>
+      </div>
+
+      <!-- Character 10 -->
+      <div class="char-card" style="margin-bottom:2rem;">
+        <div style="display:flex;align-items:baseline;gap:.75rem;margin-bottom:.5rem;">
+          <span style="background:var(--dark);color:var(--amber-light);font-size:.7rem;padding:.15rem .55rem;letter-spacing:.08em;font-weight:500;">10</span>
+          <p class="char-label" style="margin:0;">Ovariole number — dissection required</p>
+        </div>
+        <p class="char-value"><strong>What it is:</strong> The number of ovarioles (egg-producing tubes) per ovary in a worker bee. Counted under the microscope after dissection.<br><br>
+        <strong>How to measure:</strong> Carefully dissect the abdomen in saline solution under a microscope. Remove the ovaries and tease them apart gently. Count the number of ovarioles on one or both ovaries.<br><br>
+        <strong>What to expect:</strong> This is the most invasive measurement and requires dissection skill. <em>A. m. capensis</em> workers have significantly more ovarioles (mean ~7) than <em>scutellata</em> workers (mean ~2–3) — reflecting their unique reproductive capacity. This character alone provides a strong signal but requires care to avoid damaging the tissue.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <h3 style="font-family:'Playfair Display',serif;font-weight:400;font-size:1.3rem;margin-bottom:1rem;">Practical notes</h3>
+
+      <div class="id-key" style="margin-bottom:2rem;">
+        <h3>Key points for reliable analysis</h3>
+        <ul>
+          <li>No single character reliably separates the two subspecies on its own — <strong>all 10 characters are used together</strong> in multivariate analysis</li>
+          <li>The tergite A3 pigmentation score (character 01) is the <strong>single most discriminating character</strong> — always include it</li>
+          <li>Always measure a minimum of <strong>10 workers per colony</strong>; 20 is recommended for reliable colony means</li>
+          <li>Measurements must come from <strong>foragers</strong> (field bees), not nurse bees, to avoid within-colony size variation</li>
+          <li>In the <strong>hybrid zone</strong> (Eastern Cape) colonies may be mixed — morphometric results in this area should be interpreted cautiously</li>
+          <li>The free software <strong>DrawWing</strong> (drawwing.org) and <strong>Beemorpho</strong> can automate wing angle measurement from photographs and are recommended for wing venation analysis</li>
+          <li>Genetic analysis (DNA) remains the most definitive method — morphometrics supports but does not replace it</li>
+        </ul>
+      </div>
+
+      <div class="sources-block">
+        <h3>Sources for this appendix</h3>
+        <ul>
+          <li><span class="source-label">Hepburn et al. (1998) — 8 diagnostic characters for capensis vs scutellata (via Springer)</span><a href="https://link.springer.com/article/10.1007/s13592-019-00651-6" target="_blank">https://link.springer.com/article/10.1007/s13592-019-00651-6</a></li>
+          <li><span class="source-label">BMC Genomics — 10 morphometric characters for SA subspecies</span><a href="https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-018-4998-x" target="_blank">https://bmcgenomics.biomedcentral.com/articles/10.1186/s12864-018-4998-x</a></li>
+          <li><span class="source-label">Ruttner (1988) pigmentation scale reference — DrawWing</span><a href="https://honeybee.drawwing.org/book/cubital-index" target="_blank">https://honeybee.drawwing.org/book/cubital-index</a></li>
+          <li><span class="source-label">MDPI — Quantifying abdominal coloration in worker honey bees</span><a href="https://www.mdpi.com/2075-4450/15/4/213" target="_blank">https://www.mdpi.com/2075-4450/15/4/213</a></li>
+          <li><span class="source-label">DrawWing software (free, forewing morphometrics)</span><a href="https://drawwing.org" target="_blank">https://drawwing.org</a></li>
+          <li><span class="source-label">PMC — XGBoost-based morphometric classification of Apis mellifera</span><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12842149/" target="_blank">https://pmc.ncbi.nlm.nih.gov/articles/PMC12842149/</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer>All photographs via Wikimedia Commons under Creative Commons licences &mdash; see source links per page for full attribution. Photo placeholder shown where no freely licensed image was identified.</footer> under Creative Commons licences &mdash; see source links per page for full attribution. Photo placeholder shown where no freely licensed image was identified.</footer>
+<script>
+function showPage(id, btn) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('#nav-bar button').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+  window.scrollTo(0,0);
+}
+document.getElementById('amegilla').classList.add('active');
+document.querySelector('#nav-bar button').classList.add('active');
+</script>
+</body>
+</html>
